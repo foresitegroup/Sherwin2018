@@ -4,14 +4,21 @@
 get_header();
 
 function CatLoop ($CatSlug) {
-  $catloop = new WP_Query(array('product_cat' => $CatSlug, 'orderby' =>'menu_order', 'order' => 'ASC'));
+  $count = 1;
+
+  $catloop = new WP_Query(array('product_cat' => $CatSlug, 'orderby' =>'menu_order', 'order' => 'ASC', 'showposts' => -1));
+
   while ($catloop->have_posts()) : $catloop->the_post(); global $product;
-    echo "<li>";
-      echo '<a href="'.get_permalink($catloop->post->ID).'">';
-      the_title();
-      echo '</a>';
-    echo "</li>";
+    echo '<a href="'.get_permalink($catloop->post->ID).'">';
+    the_title();
+    echo "</a><br>\n";
+
+    if ($count == 1) echo "</div> <!-- .group -->\n";
+    $count++;
   endwhile;
+
+  if (!$catloop->have_posts()) echo "</div> <!-- .group -->\n";
+
   wp_reset_query();
 }
 
@@ -26,41 +33,39 @@ foreach ($cats1 as $cat1) {
   <div class="main-cat"<?php if ($cat_img) echo ' style="background-image: url('.$cat_img[0].');"' ?>>
     <div class="site-width">
       <h1><?php echo $cat1->name; ?></h1>
+      <?php
+      if ($cats2) {
+        foreach($cats2 as $cat2main) { echo "<span>".$cat2main->cat_name."</span>"; }
+      }
+      ?>
     </div>
   </div>
   <div>
     <div class="site-width">
-      <ul>
-        <?php
-        if ($cats2) {
-          foreach($cats2 as $cat2) {
-            $cats3 = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 0, 'parent' => $cat2->term_id));
+      <?php
+      if ($cats2) {
+        foreach($cats2 as $cat2) {
+          $cats3 = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 0, 'parent' => $cat2->term_id));
 
-            echo "<li>";
-              echo "<h2>".$cat2->cat_name."</h2>";
-              
-              echo "<ul>";
-                if ($cats3) {
-                  foreach($cats3 as $cat3) {
-                    echo "<li>";
-                      echo "<h3>".$cat3->cat_name."</h3>";
-
-                      echo "<ul>";
-                        CatLoop($cat3->slug);
-                      echo "</ul>";
-                    echo "</li>";
-                  }
-                } else {
-                  CatLoop($cat2->slug);
-                }
-              echo "</ul>";
-            echo "</li>";
+          echo "<div class=\"group\">\n";
+          echo "<h2>".$cat2->cat_name."</h2>\n";
+            
+          if ($cats3) {
+            $h3count = 1;
+            foreach($cats3 as $cat3) {
+              if ($h3count >= 2) echo "<div class=\"group\">\n";
+              echo "<h3>".$cat3->cat_name."</h3>\n";
+              CatLoop($cat3->slug);
+              $h3count++;
+            }
+          } else {
+            CatLoop($cat2->slug);
           }
-        } else {
-          CatLoop($cat1->slug);
         }
-        ?>
-      </ul>
+      } else {
+        CatLoop($cat1->slug);
+      }
+      ?>
     </div>
   </div>
 <?php

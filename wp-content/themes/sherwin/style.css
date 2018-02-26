@@ -366,6 +366,12 @@ A#search {
   line-height: 1em;
 }
 
+.main-cat SPAN:before {
+  content: "\00b7";
+  margin: 0 0.25em;
+}
+.main-cat SPAN:first-of-type:before { content: ""; }
+
 .main-cat + DIV {
   background: #252525;
   color: #E9484A;
@@ -375,37 +381,28 @@ A#search {
   letter-spacing: 0.1em;
 }
 
-.main-cat + DIV UL {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.main-cat + DIV .site-width > UL {
+.main-cat + DIV .site-width {
+  padding: 4.7em 0 4em;
   -webkit-column-count: 4;
   -moz-column-count: 4;
   column-count: 4;
 }
 
-.main-cat + DIV .site-width > UL > UL > LI {
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-  break-inside: avoid;
-}
-
-.main-cat + DIV UL H2 {
-  margin: 0;
+.main-cat + DIV H2 {
+  margin: 0 0 0.2em;
   font-family: 'Teko', sans-serif;
   font-weight: 700;
   font-size: 26px;
   line-height: 1em;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  display: inline-block;
+  width: 100%;
 }
 
-.main-cat + DIV UL H3 {
+.main-cat + DIV H3 {
   color: #959595;
-  margin: 0;
+  margin: 0 0 0.8em;
   font-weight: 800;
   font-size: 16px;
   line-height: 1em;
@@ -413,29 +410,37 @@ A#search {
   text-transform: uppercase;
 }
 
-.main-cat + DIV UL A:link,
-.main-cat + DIV UL A:visited {
+.main-cat + DIV A:link,
+.main-cat + DIV A:visited {
   color: #FFFFFF;
   text-decoration: none;
+  display: inline-block;
+  padding-bottom: 0.8em;
 }
 
-.main-cat + DIV UL A:hover,
-.main-cat + DIV UL A:active {
+.main-cat + DIV A:hover,
+.main-cat + DIV A:active {
   color: #E9484A;
   text-decoration: none;
 }
 
-.main-cat + DIV UL A:before {
+.main-cat + DIV A:before {
   content: "\2022";
   color: #D74446;
   margin-right: 0.2em;
 }
 
-.main-cat + DIV UL A:after {
+.main-cat + DIV A:after {
   content: "\00bb";
   color: #D74446;
   margin-left: 0.3em;
 }
+
+.main-cat + DIV A ~ .group {
+  margin-top: 1em;
+}
+
+
 
 
 
