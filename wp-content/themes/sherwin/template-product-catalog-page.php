@@ -2,7 +2,27 @@
 /* Template Name: Product Catalog */
 
 get_header();
+?>
 
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".arrow").click(function(event) {
+      event.preventDefault();
+      $(this).toggleClass('rotate')
+      $('#'+$(this).parent().parent().parent().attr('id')+' + DIV').slideToggle('slow');
+    });
+
+    $("#banner .quick-jump A").click(function(event) {
+      event.preventDefault();
+      // console.log($(this).attr('href'));
+      $('html, body').animate({
+        scrollTop: $($(this).attr('href')).offset().top - 130
+      }, 600);
+    });
+  });
+</script>
+
+<?php
 function CatLoop ($CatSlug) {
   $count = 1;
 
@@ -30,9 +50,10 @@ foreach ($cats1 as $cat1) {
   $cat_img_id = get_woocommerce_term_meta($cat1->term_id, 'thumbnail_id', true);
   $cat_img = wp_get_attachment_image_src($cat_img_id, 'full');
   ?>
-  <div class="main-cat"<?php if ($cat_img) echo ' style="background-image: url('.$cat_img[0].');"' ?>>
+  <div id="<?php echo $cat1->slug; ?>" class="main-cat"<?php if ($cat_img) echo ' style="background-image: url('.$cat_img[0].');"' ?>>
     <div class="site-width">
-      <h1><?php echo $cat1->name; ?></h1>
+      <h1><?php echo $cat1->name; ?><a href="#" class="arrow"><i class="fas fa-caret-down"></i></a></h1>
+      
       <?php
       if ($cats2) {
         foreach($cats2 as $cat2main) { echo "<span>".$cat2main->cat_name."</span>"; }

@@ -13,8 +13,8 @@
   <?php wp_enqueue_script("jquery"); ?>
 	<?php wp_head(); ?>
 
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:600,700,800|Teko:400,500,600,700">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:600,700,800|Teko:400,500,600,700" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?<?php echo filemtime(get_template_directory() . "/style.css"); ?>">
 
   <script type="text/javascript">
@@ -33,10 +33,10 @@
 		    }
 		  });
 
-      $('.slideshow-1 .foresite-content P SPAN, #banner .site-width').html(function(){
+      $('.slideshow-1 .foresite-content P SPAN, #banner .site-width H1').html(function(){
         var text = $(this).text().trim().split(' ');
         var first = text.shift();
-        var sep = ($(this).is('#banner .site-width')) ? ' ' : '<br>';
+        var sep = ($(this).is('#banner .site-width H1')) ? ' ' : '<br>';
         return (text.length > 0 ? '<span style="color: #FFFFFF;">'+first+'</span>'+sep : first) + text.join(sep);
       });
     });
@@ -54,7 +54,7 @@
       <label for="toggle-menu"></label>
 	    <?php wp_nav_menu(array('theme_location' => 'main-menu', 'container_class' => 'main-menu')); ?>
 
-      <a href="#" id="search"><i class="fa fa-search" aria-hidden="true"></i></a>
+      <a href="#" id="search"><i class="fas fa-search"></i></a>
 	  </div>
 	</header>
 
@@ -65,7 +65,20 @@
 	<?php } else { ?>
     <div id="banner"<?php if ($post->post_name == "about" || $post->post_name == "contact") echo ' class="tongue"'; ?>>
       <div class="site-width">
-	      <?php single_post_title(); ?>
+	      <h1><?php single_post_title(); ?></h1>
+        <?php
+        if ($post->post_name == "product-catalog") {
+          echo '<div class="quick-jump">';
+            echo "Quick Jump To<br>";
+
+            $quick = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 0, 'parent' => 0, 'exclude' => array(17)));
+            foreach ($quick as $jump) {
+              echo '<a href="#'.$jump->slug.'">'.$jump->name.'</a>';
+            }
+
+          echo "</div>";
+        }
+        ?>
       </div>
     </div>
 	<?php } ?>

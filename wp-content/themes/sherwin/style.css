@@ -247,12 +247,16 @@ A#search {
   padding: 0.56em 0 0.44em;
 }
 
+#banner H1 { margin: 0; font-size: inherit; }
+
 #banner.tongue:after {
   width: 140px;
   height: 290px;
   top: calc(100% - 36px);
   left: calc(50% - 635px);
 }
+
+
 
 
 
@@ -305,6 +309,38 @@ A#search {
   padding: 3.8em 2% 3.7em;
   box-sizing: border-box;
 }
+
+#banner .quick-jump {
+  box-sizing: border-box;
+  padding-right: 15%;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3em;
+  letter-spacing: 0.05em;
+}
+
+#banner .quick-jump A:link,
+#banner .quick-jump A:visited {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1em;
+  letter-spacing: 0.08em;
+  display: inline-block;
+}
+
+#banner .quick-jump A:hover,
+#banner .quick-jump A:active {
+  color: #E9484A;
+  text-decoration: none;
+}
+
+#banner .quick-jump A:after {
+  content: "/";
+  margin: 0 0.3em;
+  color: #E9484A;
+}
+#banner .quick-jump A:last-of-type:after { content: ""; }
 
 .main-cat {
   height: 350px;
@@ -360,19 +396,48 @@ A#search {
   .main-cat .site-width { position: relative; z-index: 5; }
 }
 
+.main-cat .site-width {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
 .main-cat H1 {
   margin: 0;
   font-size: 120px;
   line-height: 1em;
+  transform: translateY(0.15em);
 }
 
-.main-cat SPAN:before {
+.main-cat H1 .arrow {
+  font-size: 0;
+  line-height: 1em;
+  display: inline-block;
+  margin-left: 15px;
+  color: #FFFFFF;
+  transition: 0.4s;
+}
+
+.main-cat H1 .arrow.rotate {
+  transform: rotate(-180deg);
+  transition: 0.4s;
+}
+
+.main-cat H1 .arrow .fas { font-size: 100px; }
+
+.main-cat SPAN { display: inline-block; }
+
+.main-cat SPAN:after {
   content: "\00b7";
   margin: 0 0.25em;
 }
-.main-cat SPAN:first-of-type:before { content: ""; }
+.main-cat SPAN:last-of-type:after { content: ""; }
 
 .main-cat + DIV {
+  display: none;
   background: #252525;
   color: #E9484A;
   font-weight: 700;
@@ -493,7 +558,7 @@ A#search {
   }
 
   LABEL[for="toggle-menu"]:after {
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     content: "\f0c9";
   }
 
