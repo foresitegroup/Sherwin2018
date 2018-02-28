@@ -22,23 +22,24 @@
       $("a[href^='http']").not("[href*='" + window.location.host + "']").prop('target','new');
       $("a[href$='.pdf']").prop('target', 'new');
 
-      var headerHeight = $('#main-header').outerHeight();
-      $('#header-spacer').height(headerHeight);
+      $('#header-spacer').height($('#main-header').outerHeight());
 
       $(window).scroll(function() {
 		    if ($(window).scrollTop() >= 10) {
-		      $('#main-header').removeClass('home-header');
+		      $('.home-header').removeClass('home-header-border');
 		    } else {
-		      $('#main-header').addClass('home-header');
+		      $('.home-header').addClass('home-header-border');
 		    }
 		  });
 
-      $('.slideshow-1 .foresite-content P SPAN, #banner .site-width H1').html(function(){
+      $('.slideshow-1 .foresite-content P SPAN, #banner .site-width > H1').html(function(){
         var text = $(this).text().trim().split(' ');
         var first = text.shift();
         var sep = ($(this).is('#banner .site-width H1')) ? ' ' : '<br>';
         return (text.length > 0 ? '<span style="color: #FFFFFF;">'+first+'</span>'+sep : first) + text.join(sep);
       });
+
+      $('#breadcrumb-spacer').height($('#product-breadcrumbs').outerHeight());
     });
   </script>
 </head>
@@ -46,7 +47,7 @@
 <body <?php body_class(); ?>>
 	<div id="header-spacer"></div>
 
-	<header id="main-header"<?php if(is_front_page()) echo ' class="home-header'; ?>">
+	<header id="main-header"<?php if(is_front_page()) echo ' class="home-header home-header-border'; ?>">
 		<div class="site-width">
 	    <a href="<?php echo home_url(); ?>" id="logo"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Sherwin Industries, Inc."></a>
       
@@ -58,9 +59,36 @@
 	  </div>
 	</header>
 
-	<?php if(is_front_page()) { ?>
+	<?php if (is_front_page()) { ?>
     <div class="tongue">
 	    <?php echo do_shortcode('[foresite-slider category="3"]'); ?>
+    </div>
+  <?php } elseif (is_product()) { ?>
+    <div id="banner" class="banner-product">
+      <div id="breadcrumb-spacer"></div>
+
+      <div class="site-width">
+        <div id="product-breadcrumbs">
+          <?php
+          $prodcats = get_page_by_path($product, OBJECT, 'product');
+          $terms = get_the_terms($prodcats->ID, 'product_cat');
+          foreach ($terms as $term) { echo "<span>".$term->name."</span>"; }
+          the_title('<span>', '</span>');
+          ?>
+        </div>
+
+        <div id="product-header">
+          <?php
+          if (get_post_meta($post->ID, 'fg_wc_manufacturer', true))
+            echo "<h2>" . get_post_meta($post->ID, 'fg_wc_manufacturer', true) . "</h2>";
+          
+          the_title('<h1>', '</h1>');
+
+          if (get_post_meta($post->ID, 'fg_wc_subtitle', true))
+            echo "<h3>" . get_post_meta($post->ID, 'fg_wc_subtitle', true) . "</h3>";
+          ?>
+        </div>
+      </div>
     </div>
 	<?php } else { ?>
     <div id="banner"<?php if ($post->post_name == "about" || $post->post_name == "contact") echo ' class="tongue"'; ?>>

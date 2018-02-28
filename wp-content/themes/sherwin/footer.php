@@ -2,6 +2,16 @@
 
   <?php wp_footer(); ?>
 
+  <?php if (is_product()) { ?>
+    <div id="footer-product">
+      <div class="site-width">
+        <span>Interested or need more information?</span>
+        <h1>Contact a Sherwin rep today</h1>
+        Call <a href="tel:1-800-525-8876">1-800-525-8876</a> or <a href="<?php echo home_url(); ?>/contact">e-mail us</a>
+      </div>
+    </div>
+  <?php } ?>
+
   <div id="footer-contact">
     <div class="site-width">
       Sherwin Industries, Inc.<br>
