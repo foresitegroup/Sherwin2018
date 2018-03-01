@@ -107,6 +107,11 @@ function fg_wc_product_content() {
   echo "</div>";
 }
 
+add_action('wp_enqueue_scripts', 'remove_foresite_slider', 999);
+function remove_foresite_slider() {
+  if (is_product()) wp_dequeue_style('foresite-cycle-style');
+}
+
 add_action('woocommerce_before_single_product_summary', 'fg_wc_image_gallery', 20);
 function fg_wc_image_gallery() {
   global $product;
@@ -114,13 +119,47 @@ function fg_wc_image_gallery() {
   $attachment_ids = $product->get_gallery_image_ids();
 
   if ($attachment_ids) {
-    echo '<div id="product-gallery">';
-      foreach ($attachment_ids as $attachment_id) {
-        // echo get_the_title($attachment_id);
-        $gallery_image = wp_get_attachment_image_src($attachment_id, 'full');
-        echo '<img src="'.$gallery_image[0].'" style="width: 100px; height: auto;">';
-      }
-    echo "</div>";
+    ?>
+    <div id="product-gallery">
+      <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.cycle2.min.js"></script>
+      <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.cycle2.carousel.min.js"></script>
+      
+      <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.min.js"></script>
+      <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.css">
+      <script type="text/javascript">
+        jQuery(document).ready(function($) {
+          $('[data-fancybox="product"]').fancybox({
+            infobar: false,
+            buttons: ['close'],
+            idleTime : 0,
+            backFocus : false
+          });
+        });
+      </script>
+      
+      <div class="cycle-slideshow" data-cycle-fx="carousel" data-cycle-timeout="0" data-cycle-slides="> a" data-cycle-carousel-visible="1" data-cycle-carousel-fluid="true" data-cycle-next="#next" data-cycle-prev="#prev" data-cycle-pager="#pager" data-cycle-pager-template="" data-cycle-caption="#image-title" data-cycle-caption-template="{{cycleTitle}}">
+        <?php
+        $pager = "";
+
+        foreach ($attachment_ids as $attachment_id) {
+          $gallery_image = wp_get_attachment_image_src($attachment_id, 'full');
+          $imagemeta = get_post($attachment_id);
+
+          echo '<a href="'.$gallery_image[0].'" data-fancybox="product" style="background-image: url('.$gallery_image[0].');" data-cycle-title="'.get_the_title($attachment_id).'" data-caption="'.$imagemeta->post_excerpt.'"></a>';
+
+          $pager .= '<span style="background-image: url('.$gallery_image[0].'); width: calc(20% - 20px);"></span>';
+        }
+        ?>
+
+        <p id="pager"><?php echo $pager; ?></p>
+      </div>
+
+      <a href="#" id="prev"><i class="fas fa-caret-left"></i></a>
+      <a href="#" id="next"><i class="fas fa-caret-right"></i></a>
+
+      <div id="image-title"></div>
+    </div>
+    <?php
   }
 }
 
@@ -136,15 +175,6 @@ function fg_wc_product_classes($classes) {
 
   return $classes;
 }
-
-add_action('after_setup_theme', 'fg_remove_theme_support', 999);
-function fg_remove_theme_support() {
-  remove_theme_support('wc-product-gallery-zoom');
-  remove_theme_support('wc-product-gallery-lightbox');
-  remove_theme_support('wc-product-gallery-slider');
-}
-wp_deregister_script( 'photoswipe' );
-wp_deregister_script( 'photoswipe-ui-default' );
 
 add_action('woocommerce_before_main_content', 'fg_remove_before_main_content', 1);
 function fg_remove_before_main_content() {

@@ -577,6 +577,8 @@ A#search {
   transform: translateY(-50%);
 }
 
+.woocommerce div.product div.summary { margin-bottom: 0; }
+
 .woocommerce .single-product {
   font-size: 14px;
   line-height: 2em;
@@ -598,11 +600,94 @@ A#search {
 }
 
 .woocommerce .single-product #product-gallery {
-  outline: 1px solid red;
   display: inline-block;
   vertical-align: top;
   width: 47%;
   margin-left: -4px;
+  padding: 0 40px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.woocommerce .single-product #product-gallery .cycle-slideshow {
+  margin: 100px 0 50px;
+}
+
+.woocommerce .single-product #product-gallery .cycle-slide {
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.woocommerce .single-product #product-gallery .cycle-slide:before {
+  content: "";
+  display: inline-block;
+  padding-top: 88.33%;
+}
+
+.woocommerce .single-product #product-gallery #prev,
+.woocommerce .single-product #product-gallery #next {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  z-index: 100;
+  font-size: 80px;
+  color: #E9484A;
+}
+
+.woocommerce .single-product #product-gallery #next { left: auto; right: 0; }
+
+.woocommerce .single-product #product-gallery #prev:hover,
+.woocommerce .single-product #product-gallery #next:hover { color: #1C3056; }
+
+.woocommerce .single-product #product-gallery #pager { margin: 10px 0 0; }
+
+.woocommerce .single-product #product-gallery #pager SPAN {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  box-sizing: border-box;
+  margin: 5px 10px;
+  box-shadow: 0 0 22px 0 rgba(0,0,0,0.6);
+  position: relative;
+  cursor: pointer;
+}
+
+.woocommerce .single-product #product-gallery #pager SPAN:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.woocommerce .single-product #product-gallery #pager SPAN:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.25);
+}
+
+.woocommerce .single-product #product-gallery #pager SPAN.cycle-pager-active:after { background: transparent; }
+
+.woocommerce .single-product #product-gallery #image-title {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+  width: 100%;
+  text-align: center;
+  color: #1C3056;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1em;
+  text-transform: uppercase;
 }
 
 #footer-product {
