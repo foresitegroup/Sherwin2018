@@ -58,6 +58,12 @@ function fg_wc_custom_fields() {
     'test', // change to something other then normal, advanced or side
     'high'
   );
+
+  add_meta_box('fg_wc_custom_fields_box_side',
+    'Gallery Type',
+    'display_fg_wc_custom_fields_side',
+    'product', 'side', 'low'
+  );
 }
 
 // Place the meta box before the description
@@ -87,6 +93,15 @@ function display_fg_wc_custom_fields($post) {
   <?php
 }
 
+function display_fg_wc_custom_fields_side($post) {
+  $fg_wc_gallery_type = esc_html(get_post_meta($post->ID, 'fg_wc_gallery_type', true));
+  if ($fg_wc_gallery_type == "") $fg_wc_gallery_type = "gallery-carousel";
+  ?>
+  <label><input type="radio" name="fg_wc_gallery_type" value="gallery-carousel"<?php if ($fg_wc_gallery_type == "gallery-carousel") echo " checked"; ?>> Carousel</label><br>
+  <label><input type="radio" name="fg_wc_gallery_type" value="gallery-stacked"<?php if ($fg_wc_gallery_type == "gallery-stacked") echo " checked"; ?>> Stacked</label>
+  <?php
+}
+
 // Save the data from our fields
 add_action('save_post', 'save_fg_wc_custom_fields', 10, 2);
 function save_fg_wc_custom_fields($post_id){
@@ -94,6 +109,8 @@ function save_fg_wc_custom_fields($post_id){
     update_post_meta($post_id, 'fg_wc_manufacturer', $_POST['fg_wc_manufacturer']);
   if (isset($_POST['fg_wc_subtitle']))
     update_post_meta($post_id, 'fg_wc_subtitle', $_POST['fg_wc_subtitle']);
+  if (isset($_POST['fg_wc_gallery_type']))
+    update_post_meta($post_id, 'fg_wc_gallery_type', $_POST['fg_wc_gallery_type']);
 }
 
 
@@ -115,62 +132,85 @@ function remove_foresite_slider() {
 add_action('woocommerce_before_single_product_summary', 'fg_wc_image_gallery', 20);
 function fg_wc_image_gallery() {
   global $product;
+  global $post;
 
   $attachment_ids = $product->get_gallery_image_ids();
 
   if ($attachment_ids) {
     ?>
     <div id="product-gallery">
-      <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.cycle2.min.js"></script>
-      <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.cycle2.carousel.min.js"></script>
-      
-      <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.min.js"></script>
-      <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.css">
-      <script type="text/javascript">
-        jQuery(document).ready(function($) {
-          $('[data-fancybox="product"]').fancybox({
-            infobar: false,
-            buttons: ['close'],
-            idleTime : 0,
-            backFocus : false
+      <?php if (get_post_meta($post->ID, 'fg_wc_gallery_type', true) == "gallery-carousel") { ?>
+        <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.cycle2.min.js"></script>
+        <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.cycle2.carousel.min.js"></script>
+        
+        <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.min.js"></script>
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.css">
+        <script type="text/javascript">
+          jQuery(document).ready(function($) {
+            $('[data-fancybox="product"]').fancybox({
+              infobar: false,
+              buttons: ['close'],
+              idleTime : 0,
+              backFocus : false
+            });
           });
-        });
-      </script>
-      
-      <div class="cycle-slideshow" data-cycle-fx="carousel" data-cycle-timeout="0" data-cycle-slides="> a" data-cycle-carousel-visible="1" data-cycle-carousel-fluid="true" data-cycle-next="#next" data-cycle-prev="#prev" data-cycle-pager="#pager" data-cycle-pager-template="" data-cycle-caption="#image-title" data-cycle-caption-template="{{cycleTitle}}">
-        <?php
-        $pager = "";
+        </script>
+        
+        <div class="cycle-slideshow" data-cycle-fx="carousel" data-cycle-timeout="0" data-cycle-slides="> a" data-cycle-carousel-visible="1" data-cycle-carousel-fluid="true" data-cycle-next="#next" data-cycle-prev="#prev" data-cycle-pager="#pager" data-cycle-pager-template="" data-cycle-caption="#image-title" data-cycle-caption-template="{{cycleTitle}}">
+          <?php
+          $pager = "";
 
+          foreach ($attachment_ids as $attachment_id) {
+            $gallery_image = wp_get_attachment_image_src($attachment_id, 'full');
+            $imagemeta = get_post($attachment_id);
+
+            echo '<a href="'.$gallery_image[0].'" data-fancybox="product" style="background-image: url('.$gallery_image[0].');" data-cycle-title="'.get_post_meta($attachment_id, '_wp_attachment_image_alt', true).'" data-caption="'.$imagemeta->post_excerpt.'"></a>';
+
+            $pager .= '<span style="background-image: url('.$gallery_image[0].'); width: calc(20% - 20px);"></span>';
+          }
+          ?>
+
+          <p id="pager"><?php echo $pager; ?></p>
+        </div>
+
+        <a href="#" id="prev"><i class="fas fa-caret-left"></i></a>
+        <a href="#" id="next"><i class="fas fa-caret-right"></i></a>
+
+        <div id="image-title"></div>
+      <?php } ?>
+      <?php if (get_post_meta($post->ID, 'fg_wc_gallery_type', true) == "gallery-stacked") { ?>
+        <u>Image Gallery</u>
+        
+        <?php
         foreach ($attachment_ids as $attachment_id) {
           $gallery_image = wp_get_attachment_image_src($attachment_id, 'full');
           $imagemeta = get_post($attachment_id);
 
-          echo '<a href="'.$gallery_image[0].'" data-fancybox="product" style="background-image: url('.$gallery_image[0].');" data-cycle-title="'.get_the_title($attachment_id).'" data-caption="'.$imagemeta->post_excerpt.'"></a>';
+          echo '<img src="'.$gallery_image[0].'" alt="">';
 
-          $pager .= '<span style="background-image: url('.$gallery_image[0].'); width: calc(20% - 20px);"></span>';
+          if ($imagemeta->post_excerpt != "") echo $imagemeta->post_excerpt."<br>";
         }
         ?>
-
-        <p id="pager"><?php echo $pager; ?></p>
-      </div>
-
-      <a href="#" id="prev"><i class="fas fa-caret-left"></i></a>
-      <a href="#" id="next"><i class="fas fa-caret-right"></i></a>
-
-      <div id="image-title"></div>
+      <?php } ?>
     </div>
     <?php
   }
+  $images = get_attached_media('image', $post->ID);
 }
 
-add_filter('post_class', 'fg_wc_product_classes');
+add_filter('body_class', 'fg_wc_product_classes');
 function fg_wc_product_classes($classes) {
-  global $product;
+  global $post;
 
-  $attachment_ids = $product->get_gallery_image_ids();
+  $attachments = get_post_meta($post->ID, '_product_image_gallery', true);
 
-  if (is_product() && $attachment_ids) {
-    $classes[] = 'lippert';
+  if (is_product()) {
+    if ($attachments) {
+      $fg_wc_gallery_type = esc_html(get_post_meta($post->ID, 'fg_wc_gallery_type', true));
+      $classes[] = $fg_wc_gallery_type;
+    } else {
+      $classes[] = 'no-gallery';
+    }
   }
 
   return $classes;

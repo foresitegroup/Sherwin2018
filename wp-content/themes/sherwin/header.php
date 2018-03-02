@@ -39,7 +39,11 @@
         return (text.length > 0 ? '<span style="color: #FFFFFF;">'+first+'</span>'+sep : first) + text.join(sep);
       });
 
-      $('#breadcrumb-spacer').height($('#product-breadcrumbs').outerHeight());
+      $(window).trigger('resize');
+    });
+
+    jQuery(window).on('resize',function() {
+      jQuery('#breadcrumb-spacer').height(jQuery('#product-breadcrumbs').outerHeight());
     });
   </script>
 </head>
