@@ -11,7 +11,8 @@
       </div>
     </div>
   <?php } ?>
-
+  
+  <?php if ($post->post_name != "about") { ?>
   <div id="footer-contact">
     <div class="site-width">
       Sherwin Industries, Inc.<br>
@@ -20,6 +21,7 @@
       <a href="tel:1-800-525-8876"><span style="color: #FFFFFF;">1-800-</span>525-8876</a>
     </div>
   </div>
+  <?php } ?>
 
   <footer id="main-footer">
     All rights reserved. Sherwin Industries, Inc. &copy; <?php echo date("Y"); ?>

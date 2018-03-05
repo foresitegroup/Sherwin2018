@@ -70,6 +70,8 @@ A:hover, A:active {
   clear: both;
 }
 
+.redtext { color: #E9484A; }
+
 #main-header {
   position: fixed;
   top: 0;
@@ -761,9 +763,6 @@ A#search {
   text-decoration: none;
 }
 
-
-
-
 .fg-product-list {
   font-size: 16px;
   line-height: 1em;
@@ -792,6 +791,98 @@ A#search {
 
 .fg-product-list CAPTION { display: none; }
 
+.page-template-template-rental-equipment-page #banner {
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 0 22px 5px rgba(0,0,0,0.6);
+}
+
+.rental-gray {
+  padding: 3.5em 0 2.4em;
+  background: #EBEBEB;
+  font-size: 14px;
+  line-height: 1.8em;
+}
+
+.rental-gray H2 {
+  margin: 0;
+  color: #1C3056;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1em;
+  letter-spacing: 0.05em;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+.rental-list { padding: 3em 0; }
+
+.rental-list EM { font-size: 75%; }
+
+.contact { display: flex; }
+
+#contact-find {
+  width: 327px;
+  box-sizing: border-box;
+  padding: 75px 42px 70px 45px;
+  background: #E1E1E1;
+}
+
+#contact-map {
+  width: calc(100% - 327px);
+  box-sizing: border-box;
+  padding: 75px 0 70px 42px;
+}
+
+#contact-map IMG {
+  max-width: 100%;
+  height: auto;
+}
+
+#contact-results {
+  background: #1C3056;
+  color: #FFFFFF;
+}
+
+.about {
+  box-sizing: border-box;
+  padding: 4em 39% 0 5%;
+  line-height: 2em;
+  position: relative;
+}
+
+.about P { margin: 0 0 1em; }
+.about P:last-of-type { margin: 0; }
+
+.about #image1 {
+  position: absolute;
+  top: 0;
+  right: -18px;
+  z-index: 5;
+  -webkit-transform: translateY(-30%);
+  -ms-transform: translateY(-30%);
+  transform: translateY(-30%);
+}
+
+.about #image2 {
+  position: absolute;
+  top: 0;
+  right: -18px;
+  z-index: 6;
+  -webkit-transform: translateY(40%);
+  -ms-transform: translateY(40%);
+  transform: translateY(40%);
+}
+
+#image-exterior {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 7;
+}
 
 
 
@@ -801,10 +892,14 @@ A#search {
 
 @media only screen and (max-width: 1310px) {
   .tongue:after { left: 0; }
+
+  .about { padding: 4em 45% 0 5%; }
 }
 
 @media only screen and (max-width: 1250px) {
   #banner.tongue:after { left: 0; }
+
+  .about { padding: 4em 46% 0 8%; }
 }
 
 @media only screen and (max-width: 1140px) {
@@ -823,6 +918,19 @@ A#search {
     background-size: 80vw auto;
     background-position: -22% bottom;
   }
+
+  .about { padding: 4em 46% 0 120px; }
+
+  .about #image1,
+  .about #image2 {
+    width: 46%;
+    height: auto;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+  .about #image1 { top: -10vw; }
+  .about #image2 { top: 20vw; }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -835,6 +943,9 @@ A#search {
 
 @media only screen and (max-width: 1000px) {
   .main-menu UL LI { margin-right: 3.5vw; }
+
+  .about #image1 { top: 4em; }
+  .about #image2 { top: 40vw; }
 }
 
 @media only screen and (max-width: 900px) {
@@ -912,6 +1023,9 @@ A#search {
   }
 
   #banner.banner-product #product-breadcrumbs { font-size: 2.4vw; }
+  
+  .about #image1 { right: 0; }
+  .about #image2 { top: 45vw; right: 0; }
 }
 
 @media only screen and (max-width: 830px) {
@@ -926,6 +1040,23 @@ A#search {
   /* Small computer or landscape tablet */
   #banner { font-size: 12.5vw; }
   #banner .quick-jump { padding-right: 4%; }
+
+  .about { padding: 4em 0 50vw 120px; }
+
+  .about #image1 {
+    top: auto;
+    bottom: -4vw;
+    right: auto;
+    left: 0;
+    width: 55%;
+  }
+
+  .about #image2 {
+    top: auto;
+    bottom: -4vw;
+    right: 0;
+    width: 56%;
+  }
 }
 
 @media only screen and (max-width: 700px) {

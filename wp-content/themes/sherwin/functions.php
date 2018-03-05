@@ -36,13 +36,57 @@ function register_my_menus() {
 add_action( 'init', 'register_my_menus' );
 
 
-function fg_remove_wc_meta_boxes() {
-  remove_meta_box('woocommerce-product-data', 'product', 'normal');
-  remove_meta_box('postexcerpt', 'product', 'normal');
-  remove_meta_box('tagsdiv-product_tag' , 'product' , 'side');
-  remove_meta_box('postimagediv' , 'product' , 'side');
+// Second featured image for About page
+add_action('add_meta_boxes', 'fg_about_featured_image_add_metabox');
+function fg_about_featured_image_add_metabox () {
+  global $post;
+  if ('template-about-page.php' == get_post_meta($post->ID, '_wp_page_template', true)) {
+    add_meta_box('fg-about-featured-image',
+      __( 'Featured Image Two', 'text-domain' ),
+      'fg_about_featured_image_metabox',
+      'page', 'side', 'low'
+    );
+    wp_enqueue_script('fgscript', get_stylesheet_directory_uri().'/inc/about-featured-image.js');
+  }
 }
-add_action('add_meta_boxes', 'fg_remove_wc_meta_boxes', 999);
+function fg_about_featured_image_metabox ( $post ) {
+  global $content_width, $_wp_additional_image_sizes;
+  $image_id = get_post_meta( $post->ID, '_fg_about_featured_image_id', true );
+  $old_content_width = $content_width;
+  $content_width = 254;
+  if ( $image_id && get_post( $image_id ) ) {
+    if ( ! isset( $_wp_additional_image_sizes['post-thumbnail'] ) ) {
+      $thumbnail_html = wp_get_attachment_image( $image_id, array( $content_width, $content_width ) );
+    } else {
+      $thumbnail_html = wp_get_attachment_image( $image_id, 'post-thumbnail' );
+    }
+    if ( ! empty( $thumbnail_html ) ) {
+      $content = $thumbnail_html;
+      $content .= '<p class="hide-if-no-js"><a href="javascript:;" id="remove_about_featured_image_button" >' . esc_html__( 'Remove featured image two', 'text-domain' ) . '</a></p>';
+      $content .= '<input type="hidden" id="upload_about_featured_image" name="_fg_about_featured_image_image" value="' . esc_attr( $image_id ) . '" />';
+    }
+    $content_width = $old_content_width;
+  } else {
+    $content = '<img src="" style="width:' . esc_attr( $content_width ) . 'px;height:auto;border:0;display:none;" />';
+    $content .= '<p class="hide-if-no-js"><a title="' . esc_attr__( 'Set featured image two', 'text-domain' ) . '" href="javascript:;" id="upload_about_featured_image_button" data-uploader_title="' . esc_attr__( 'Choose an image', 'text-domain' ) . '" data-uploader_button_text="' . esc_attr__( 'Set featured image two', 'text-domain' ) . '">' . esc_html__( 'Set featured image two', 'text-domain' ) . '</a></p>';
+    $content .= '<input type="hidden" id="upload_about_featured_image" name="_fg_about_featured_image_image" value="" />';
+  }
+  echo $content;
+}
+add_action('admin_head', 'fg_about_css');
+function fg_about_css() {
+  echo '<style>
+    #fg-about-featured-image IMG { max-width: 100%; height: auto; }
+  </style>';
+}
+add_action( 'save_post', 'fg_about_featured_image_save', 10, 1 );
+function fg_about_featured_image_save ( $post_id ) {
+  if( isset( $_POST['_fg_about_featured_image_image'] ) ) {
+    $image_id = (int) $_POST['_fg_about_featured_image_image'];
+    update_post_meta( $post_id, '_fg_about_featured_image_id', $image_id );
+  }
+}
+
 
 
 /*

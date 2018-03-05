@@ -8,6 +8,4 @@ if ( have_posts() ) :
 endif;
 ?>
 
-<!-- <div style="width: 10px; height: 2000px; background: blue;"></div> -->
-
 <?php get_footer(); ?>
