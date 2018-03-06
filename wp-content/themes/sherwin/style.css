@@ -46,7 +46,7 @@ HR {
 }
 
 A:link, A:visited {
-  color: #0000FF;
+  color: #E9484A;
   text-decoration: none;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
@@ -54,7 +54,7 @@ A:link, A:visited {
 }
 
 A:hover, A:active {
-  color: #FF0000;
+  color: #C7EAFD;
   text-decoration: none;
 }
 
@@ -259,11 +259,6 @@ A#search {
   left: calc(50% - 635px);
 }
 
-
-
-
-
-
 #footer-contact {
   padding: 3.2em 0;
   background: url(images/footer-building.png) no-repeat 22% bottom;
@@ -313,6 +308,278 @@ A#search {
   box-sizing: border-box;
 }
 
+.home-content {
+  padding: 35px 0;
+  background: url(images/home-content-background.png) no-repeat right center;
+  background-size: auto 100%;
+}
+
+.home-content .site-width {
+  display: flex;
+  align-items: center;
+  line-height: 2em;
+}
+
+.home-content .site-width IMG {
+  position: relative;
+  left: -45px;
+}
+
+.home-content .site-width STRONG { color: #1C3056; }
+
+.page-template-template-rental-equipment-page #banner {
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 0 22px 5px rgba(0,0,0,0.6);
+}
+
+.rental-gray {
+  padding: 3.5em 0 2.4em;
+  background: #EBEBEB;
+  font-size: 14px;
+  line-height: 1.8em;
+}
+
+.rental-gray H2 {
+  margin: 0;
+  color: #1C3056;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1em;
+  letter-spacing: 0.05em;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+.rental-list { padding: 3em 0; }
+
+.rental-list EM { font-size: 75%; }
+
+.contact { display: flex; }
+
+#contact-find {
+  width: 327px;
+  box-sizing: border-box;
+  padding: 75px 42px 70px 45px;
+  background: #E1E1E1;
+  color: #4F4F4F;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+#contact-find H2 {
+  margin: 0 0 0.2em;
+  color: #1C3056;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 400%;
+  line-height: 0.8em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#contact-find H3 {
+  margin: 2em 0 0.2em;
+  color: #1C3056;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 200%;
+  line-height: 1em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#contact-find .select {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 31px;
+  overflow: hidden;
+}
+
+#contact-find .select SELECT {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border-radius: 0;
+  border: 0 !important;
+  background: #FFFFFF;
+  background-image: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 0.7em;
+  color: #3E3E3E;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#contact-find .select SELECT::-ms-expand { display: none; }
+
+#contact-find .select::before {
+  content: "\f0d7";
+  font-family: "Font Awesome 5 Free";
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 31px;
+  height: 31px;
+  box-sizing: border-box;
+  padding-top: 7px;
+  background: #1C3056;
+  color: #FFFFFF;
+  text-align: center;
+  pointer-events: none;
+}
+
+#contact-find .select SELECT OPTION { text-transform: none; } /* Maybe some day.... */
+
+#contact-find #find-my-rep {
+  margin-top: 2em;
+  outline: none;
+  border: 0;
+  padding: 0.65em 0 0.5em;
+  width: 100%;
+  text-align: center;
+  background: #E9484A;
+  color: #FFFFFF;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#contact-find #find-my-rep:hover {
+  background: #1C3056;
+  color: #FFFFFF;
+}
+
+#contact-map {
+  width: calc(100% - 327px);
+  box-sizing: border-box;
+  padding: 75px 0 70px 42px;
+}
+
+#contact-map IMG {
+  max-width: 100%;
+  height: auto;
+}
+
+#contact-results {
+  display: none;
+  background: #1C3056;
+  color: #FFFFFF;
+  font-size: 10px;
+  line-height: 1.4em;
+}
+
+#contact-results H1 {
+  margin: 0 0 0.5em;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 480%;
+  line-height: 0.8em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#contact-results H3 {
+  margin: 0 0 0.2em;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 160%;
+  line-height: 1em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+#contact-results H4 {
+  margin: 0;
+  font-weight: 800;
+  font-size: 95%;
+  text-transform: uppercase;
+}
+
+#contact-results STRONG { font-weight: 800; }
+
+#contact-results .site-width { display: flex; }
+
+#contact-results #results-corporate {
+  width: 327px;
+  box-sizing: border-box;
+  padding: 40px 42px 35px 45px;
+  box-shadow: 7px 1px 10px 0 rgba(0,0,0,0.24);
+}
+
+#contact-results #find-rep-results {
+  width: calc(100% - 327px);
+  box-sizing: border-box;
+  padding: 50px 0 50px 42px;
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+}
+
+#contact-results #find-rep-results DIV {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid-column;
+}
+
+.about {
+  box-sizing: border-box;
+  padding: 4em 39% 0 5%;
+  line-height: 2em;
+  position: relative;
+}
+
+.about P { margin: 0 0 1em; }
+.about P:last-of-type { margin: 0; }
+
+.about #image1 {
+  position: absolute;
+  top: 0;
+  right: -18px;
+  z-index: 5;
+  -webkit-transform: translateY(-30%);
+  -ms-transform: translateY(-30%);
+  transform: translateY(-30%);
+}
+
+.about #image2 {
+  position: absolute;
+  top: 0;
+  right: -18px;
+  z-index: 6;
+  -webkit-transform: translateY(40%);
+  -ms-transform: translateY(40%);
+  transform: translateY(40%);
+}
+
+#image-exterior {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 7;
+}
+
+
+/***************/
+/* WooCommerce */
+/***************/
 #banner .quick-jump {
   box-sizing: border-box;
   padding-right: 15%;
@@ -791,107 +1058,11 @@ A#search {
 
 .fg-product-list CAPTION { display: none; }
 
-.page-template-template-rental-equipment-page #banner {
-  position: relative;
-  z-index: 10;
-  box-shadow: 0 0 22px 5px rgba(0,0,0,0.6);
-}
-
-.rental-gray {
-  padding: 3.5em 0 2.4em;
-  background: #EBEBEB;
-  font-size: 14px;
-  line-height: 1.8em;
-}
-
-.rental-gray H2 {
-  margin: 0;
-  color: #1C3056;
-  font-family: 'Teko', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1em;
-  letter-spacing: 0.05em;
-  text-decoration: underline;
-  text-transform: uppercase;
-}
-
-.rental-list { padding: 3em 0; }
-
-.rental-list EM { font-size: 75%; }
-
-.contact { display: flex; }
-
-#contact-find {
-  width: 327px;
-  box-sizing: border-box;
-  padding: 75px 42px 70px 45px;
-  background: #E1E1E1;
-}
-
-#contact-map {
-  width: calc(100% - 327px);
-  box-sizing: border-box;
-  padding: 75px 0 70px 42px;
-}
-
-#contact-map IMG {
-  max-width: 100%;
-  height: auto;
-}
-
-#contact-results {
-  background: #1C3056;
-  color: #FFFFFF;
-}
-
-.about {
-  box-sizing: border-box;
-  padding: 4em 39% 0 5%;
-  line-height: 2em;
-  position: relative;
-}
-
-.about P { margin: 0 0 1em; }
-.about P:last-of-type { margin: 0; }
-
-.about #image1 {
-  position: absolute;
-  top: 0;
-  right: -18px;
-  z-index: 5;
-  -webkit-transform: translateY(-30%);
-  -ms-transform: translateY(-30%);
-  transform: translateY(-30%);
-}
-
-.about #image2 {
-  position: absolute;
-  top: 0;
-  right: -18px;
-  z-index: 6;
-  -webkit-transform: translateY(40%);
-  -ms-transform: translateY(40%);
-  transform: translateY(40%);
-}
-
-#image-exterior {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-  position: relative;
-  z-index: 7;
-}
-
-
-
-
-
-
 
 @media only screen and (max-width: 1310px) {
   .tongue:after { left: 0; }
+
+  .home-content .site-width IMG { left: 0; margin-right: 40px; }
 
   .about { padding: 4em 45% 0 5%; }
 }
@@ -899,7 +1070,14 @@ A#search {
 @media only screen and (max-width: 1250px) {
   #banner.tongue:after { left: 0; }
 
+  .contact,
+  #contact-results .site-width { padding-left: 2%; box-sizing: border-box; }
+
   .about { padding: 4em 46% 0 8%; }
+}
+
+@media only screen and (max-width: 1200px) {
+  .contact, #contact-results .site-width { padding-left: 6%; }
 }
 
 @media only screen and (max-width: 1140px) {
@@ -918,6 +1096,8 @@ A#search {
     background-size: 80vw auto;
     background-position: -22% bottom;
   }
+
+  .contact, #contact-results .site-width { padding-left: 7%; }
 
   .about { padding: 4em 46% 0 120px; }
 
@@ -943,6 +1123,8 @@ A#search {
 
 @media only screen and (max-width: 1000px) {
   .main-menu UL LI { margin-right: 3.5vw; }
+
+  .home-content .site-width IMG { width: 48%; }
 
   .about #image1 { top: 4em; }
   .about #image2 { top: 40vw; }
@@ -1023,6 +1205,12 @@ A#search {
   }
 
   #banner.banner-product #product-breadcrumbs { font-size: 2.4vw; }
+
+  #contact-results #find-rep-results {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
   
   .about #image1 { right: 0; }
   .about #image2 { top: 45vw; right: 0; }
@@ -1040,6 +1228,9 @@ A#search {
   /* Small computer or landscape tablet */
   #banner { font-size: 12.5vw; }
   #banner .quick-jump { padding-right: 4%; }
+
+  .home-content .site-width { display: block; }
+  .home-content .site-width IMG { display: block; margin: 0 auto; }
 
   .about { padding: 4em 0 50vw 120px; }
 
@@ -1060,6 +1251,8 @@ A#search {
 }
 
 @media only screen and (max-width: 700px) {
+  .home-content .site-width IMG { height: 350px; width: auto; margin-left: calc(100% - 350px); }
+
   .main-cat { background-position: center center; background-size: cover; }
 
   .gallery-carousel .woocommerce .single-product #text {
@@ -1086,10 +1279,20 @@ A#search {
   }
 
   #footer-product { font-size: 5.1vw; }
+
+  .page-template-template-contact-page #banner.tongue:after { left: -15px; }
+
+  .contact, #contact-results .site-width { display: block; padding: 0 7%; }
+  #contact-find { width: 100%; padding: 70px 10%; }
+  #contact-map { width: 100%; padding: 0 5% 50px; background: #E1E1E1; }
+
+  #contact-results #results-corporate { width: 100%; box-shadow: none; }
+  #contact-results #find-rep-results { width: 100%; padding-top: 0; }
 }
 
 @media only screen and (max-width: 600px) {
   /* Small tablet */
+  #contact-find { padding: 70px 16%; }
 }
 
 @media only screen and (max-width: 550px) {
@@ -1103,4 +1306,10 @@ A#search {
 @media only screen and (max-width: 480px) {
   /* Phone */
   LABEL[for="toggle-menu"] { right: 15%; }
+
+  #contact-find { padding: 70px 20%; }
+
+  #contact-find H2 { font-size: 10.5vw; }
+  #contact-find H3 { font-size: 5.6vw; }
+  #contact-find #find-my-rep { font-size: 4.5vw; }
 }
