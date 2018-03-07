@@ -25,6 +25,14 @@ function my_oembed_filter($html, $url, $attr, $post_ID) {
 }
 
 
+// Allow SVGs to be uploaded
+function fg_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'fg_mime_types');
+
+
 // Define menus
 function register_my_menus() {
   register_nav_menus(

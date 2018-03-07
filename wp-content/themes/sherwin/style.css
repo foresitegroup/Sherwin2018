@@ -327,6 +327,228 @@ A#search {
 
 .home-content .site-width STRONG { color: #1C3056; }
 
+.cycle-slideshow.featured-products { height: 400px; }
+.cycle-slideshow.featured-products:before { padding-bottom: 0; }
+
+.cycle-slideshow.featured-products > DIV {
+  background-position: 10% center;
+  background-size: auto 150%;
+}
+
+.cycle-slideshow.featured-products > DIV:after { background: rgba(29,48,86,0.8); }
+
+.cycle-slideshow.featured-products .site-width {
+  height: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+.cycle-slideshow.featured-products .site-width > DIV {
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: #86A6D9;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1em;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  padding-left: calc(2% + 60px);
+}
+
+.cycle-slideshow.featured-products .site-width > DIV H1 {
+  margin: 0 0 0.3em;
+  font-size: 300%;
+  line-height: 0.9em;
+  text-shadow: 0 0 22px rgba(0, 0, 0, 0.6);
+}
+
+.cycle-slideshow.featured-products .site-width > DIV H2 {
+  margin: 0;
+  color: #FFFFFF;
+  font-size: 300%;
+  line-height: 0.9em;
+  text-shadow: 0 0 22px rgba(0, 0, 0, 0.6);
+}
+
+.cycle-slideshow.featured-products .site-width > DIV A:link,
+.cycle-slideshow.featured-products .site-width > DIV A:visited {
+  box-shadow: 0 0 22px 0 rgba(0,0,0,0.6);
+  padding: 0.4em 0.75em 0.2em;
+  background: #E9484A;
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+}
+
+.cycle-slideshow.featured-products .site-width > DIV A:hover,
+.cycle-slideshow.featured-products .site-width > DIV A:active {
+  background: #EBEBEB;
+  color: #E9484A;
+}
+
+.cycle-slideshow.featured-products .site-width > DIV A:after {
+  content: "\f0da";
+  font-family: "Font Awesome 5 Free";
+  margin-left: 0.3em;
+  position: relative;
+  top: 2px;
+  letter-spacing: 0;
+}
+
+.cycle-slideshow.featured-products #fp-prev,
+.cycle-slideshow.featured-products #fp-next {
+  position: absolute;
+  z-index: 200;
+  top: 50%;
+  font-size: 120px;
+  color: #E9484A;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.cycle-slideshow.featured-products #fp-prev {
+  left: calc((100% - 1100px) / 2);
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.cycle-slideshow.featured-products #fp-next {
+  right: calc((100% - 1100px) / 2);
+  -webkit-transform: translate(50%,-50%);
+  -ms-transform: translate(50%,-50%);
+  transform: translate(50%,-50%);
+}
+
+.cycle-slideshow.featured-products #fp-prev:hover,
+.cycle-slideshow.featured-products #fp-next:hover { color: #EBEBEB; }
+
+.cycle-slideshow.featured-products #fp-pager {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 200;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  margin: 0 0 0.5em;
+}
+
+.cycle-slideshow.featured-products #fp-pager A:link,
+.cycle-slideshow.featured-products #fp-pager A:visited {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: #EBEBEB;
+  margin: 0 10px;
+}
+
+.cycle-slideshow.featured-products #fp-pager A:hover,
+.cycle-slideshow.featured-products #fp-pager A:active,
+.cycle-slideshow.featured-products #fp-pager A.cycle-pager-active {
+  background: #E9484A;
+}
+
+#partners {
+  padding: 50px 0;
+  text-align: center;
+}
+
+#partners H1 {
+  margin: 0 0 1em;
+  color: #1C3056;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+#partners IMG {
+  display: inline-block;
+  vertical-align: middle;
+  max-height: 110px;
+  width: auto;
+  max-width: 25%;
+  height: auto;
+  margin: 0 2.5%;
+}
+
+#events {
+  padding: 2em 0;
+  background: #1D3056;
+  color: #FFFFFF;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+#events .seeus {
+  display: inline-block;
+  vertical-align: middle;
+  width: 26.5%;
+  position: relative;
+  z-index: 1;
+}
+
+#events .seeus:before {
+  content: url(images/seeus.png);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: -1;
+  transform: translate(-70%,-50%);
+}
+
+#events .seeus H1 {
+  margin: 0 0 0.1em;
+  color: #E9484A;
+  font-size: 80px;
+  line-height: 0.75em;
+}
+
+#events .event {
+  display: inline-block;
+  vertical-align: middle;
+  border: 10px solid #FFFFFF;
+  width: 17.72%;
+  margin-left: 3.63%;
+  position: relative;
+}
+
+#events .event:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+#events .event H2 {
+  position: absolute;
+  top: 7.69%;
+  left: 0;
+  margin: 0 7.69%;
+  font-size: 36px;
+  line-height: 0.8em;
+}
+
+#events .event H3 {
+  position: absolute;
+  bottom: 5%;
+  left: 0;
+  margin: 0 7.69%;
+  font-size: 25px;
+  line-height: 1em;
+  letter-spacing: 0.02em;
+  color: #86A6D9;
+}
+
 .page-template-template-rental-equipment-page #banner {
   position: relative;
   z-index: 10;
@@ -1078,6 +1300,20 @@ A#search {
 
 @media only screen and (max-width: 1200px) {
   .contact, #contact-results .site-width { padding-left: 6%; }
+
+  .cycle-slideshow.featured-products #fp-prev {
+    left: 2%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .cycle-slideshow.featured-products #fp-next {
+    right: 2%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
 }
 
 @media only screen and (max-width: 1140px) {
@@ -1232,6 +1468,8 @@ A#search {
   .home-content .site-width { display: block; }
   .home-content .site-width IMG { display: block; margin: 0 auto; }
 
+  .cycle-slideshow.featured-products .site-width > DIV { font-size: 3.7vw; }
+
   .about { padding: 4em 0 50vw 120px; }
 
   .about #image1 {
@@ -1296,6 +1534,8 @@ A#search {
 }
 
 @media only screen and (max-width: 550px) {
+  .cycle-slideshow.featured-products .site-width > DIV { font-size: 4vw; }
+
   .main-cat + DIV .site-width {
     -webkit-column-count: 1;
     -moz-column-count: 1;
