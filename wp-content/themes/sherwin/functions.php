@@ -165,6 +165,15 @@ function save_fg_wc_custom_fields($post_id){
     update_post_meta($post_id, 'fg_wc_gallery_type', $_POST['fg_wc_gallery_type']);
 }
 
+// Remove WooCommerce fileds that we don't need
+add_action('add_meta_boxes', 'fg_remove_wc_meta_boxes', 999);
+function fg_remove_wc_meta_boxes() {
+  remove_meta_box('woocommerce-product-data', 'product', 'normal');
+  remove_meta_box('postexcerpt', 'product', 'normal');
+  remove_meta_box('tagsdiv-product_tag' , 'product' , 'side');
+  remove_meta_box('postimagediv' , 'product' , 'side');
+}
+
 
 /*
 *  WooCommerce product page display

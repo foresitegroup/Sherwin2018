@@ -39,6 +39,21 @@
         return (text.length > 0 ? '<span style="color: #FFFFFF;">'+first+'</span>'+sep : first) + text.join(sep);
       });
 
+      $('#banner.search-banner .site-width').html(function(){
+        var text = $(this).text().trim().split(' ');
+        var first = text.shift();
+        var second = text.shift();
+        return '<span style="color: #FFFFFF;">'+first+' '+second+'</span>'+' '+text.join(' ');
+      });
+
+      $('#toggle-search').click(function() {
+        if($('#toggle-search').is(":checked")) {
+          $('#wc-search-field').focus();
+        } else {
+          $('#wc-search-field').blur();
+        }
+      });
+
       $(window).trigger('resize');
     });
 
@@ -59,7 +74,16 @@
       <label for="toggle-menu"></label>
 	    <?php wp_nav_menu(array('theme_location' => 'main-menu', 'container_class' => 'main-menu')); ?>
 
-      <a href="#" id="search"><i class="fas fa-search"></i></a>
+      <input type="checkbox" id="toggle-search" role="button">
+      <label for="toggle-search"></label>
+      <form role="search" method="get" id="wc-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <div>
+          Search any product by typing...
+          <input type="search" id="wc-search-field" name="s" autocomplete="off">
+          <button type="submit" id="wc-search-button">Search Site</button>
+          <input type="hidden" name="post_type" value="product">
+        </div>
+      </form>
 	  </div>
 	</header>
 
@@ -92,6 +116,12 @@
             echo "<h3>" . get_post_meta($post->ID, 'fg_wc_subtitle', true) . "</h3>";
           ?>
         </div>
+      </div>
+    </div>
+  <?php } elseif (is_search()) { ?>
+    <div id="banner" class="search-banner">
+      <div class="site-width">
+        <?php wp_title('', true, ''); ?>
       </div>
     </div>
 	<?php } else { ?>
