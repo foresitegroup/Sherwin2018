@@ -1,0 +1,77 @@
+BODY {
+  margin: 0.5em;
+  padding: 0;
+  background: #FFFFFF;
+  color: #353535;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 2em;
+}
+
+IMG { border: 0; }
+
+HR {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #353535;
+  margin: 1em 0;
+  padding: 0;
+}
+
+A:link, A:visited {
+  color: #E9484A;
+  text-decoration: none;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+A:hover, A:active {
+  color: #C7EAFD;
+  text-decoration: none;
+}
+
+UL, OL {
+  margin: 0 0 2em 0.7em;
+  padding: 0 0 0 0.7em;
+  list-style-type: none;
+}
+
+UL LI, OL LI {
+  padding: 0.5em 0;
+  line-height: 1.2em;
+}
+
+UL LI:before {
+  content: "\2022";
+  color: #E9484A;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+P { margin: 0 0 1.5em; }
+
+.redtext { color: #E9484A; }
+
+H3 {
+  margin: 0;
+  color: #E9484A;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 0.8em;
+  text-transform: uppercase;
+}
+
+H4 {
+  margin: 0;
+  color: #1C3056;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 0.8em;
+  text-transform: uppercase;
+}

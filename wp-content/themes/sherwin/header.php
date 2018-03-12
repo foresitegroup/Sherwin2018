@@ -133,7 +133,7 @@
           echo '<div class="quick-jump">';
             echo "Quick Jump To<br>";
 
-            $quick = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 0, 'parent' => 0, 'exclude' => array(17)));
+            $quick = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 1, 'parent' => 0, 'exclude' => array(17)));
             foreach ($quick as $jump) {
               echo '<a href="#'.$jump->slug.'">'.$jump->name.'</a>';
             }

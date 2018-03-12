@@ -44,6 +44,12 @@ function register_my_menus() {
 add_action( 'init', 'register_my_menus' );
 
 
+function themename_setup() {
+  add_editor_style();
+}
+add_action( 'after_setup_theme', 'themename_setup' );
+
+
 // Second featured image for About page
 add_action('add_meta_boxes', 'fg_about_featured_image_add_metabox');
 function fg_about_featured_image_add_metabox () {
@@ -220,22 +226,29 @@ function fg_wc_image_gallery() {
         <div class="cycle-slideshow" data-cycle-fx="carousel" data-cycle-timeout="0" data-cycle-slides="> a" data-cycle-carousel-visible="1" data-cycle-carousel-fluid="true" data-cycle-next="#next" data-cycle-prev="#prev" data-cycle-pager="#pager" data-cycle-pager-template="" data-cycle-caption="#image-title" data-cycle-caption-template="{{cycleTitle}}">
           <?php
           $pager = "";
+          $image_count = 0;
 
           foreach ($attachment_ids as $attachment_id) {
             $gallery_image = wp_get_attachment_image_src($attachment_id, 'full');
             $imagemeta = get_post($attachment_id);
 
-            echo '<a href="'.$gallery_image[0].'" data-fancybox="product" style="background-image: url('.$gallery_image[0].');" data-cycle-title="'.get_post_meta($attachment_id, '_wp_attachment_image_alt', true).'" data-caption="'.$imagemeta->post_excerpt.'"></a>';
+            echo '<a href="'.$gallery_image[0].'" data-fancybox="product" style="background-image: url('.$gallery_image[0].');" data-cycle-title="'.esc_html(get_post_meta($attachment_id, '_wp_attachment_image_alt', true)).'" data-caption="'.esc_html($imagemeta->post_excerpt).'"></a>';
 
             $pager .= '<span style="background-image: url('.$gallery_image[0].'); width: calc(20% - 20px);"></span>';
+
+            $image_count++;
           }
+
+          if ($image_count > 1) {
           ?>
-
           <p id="pager"><?php echo $pager; ?></p>
+          <?php } ?>
         </div>
-
+        
+        <?php if ($image_count > 1) { ?>
         <a href="#" id="prev"><i class="fas fa-caret-left"></i></a>
         <a href="#" id="next"><i class="fas fa-caret-right"></i></a>
+        <?php } ?>
 
         <div id="image-title"></div>
       <?php } ?>

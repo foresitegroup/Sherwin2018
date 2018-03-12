@@ -41,10 +41,10 @@ function CatLoop ($CatSlug) {
   wp_reset_query();
 }
 
-$cats1 = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 0, 'parent' => 0, 'exclude' => array(17)));
+$cats1 = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 1, 'parent' => 0, 'exclude' => array(17)));
 
 foreach ($cats1 as $cat1) {
-  $cats2 = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 0, 'parent' => $cat1->term_id));
+  $cats2 = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 1, 'parent' => $cat1->term_id));
 
   $cat_img_id = get_woocommerce_term_meta($cat1->term_id, 'thumbnail_id', true);
   $cat_img = wp_get_attachment_image_src($cat_img_id, 'full');
@@ -65,7 +65,7 @@ foreach ($cats1 as $cat1) {
       <?php
       if ($cats2) {
         foreach($cats2 as $cat2) {
-          $cats3 = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 0, 'parent' => $cat2->term_id));
+          $cats3 = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 1, 'parent' => $cat2->term_id));
 
           echo "<div class=\"group\">\n";
           echo "<h2>".$cat2->cat_name."</h2>\n";
@@ -83,6 +83,7 @@ foreach ($cats1 as $cat1) {
           }
         }
       } else {
+        echo "<div class=\"group\">\n";
         CatLoop($cat1->slug);
       }
       ?>
