@@ -64,8 +64,8 @@ function email($address, $name="") {
     <strong>Furniture City Warehouse</strong><br>
     2325 E. Kivett Drive<br>
     High Point, NC<br>
-    <strong>Office:</strong> <a href="tel:336-868-8376">336-868-8376</a><br>
-    <strong>Fax:</strong> <a href="tel:336-868-8376">336-868-8376</a><br>
+    <strong>Office:</strong> <a href="tel:336-869-8376">336-869-8376</a><br>
+    <strong>Fax:</strong> <a href="tel:336-869-8389">336-869-8389</a><br>
     <br>
 
     <strong>Sherwin Industries, Inc.</strong><br>
@@ -76,13 +76,21 @@ function email($address, $name="") {
 <?php } ?>
 
 <?php if ($_POST['state'] == "Illinois") { ?>
-  <div>
     <h3>Illinois</h3>
-
+  
+  <div>
     <strong>Paul Sloane</strong><br>
     <?php email("psloane@sherwinindustries.com"); ?><br>
     Lombard, IL<br>
     <strong>Office:</strong> <a href="tel:630-613-9728">630-613-9728</a><br>
+    <strong>Fax:</strong> <a href="tel:630-613-9896">630-613-9896</a>
+  </div>
+  
+  <div>
+    <strong>Jack Kosinski</strong><br>
+    <?php email("jkosinski@sherwinindustries.com"); ?><br>
+    Carol Stream, IL<br>
+    <strong>Office:</strong> <a href="tel:630-776-3946">630-776-3946</a><br>
     <strong>Fax:</strong> <a href="tel:630-613-9896">630-613-9896</a>
   </div>
 <?php } ?>
@@ -103,8 +111,8 @@ function email($address, $name="") {
   <div>
     <h3>Indiana Warehouse</h3>
     <strong>Glenrock, Inc.</strong><br>
-    5500 West 96th Street<br>
-    Zionsville, IN 46077<br>
+    4330 Hull Street, #300<br>
+    Lawrence, IN 46226<br>
     <strong>Office:</strong> <a href="tel:414-281-6400">414-281-6400</a>
   </div>
 <?php } ?>

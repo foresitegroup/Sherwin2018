@@ -878,15 +878,16 @@ A.search-result { color: #828282; }
   display: none;
   background: #1C3056;
   color: #FFFFFF;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.4em;
+  letter-spacing: 0.05em;
 }
 
 #contact-results H1 {
   margin: 0 0 0.5em;
   font-family: 'Teko', sans-serif;
   font-weight: 700;
-  font-size: 480%;
+  font-size: 343%; /* 48px */
   line-height: 0.8em;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -896,16 +897,17 @@ A.search-result { color: #828282; }
   margin: 0 0 0.2em;
   font-family: 'Teko', sans-serif;
   font-weight: 700;
-  font-size: 160%;
+  font-size: 142%; /* 16px */
   line-height: 1em;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 #contact-results H4 {
-  margin: 0;
+  margin: 0 0 0.2em;
   font-weight: 800;
-  font-size: 95%;
+  font-size: 95%; /* 9.5px */
+  line-height: 1em;
   text-transform: uppercase;
 }
 
@@ -1255,6 +1257,30 @@ A.search-result { color: #828282; }
   transform: translateY(-50%);
 }
 
+#product-header-text {
+  float: left;
+  width: 80%;
+}
+
+A#crafco-link:link, A#crafco-link:visited {
+  float: right;
+  width: 8em;
+  margin: 2em 0;
+  padding: 0.7em 1em 0.5em;
+  background: #E9484A;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1em;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+A#crafco-link:hover, A#crafco-link:active {
+  background: #FFFFFF;
+  color: #E9484A;
+}
+
 .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary { float: none; width: 0; }
 .woocommerce div.product div.summary { margin-bottom: 0; }
 
@@ -1490,6 +1516,7 @@ A.search-result { color: #828282; }
   letter-spacing: 0.05em;
   text-transform: uppercase;
   text-decoration: underline;
+  white-space: nowrap;
 }
 
 .fg-product-list th { padding: 0 16px 20px 0; }
@@ -1595,6 +1622,8 @@ A.search-result { color: #828282; }
 
   .about #image1 { top: 4em; }
   .about #image2 { top: 40vw; }
+
+  #product-header-text { width: 70vw; }
 }
 
 @media only screen and (max-width: 900px) {
@@ -1749,6 +1778,8 @@ A.search-result { color: #828282; }
     right: 0;
     width: 56%;
   }
+
+  #product-header-text { width: 100%; }
 }
 
 @media only screen and (max-width: 700px) {

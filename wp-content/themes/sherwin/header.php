@@ -107,6 +107,9 @@
 
         <div id="product-header">
           <?php
+          if (get_post_meta($post->ID, 'fg_wc_manufacturer', true) == "Crafco")
+            echo '<div id="product-header-text">';
+
           if (get_post_meta($post->ID, 'fg_wc_manufacturer', true))
             echo "<h2>" . get_post_meta($post->ID, 'fg_wc_manufacturer', true) . "</h2>";
           
@@ -114,6 +117,11 @@
 
           if (get_post_meta($post->ID, 'fg_wc_subtitle', true))
             echo "<h3>" . get_post_meta($post->ID, 'fg_wc_subtitle', true) . "</h3>";
+
+          if (get_post_meta($post->ID, 'fg_wc_manufacturer', true) == "Crafco") {
+            echo '</div>';
+            echo '<a href="https://crafco.com/materials-documentation/" id="crafco-link">Visit Crafco Library To Learn More</a>';
+          }
           ?>
         </div>
       </div>
