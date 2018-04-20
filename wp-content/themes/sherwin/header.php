@@ -105,7 +105,7 @@
           ?>
         </div>
 
-        <div id="product-header">
+        <div id="product-header" class="cf">
           <?php
           if (get_post_meta($post->ID, 'fg_wc_manufacturer', true) == "Crafco")
             echo '<div id="product-header-text">';

@@ -1326,6 +1326,14 @@ A#crafco-link:hover, A#crafco-link:active {
   list-style-type: none;
 }
 
+.woocommerce .single-product #text P + UL,
+.woocommerce .single-product #text P + OL {
+  -webkit-transform: translateY(-1.5em);
+  -ms-transform: translateY(-1.5em);
+  transform: translateY(-1.5em);
+  margin-bottom: 0;
+}
+
 .woocommerce .single-product #text UL LI,
 .woocommerce .single-product #text OL LI {
   padding: 0.5em 0;
@@ -1338,6 +1346,16 @@ A#crafco-link:hover, A#crafco-link:active {
   display: inline-block;
   width: 1em;
   margin-left: -1em;
+}
+
+.woocommerce .single-product #text .alignleft {
+  float: left;
+  margin-right: 1em;
+}
+
+.woocommerce .single-product #text .alignright {
+  float: right;
+  margin-left: 1em;
 }
 
 .woocommerce .single-product #product-gallery {
@@ -1501,12 +1519,18 @@ A#crafco-link:hover, A#crafco-link:active {
   text-decoration: none;
 }
 
-.fg-product-list {
+.woocommerce .single-product #text .tablepress {
+  font-size: 14px;
+  line-height: 1em;
+  margin-bottom: 2em;
+}
+
+.woocommerce .single-product #text .tablepress.fg-product-list {
   font-size: 16px;
   line-height: 1em;
 }
 
-.fg-product-list thead th {
+.woocommerce .single-product #text .tablepress thead th {
   background-color: transparent;
   border-bottom: 0;
   color: #1C3056;
@@ -1519,16 +1543,19 @@ A#crafco-link:hover, A#crafco-link:active {
   white-space: nowrap;
 }
 
-.fg-product-list th { padding: 0 16px 20px 0; }
-.fg-product-list td { padding: 10px 16px 10px 0; }
-.fg-product-list tbody td { border-top: 0; }
+.woocommerce .single-product #text .tablepress th { padding: 0 16px 5px 0; }
+.woocommerce .single-product #text .tablepress.fg-product-list th { padding: 0 16px 20px 0; }
 
-.fg-product-list td.column-1 {
+.woocommerce .single-product #text .tablepress td { padding: 10px 16px 10px 0; }
+
+.woocommerce .single-product #text .tablepress tbody td { border-top: 0; }
+
+.woocommerce .single-product #text .tablepress.fg-product-list td.column-1 {
   color: #E9484A;
   font-weight: 800;
 }
 
-.fg-product-list CAPTION { display: none; }
+.woocommerce .single-product #text .tablepress CAPTION { display: none; }
 
 
 @media only screen and (max-width: 1310px) {
