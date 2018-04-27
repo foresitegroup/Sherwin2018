@@ -70,6 +70,24 @@ A:hover, A:active {
   clear: both;
 }
 
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+ 
+.video iframe,
+.video object,
+.video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .redtext { color: #E9484A; }
 
 #main-header {
@@ -152,7 +170,7 @@ LABEL[for="toggle-menu"] { display: none; }
 
 LABEL[for="toggle-search"] {
   position: absolute;
-  z-index: 10;
+  z-index: 10003;
   top: 50%;
   right: 0;
   -webkit-transform: translateY(-50%);
@@ -180,6 +198,7 @@ LABEL[for="toggle-search"]:after {
   position: absolute;
   top: 35%;
   left: 0;
+  z-index: 10002;
   width: 100%;
   box-sizing: border-box;
   padding: 20px 2%;
@@ -195,26 +214,25 @@ LABEL[for="toggle-search"]:after {
 
 #wc-search #wc-search-field {
   width: 100%;
-  margin: 18px 0;
+  margin: 0;
   outline: 0;
   border: 0;
-  background: transparent;
   padding: 0;
+  background: transparent;
   color: #E9484A;
   font-family: 'Teko', sans-serif;
   font-weight: 700;
   font-size: 100px;
-  line-height: 1em;
+  /*line-height: 0.5em;*/
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  height: 70px;
-  overflow: hidden;
-  padding-top: 15px;
+  /*height: 0.8em;*/
+  /*overflow: hidden;*/
   -webkit-appearance: none;
 }
 
 #wc-search #wc-search-button {
-  margin-top: 18px;
+  /*margin-top: 8px;*/
   box-shadow: 0 0 22px 0 rgba(0,0,0,0.6);
   outline: 0;
   border: 0;
@@ -304,7 +322,7 @@ A.search-result { color: #828282; }
   font-style: italic;
   font-weight: 700;
   font-size: 61.11%;
-  line-height: 0.8em;
+  line-height: 1em;
 }
 
 .search-result H4 {
@@ -1236,6 +1254,11 @@ A.search-result { color: #828282; }
   letter-spacing: 0.05em;
 }
 
+#banner.banner-product #product-header H1 {
+  margin: 0.1em 0 0.25em;
+  line-height: 0.8em;
+}
+
 #banner.banner-product #product-header H2 {
   margin: 0;
   color: #E9484A;
@@ -1250,7 +1273,7 @@ A.search-result { color: #828282; }
   font-family: 'Open Sans', sans-serif;
   font-style: italic;
   font-size: 18px;
-  line-height: 1em;
+  line-height: 1.1em;
   letter-spacing: 0.03em;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -1862,6 +1885,12 @@ A#crafco-link:hover, A#crafco-link:active {
     margin: 2em auto;
     display: block;
   }
+
+  #banner.banner-product #product-header H1 { font-size: 12vw; margin-bottom: 0.5em; }
+
+  .woocommerce .single-product #text .tablepress thead th {
+    white-space: normal;
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -1886,4 +1915,8 @@ A#crafco-link:hover, A#crafco-link:active {
   #contact-find H2 { font-size: 10.5vw; }
   #contact-find H3 { font-size: 5.6vw; }
   #contact-find #find-my-rep { font-size: 4.5vw; }
+
+  #banner.banner-product #product-header H1 { font-size: 14vw; margin-bottom: 0.75em; }
+
+  .search-result H1 { font-size: 180%; }
 }
