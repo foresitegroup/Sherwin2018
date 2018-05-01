@@ -139,11 +139,15 @@ function fg_wc_css() {
 
 // Create the fields we want
 function display_fg_wc_custom_fields($post) {
-  $fg_wc_manufacturer = esc_html(get_post_meta($post->ID, 'fg_wc_manufacturer', true));
-  $fg_wc_subtitle = esc_html(get_post_meta($post->ID, 'fg_wc_subtitle', true));
+  $meta = get_post_meta($post->ID);
   ?>
-  <input type="text" name="fg_wc_manufacturer" value="<?php echo $fg_wc_manufacturer; ?>" placeholder="Manufacturer">
-  <input type="text" name="fg_wc_subtitle" value="<?php echo $fg_wc_subtitle; ?>" placeholder="Subtitle">
+  <input type="text" name="fg_wc_manufacturer" value="<?php if (isset($meta['fg_wc_manufacturer'])) echo $meta['fg_wc_manufacturer'][0]; ?>" placeholder="Manufacturer">
+  <input type="text" name="fg_wc_subtitle" value="<?php if (isset($meta['fg_wc_subtitle'])) echo $meta['fg_wc_subtitle'][0]; ?>" placeholder="Subtitle"><br>
+  <br>
+
+  <input type="text" name="fg_wc_brochure" value="<?php if (isset($meta['fg_wc_brochure'])) echo $meta['fg_wc_brochure'][0]; ?>" placeholder="Brochure (Full URL)">
+  <input type="text" name="fg_wc_specifications" value="<?php if (isset($meta['fg_wc_specifications'])) echo $meta['fg_wc_specifications'][0]; ?>" placeholder="Specifications (Full URL)">
+  <input type="text" name="fg_wc_manual" value="<?php if (isset($meta['fg_wc_manual'])) echo $meta['fg_wc_manual'][0]; ?>" placeholder="Operating Manual (Full URL)">
   <?php
 }
 
@@ -159,12 +163,12 @@ function display_fg_wc_custom_fields_side($post) {
 // Save the data from our fields
 add_action('save_post', 'save_fg_wc_custom_fields', 10, 2);
 function save_fg_wc_custom_fields($post_id){
-  if (isset($_POST['fg_wc_manufacturer']))
-    update_post_meta($post_id, 'fg_wc_manufacturer', $_POST['fg_wc_manufacturer']);
-  if (isset($_POST['fg_wc_subtitle']))
-    update_post_meta($post_id, 'fg_wc_subtitle', $_POST['fg_wc_subtitle']);
-  if (isset($_POST['fg_wc_gallery_type']))
-    update_post_meta($post_id, 'fg_wc_gallery_type', $_POST['fg_wc_gallery_type']);
+  update_post_meta($post_id, 'fg_wc_manufacturer', $_POST['fg_wc_manufacturer']);
+  update_post_meta($post_id, 'fg_wc_subtitle', $_POST['fg_wc_subtitle']);
+  update_post_meta($post_id, 'fg_wc_brochure', $_POST['fg_wc_brochure']);
+  update_post_meta($post_id, 'fg_wc_specifications', $_POST['fg_wc_specifications']);
+  update_post_meta($post_id, 'fg_wc_manual', $_POST['fg_wc_manual']);
+  update_post_meta($post_id, 'fg_wc_gallery_type', $_POST['fg_wc_gallery_type']);
 }
 
 // Remove WooCommerce fileds that we don't need
@@ -182,8 +186,23 @@ function fg_remove_wc_meta_boxes() {
 */
 add_action('woocommerce_before_single_product_summary', 'fg_wc_product_content', 10);
 function fg_wc_product_content() {
+  global $post;
   echo '<div id="text">';
-  the_content();
+    $meta = get_post_meta($post->ID);
+    // var_dump($meta);
+    $sep = " | ";
+
+    if ($meta['fg_wc_brochure'][0] != "" || $meta['fg_wc_specifications'][0] != "" || $meta['fg_wc_manual'][0] != "") {
+      $output = '<p><strong>Learn more:</strong> ';
+
+      if ($meta['fg_wc_brochure'][0] != "") $output .= '<a href="'.$meta['fg_wc_brochure'][0].'">Brochure</a>' . $sep;
+      if ($meta['fg_wc_specifications'][0] != "") $output .= '<a href="'.$meta['fg_wc_specifications'][0].'">Specifications</a>' . $sep;
+      if ($meta['fg_wc_manual'][0] != "") $output .= '<a href="'.$meta['fg_wc_manual'][0].'">Operating Manual</a>' . $sep;
+
+      echo trim($output, $sep)."</p>";
+    }
+
+    the_content();
   echo "</div>";
 }
 
