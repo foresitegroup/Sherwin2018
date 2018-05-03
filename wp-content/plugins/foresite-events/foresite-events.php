@@ -3,7 +3,7 @@
 Plugin Name: Foresite Events
 Plugin URI: https://foresitegrp.com
 Description: Event management system.
-Version: 1.1
+Version: 1.2
 Author: Foresite Group
 Author URI: https://foresitegrp.com
 */
@@ -99,6 +99,49 @@ function add_foresite_event_fields( $foresite_event_id, $foresite_event ) {
 
     if (isset($_POST['foresite_event_date_end']))
       update_post_meta($foresite_event->ID, 'foresite_event_date_end', strtotime($_POST['foresite_event_date_end']));
+  }
+}
+
+
+add_filter('manage_foresite_event_posts_columns', 'set_custom_edit_foresite_event_columns');
+function set_custom_edit_foresite_event_columns($columns) {
+  unset($columns['date']);
+
+  $columns['foresite_event_date_start'] = "Event Date";
+
+  return $columns;
+}
+
+
+add_action('manage_foresite_event_posts_custom_column', 'custom_foresite_event_column', 10, 2);
+function custom_foresite_event_column($column, $post_id) {
+  switch ($column) {
+    case 'foresite_event_date_start':
+      if (get_post_meta($post_id, 'foresite_event_date_start', true) != "")
+        echo date("n/j/y", get_post_meta($post_id, 'foresite_event_date_start', true));
+      if (get_post_meta($post_id, 'foresite_event_date_start', true) != "" && get_post_meta($post_id, 'foresite_event_date_end', true) != "")
+        echo " - ".date("n/j/y", get_post_meta($post_id, 'foresite_event_date_end', true));
+      break;
+  }
+}
+
+
+add_filter('manage_edit-foresite_event_sortable_columns', 'set_custom_foresite_event_sortable_columns');
+function set_custom_foresite_event_sortable_columns($columns) {
+  $columns['foresite_event_date_start'] = 'foresite_event_date_start';
+  return $columns;
+}
+
+
+add_action('pre_get_posts', 'events_custom_orderby', 4);
+function events_custom_orderby($query) {
+  if (!$query->is_main_query() || 'foresite_event' != $query->get('post_type')) return;
+
+  $orderby = $query->get('orderby');
+
+  if ($orderby == '' || $orderby == 'foresite_event_date_start') {
+    $query->set('meta_key', 'foresite_event_date_start');
+    $query->set('orderby', 'meta_value_num');
   }
 }
 ?>
