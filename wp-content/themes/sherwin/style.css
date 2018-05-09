@@ -1371,6 +1371,8 @@ A#crafco-link:hover, A#crafco-link:active {
   margin-left: -1em;
 }
 
+.woocommerce .single-product #text .video { margin: 1em 0; }
+
 .woocommerce .single-product #text .alignleft {
   float: left;
   margin-right: 1em;
