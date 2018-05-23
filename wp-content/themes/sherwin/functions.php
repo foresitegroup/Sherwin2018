@@ -142,12 +142,7 @@ function display_fg_wc_custom_fields($post) {
   $meta = get_post_meta($post->ID);
   ?>
   <input type="text" name="fg_wc_manufacturer" value="<?php if (isset($meta['fg_wc_manufacturer'])) echo $meta['fg_wc_manufacturer'][0]; ?>" placeholder="Manufacturer">
-  <input type="text" name="fg_wc_subtitle" value="<?php if (isset($meta['fg_wc_subtitle'])) echo $meta['fg_wc_subtitle'][0]; ?>" placeholder="Subtitle"><br>
-  <br>
-
-  <input type="text" name="fg_wc_brochure" value="<?php if (isset($meta['fg_wc_brochure'])) echo $meta['fg_wc_brochure'][0]; ?>" placeholder="Brochure (Full URL)">
-  <input type="text" name="fg_wc_specifications" value="<?php if (isset($meta['fg_wc_specifications'])) echo $meta['fg_wc_specifications'][0]; ?>" placeholder="Specifications (Full URL)">
-  <input type="text" name="fg_wc_manual" value="<?php if (isset($meta['fg_wc_manual'])) echo $meta['fg_wc_manual'][0]; ?>" placeholder="Operating Manual (Full URL)">
+  <input type="text" name="fg_wc_subtitle" value="<?php if (isset($meta['fg_wc_subtitle'])) echo $meta['fg_wc_subtitle'][0]; ?>" placeholder="Subtitle">
   <?php
 }
 
@@ -165,9 +160,6 @@ add_action('save_post', 'save_fg_wc_custom_fields', 10, 2);
 function save_fg_wc_custom_fields($post_id){
   update_post_meta($post_id, 'fg_wc_manufacturer', $_POST['fg_wc_manufacturer']);
   update_post_meta($post_id, 'fg_wc_subtitle', $_POST['fg_wc_subtitle']);
-  update_post_meta($post_id, 'fg_wc_brochure', $_POST['fg_wc_brochure']);
-  update_post_meta($post_id, 'fg_wc_specifications', $_POST['fg_wc_specifications']);
-  update_post_meta($post_id, 'fg_wc_manual', $_POST['fg_wc_manual']);
   update_post_meta($post_id, 'fg_wc_gallery_type', $_POST['fg_wc_gallery_type']);
 }
 
@@ -188,20 +180,6 @@ add_action('woocommerce_before_single_product_summary', 'fg_wc_product_content',
 function fg_wc_product_content() {
   global $post;
   echo '<div id="text">';
-    $meta = get_post_meta($post->ID);
-    // var_dump($meta);
-    $sep = " | ";
-
-    if ($meta['fg_wc_brochure'][0] != "" || $meta['fg_wc_specifications'][0] != "" || $meta['fg_wc_manual'][0] != "") {
-      $output = '<p><strong>Learn more:</strong> ';
-
-      if ($meta['fg_wc_brochure'][0] != "") $output .= '<a href="'.$meta['fg_wc_brochure'][0].'">Brochure</a>' . $sep;
-      if ($meta['fg_wc_specifications'][0] != "") $output .= '<a href="'.$meta['fg_wc_specifications'][0].'">Specifications</a>' . $sep;
-      if ($meta['fg_wc_manual'][0] != "") $output .= '<a href="'.$meta['fg_wc_manual'][0].'">Operating Manual</a>' . $sep;
-
-      echo trim($output, $sep)."</p>";
-    }
-
     the_content();
   echo "</div>";
 }
@@ -220,7 +198,7 @@ function fg_wc_image_gallery() {
 
   if ($attachment_ids) {
     ?>
-    <div id="product-gallery">
+    <div id="product-gallery"<?php if ($post->fg_wc_offsite_link != "" && $post->fg_wc_offsite_link_text != "") echo ' class="offsite"' ?>>
       <?php if (get_post_meta($post->ID, 'fg_wc_gallery_type', true) == "gallery-carousel") { ?>
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.cycle2.min.js"></script>
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.cycle2.carousel.min.js"></script>
@@ -266,11 +244,12 @@ function fg_wc_image_gallery() {
         <?php } ?>
 
         <div id="image-title"></div>
-      <?php } ?>
-      <?php if (get_post_meta($post->ID, 'fg_wc_gallery_type', true) == "gallery-stacked") { ?>
-        <u>Image Gallery</u>
+      <?php
+      }
+
+      if (get_post_meta($post->ID, 'fg_wc_gallery_type', true) == "gallery-stacked") {
+        echo "<u>Image Gallery</u>\n";
         
-        <?php
         foreach ($attachment_ids as $attachment_id) {
           $gallery_image = wp_get_attachment_image_src($attachment_id, 'full');
           $imagemeta = get_post($attachment_id);
@@ -279,8 +258,8 @@ function fg_wc_image_gallery() {
 
           if ($imagemeta->post_excerpt != "") echo $imagemeta->post_excerpt."<br>";
         }
-        ?>
-      <?php } ?>
+      }
+      ?>
     </div>
     <?php
   }

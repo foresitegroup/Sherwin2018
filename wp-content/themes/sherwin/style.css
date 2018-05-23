@@ -1196,12 +1196,14 @@ A.search-result { color: #828282; }
   margin-left: 0.3em;
 }
 
-.main-cat + DIV A ~ .group {
+.main-cat + DIV .group {
   margin-top: 1em;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
   break-inside: avoid-column;
 }
+
+.main-cat + DIV .group:first-of-type { margin-top: 0; }
 
 #banner.banner-product {
   color: #FFFFFF;
@@ -1283,25 +1285,6 @@ A.search-result { color: #828282; }
 #product-header-text {
   float: left;
   width: 80%;
-}
-
-A#crafco-link:link, A#crafco-link:visited {
-  float: right;
-  width: 8em;
-  margin: 2em 0;
-  padding: 0.7em 1em 0.5em;
-  background: #E9484A;
-  color: #FFFFFF;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1em;
-  letter-spacing: 0.03em;
-  text-align: center;
-}
-
-A#crafco-link:hover, A#crafco-link:active {
-  background: #FFFFFF;
-  color: #E9484A;
 }
 
 .woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary { float: none; width: 0; }
@@ -1391,14 +1374,16 @@ A#crafco-link:hover, A#crafco-link:active {
   position: relative;
 }
 
-.gallery-carousel .woocommerce .single-product #text {
+.gallery-carousel .woocommerce .single-product #text,
+.woocommerce .single-product #text.offsite {
   width: 53%;
   padding: 110px 8.5% 55px 0;
 }
 
-.gallery-carousel #product-gallery {
+.gallery-carousel #product-gallery,
+#product-gallery.offsite {
   width: 47%;
-  padding: 0 40px;
+  padding: 0 40px 50px;
 }
 
 .gallery-carousel #product-gallery .cycle-slideshow {
@@ -1497,7 +1482,7 @@ A#crafco-link:hover, A#crafco-link:active {
   width: 43%;
   padding: 42px 55px;
   background: #EBEBEB;
-  color: #1c3056;
+  color: #1C3056;
   font-family: 'Teko', sans-serif;
   font-weight: 700;
   font-size: 18px;
@@ -1509,6 +1494,24 @@ A#crafco-link:hover, A#crafco-link:active {
 .gallery-stacked #product-gallery IMG {
   display: block;
   margin: 2.5em 0 0.5em;
+}
+
+A#offsite:link, A#offsite:visited {
+  display: inline-block;
+  padding: 0.7em 1em 0.5em;
+  background: #E9484A;
+  color: #FFFFFF;
+  font-family: 'Teko', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1em;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+A#offsite:hover, A#offsite:active {
+  background: #1C3056;
 }
 
 #footer-product {
@@ -1548,6 +1551,19 @@ A#crafco-link:hover, A#crafco-link:active {
   font-size: 14px;
   line-height: 1em;
   margin-bottom: 2em;
+}
+
+.woocommerce .single-product #text .tablepress.crafco-links {
+  font-size: 12px;
+  line-height: 1em;
+}
+
+.woocommerce .single-product #text .tablepress.crafco-links .column-1 {
+  width: 10%;
+}
+
+.woocommerce .single-product #text .tablepress.crafco-links .column-2 {
+  max-width: 33%;
 }
 
 .woocommerce .single-product #text .tablepress.fg-product-list {
