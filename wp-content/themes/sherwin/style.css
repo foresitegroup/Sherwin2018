@@ -1174,6 +1174,7 @@ A.search-result { color: #828282; }
   padding-bottom: 0.8em;
   margin-left: 0.75em;
   position: relative;
+  outline: none;
 }
 
 .main-cat + DIV A:hover,

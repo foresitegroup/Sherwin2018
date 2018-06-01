@@ -2,26 +2,7 @@
 /* Template Name: Product Catalog */
 
 get_header();
-?>
 
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $(".arrow").click(function(event) {
-      event.preventDefault();
-      $(this).toggleClass('rotate')
-      $('#'+$(this).parent().parent().parent().attr('id')+' + DIV').slideToggle('slow');
-    });
-
-    $("#banner .quick-jump A").click(function(event) {
-      event.preventDefault();
-      $('html, body').animate({
-        scrollTop: $($(this).attr('href')).offset().top - 130
-      }, 600);
-    });
-  });
-</script>
-
-<?php
 function CatLoop ($CatSlug) {
   $count = 1;
 
@@ -91,6 +72,34 @@ foreach ($cats1 as $cat1) {
   </div>
 <?php
 }
+?>
 
-get_footer();
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".arrow").each(function() {
+      if (document.cookie.split(';').filter((item) => {
+        return item.includes($(this).parent().parent().parent().attr('id')+'=arrow rotate')
+      }).length) {
+        $(this).toggleClass('rotate');
+        $('#'+$(this).parent().parent().parent().attr('id')+' + DIV').slideToggle(1);
+      }
+    });
+
+    $(".arrow").click(function(event) {
+      event.preventDefault();
+      $(this).toggleClass('rotate');
+      $('#'+$(this).parent().parent().parent().attr('id')+' + DIV').slideToggle('slow');
+      document.cookie = $(this).parent().parent().parent().attr('id')+"="+$(this).attr('class');
+    });
+
+    $("#banner .quick-jump A").click(function(event) {
+      event.preventDefault();
+      $('html, body').animate({
+        scrollTop: $($(this).attr('href')).offset().top - 130
+      }, 600);
+    });
+  });
+</script>
+
+<?php get_footer();
 ?>
