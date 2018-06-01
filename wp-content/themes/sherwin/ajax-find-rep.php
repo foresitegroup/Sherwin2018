@@ -146,8 +146,6 @@ function email($address, $name="") {
     <strong>Office:</strong> <a href="tel:804-748-6385">804-748-6385</a><br>
     <br>
   </div>
-
-  The retailer is not required to and does not collect Kentucky sales or use tax.
 <?php } ?>
 
 <?php if ($_POST['state'] == "Michigan") { ?>
