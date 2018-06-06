@@ -21,6 +21,10 @@
     jQuery(document).ready(function($) {
       $("a[href^='http']").not("[href*='" + window.location.host + "']").prop('target','new');
       $("a[href$='.pdf']").prop('target', 'new');
+      
+      $('a.download').each(function(){ 
+        $(this).prop({'href': '<?php echo get_template_directory_uri(); ?>/download.php?f='+$(this).prop('href'), 'target': ''});
+      });
 
       $('#header-spacer').height($('#main-header').outerHeight());
 
