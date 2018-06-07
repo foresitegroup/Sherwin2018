@@ -1294,12 +1294,35 @@ A.search-result { color: #828282; }
 .woocommerce .single-product {
   font-size: 14px;
   line-height: 2em;
+  display: flex;
+  position: relative;
+}
+
+#print-page {
+  position: absolute;
+  top: 1em;
+  right: 0;
+  display: inline-block;
+  background: #E9484A;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-family: 'Teko', sans-serif;
+  font-size: 12px;
+  line-height: 1em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.7em 1em 0.5em;
+}
+
+#print-page:hover { background: #1D3056; }
+
+#print-page .fas {
+  line-height: 1em;
+  vertical-align: baseline;
+  letter-spacing: 0;
 }
 
 .woocommerce .single-product P { margin: 0 0 1.5em; }
-
-/*.woocommerce .single-product > DIV { display: flex; }*/
-.woocommerce .single-product { display: flex; }
 
 .woocommerce .single-product #text {
   width: 100%;
@@ -1946,4 +1969,46 @@ A.search-result { color: #828282; }
   #banner.banner-product #product-header H1 { font-size: 14vw; margin-bottom: 0.75em; }
 
   .search-result H1 { font-size: 180%; }
+}
+
+
+@media print {
+  #header-spacer, #main-header,
+  #breadcrumb-spacer, #product-breadcrumbs,
+  #print-page { display: none; }
+
+  #banner { background: transparent; }
+
+  #banner.banner-product {
+    color: #353535;
+    box-shadow: none;
+  }
+
+  #banner.banner-product #product-header H3 { color: #1D3056; }
+
+  .woocommerce .single-product #text { padding: 0; }
+
+  .gallery-carousel #product-gallery .cycle-slideshow { margin: 0; }
+  #prev, #next, #pager, #videos { display: none; }
+
+  #footer-product {
+    background: transparent;
+    color: #1C3056;
+  }
+
+  #footer-contact {
+    padding: 0;
+    background: transparent;
+    text-align: center;
+  }
+
+  #footer-contact:before { background: transparent; }
+
+  #footer-contact A SPAN { color: #353535 !important; }
+
+  #main-footer {
+    background: transparent;
+    color: #252525;
+    padding: 1em 2%;
+  }
 }

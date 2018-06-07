@@ -39,6 +39,8 @@
       } else {
         if (is_product()) {
           echo '<div class="single-product">';
+            echo '<a href="javascript:window.print()" id="print-page">Print <i class="fas fa-print"></i></a>';
+            
             echo '<div id="text">';
               the_content();
             echo "</div>\n"; // /#text
