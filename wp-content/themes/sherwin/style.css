@@ -1065,8 +1065,8 @@ A.search-result { color: #828282; }
     background-color: rgba(233,72,74,0.85);
     background-blend-mode: unset;
   }
-  .main-cat:nth-of-type(3n-3) { background-color: rgba(149,149,149,0.85); }
-  .main-cat:nth-of-type(3n-1) { background-color: rgba(28,48,86,0.85); }
+  .main-cat:nth-of-type(3n-3):before { background-color: rgba(149,149,149,0.85); }
+  .main-cat:nth-of-type(3n-1):before { background-color: rgba(28,48,86,0.85); }
   .main-cat .site-width { position: relative; z-index: 5; }
 }
 
@@ -1083,6 +1083,8 @@ A.search-result { color: #828282; }
     background-color: rgba(233,72,74,0.85);
     background-blend-mode: unset;
   }
+  .main-cat:nth-of-type(3n-3):before { background-color: rgba(149,149,149,0.85); }
+  .main-cat:nth-of-type(3n-1):before { background-color: rgba(28,48,86,0.85); }
   .main-cat .site-width { position: relative; z-index: 5; }
 }
 
