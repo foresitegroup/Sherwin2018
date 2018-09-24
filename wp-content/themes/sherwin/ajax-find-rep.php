@@ -82,7 +82,7 @@ function email($address, $name="") {
     <strong>Paul Sloane</strong><br>
     <?php email("psloane@sherwinindustries.com"); ?><br>
     Lombard, IL<br>
-    <strong>Office:</strong> <a href="tel:630-613-9728">630-613-9728</a><br>
+    <strong>Office:</strong> <a href="tel:630-613-9728">630-532-8968</a><br>
     <strong>Fax:</strong> <a href="tel:630-613-9896">630-613-9896</a>
   </div>
   
