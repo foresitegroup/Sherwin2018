@@ -82,7 +82,7 @@
 
 	<header id="main-header"<?php if(is_front_page()) echo ' class="home-header home-header-border'; ?>">
 		<div class="site-width">
-	    <a href="<?php echo home_url(); ?>" id="logo"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Sherwin Industries, Inc."></a>
+	    <a href="<?php echo home_url(); ?>" id="logo"><img src="<?php echo get_template_directory_uri(); ?>/images/logo-old.png" alt="Sherwin Industries, Inc."></a>
       
       <input type="checkbox" id="toggle-menu" role="button">
       <label for="toggle-menu"></label>
