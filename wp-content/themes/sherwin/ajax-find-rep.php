@@ -55,7 +55,7 @@ function email($address, $name="") {
     <?php email("gmeek@sherwinindustries.com"); ?><br>
     Reidsville, NC<br>
     <strong>Office:</strong> <a href="tel:336-210-1046">336-210-1046</a><br>
-    <strong>Fax:</strong> <a href="tel:336-342-4551">336-342-4551</a><br>
+    <strong>Fax:</strong> <a href="tel:910-399-1114">910-399-1114</a><br>
     <br>
   </div>
   
@@ -71,7 +71,7 @@ function email($address, $name="") {
     <strong>Sherwin Industries, Inc.</strong><br>
     325-101 Habersham<br>
     High Point, NC 27260<br>
-    <strong>Office:</strong> <a href="tel:336-342-4550">336-342-4550</a>
+    <strong>Office:</strong> <a href="tel:336-210-1046">336-210-1046</a>
   </div>
 <?php } ?>
 
