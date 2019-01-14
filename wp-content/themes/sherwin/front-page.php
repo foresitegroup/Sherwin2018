@@ -96,7 +96,8 @@ if ($events->have_posts()) {
     <div class="site-width">
       <div class="seeus">
         <h1>SEE US HERE</h1>
-        Catch Sherwin Industries at the following events
+        Catch Sherwin Industries at the following events<br>
+        <a href="<?php echo home_url(); ?>/events/" class="button">See All Events</a>
       </div>
 
       <?php
