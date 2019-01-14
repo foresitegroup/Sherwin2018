@@ -36,7 +36,14 @@
         <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6567fb15ec7bd620806521ea0_7d3a271abb" tabindex="-1" value=""></div>
 
         <input type="email" value="" name="EMAIL" id="mce-EMAIL" placeholder="Email">
-        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe">
+        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"><br>
+
+        <input type="radio" value="Runways" name="WHICHLIST" id="mce-WHICHLIST-0">
+        <label for="mce-WHICHLIST-0">Runways</label>
+        <input type="radio" value="Roadways" name="WHICHLIST" id="mce-WHICHLIST-1">
+        <label for="mce-WHICHLIST-1">Roadways</label>
+        <input type="radio" value="Both" name="WHICHLIST" id="mce-WHICHLIST-2" checked>
+        <label for="mce-WHICHLIST-2">Both</label>
       </div>
     </form>
   </div>
