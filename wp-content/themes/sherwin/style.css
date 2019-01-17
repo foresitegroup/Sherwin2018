@@ -106,6 +106,33 @@ A:hover, A:active {
 
 #main-header .site-width { position: relative; }
 
+.top-menu {
+  position: absolute;
+  top: 0.75em;
+  right: 0;
+  font-family: 'Teko', sans-serif;
+  font-size: 14px;
+  line-height: 1em;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.top-menu UL { margin: 0; padding: 0; list-style-type: none; }
+
+.top-menu LI { display: inline-block; margin-left: 1.5em; }
+.top-menu LI:first-of-type { margin-left: 0; }
+
+.top-menu LI A:link, .top-menu LI A:visited {
+  color: #1C3056;
+  text-decoration: none;
+}
+
+.top-menu LI A:hover, .top-menu LI A:active,
+.top-menu LI.current_page_item A:link, .top-menu LI.current_page_item A:visited {
+  color: #E9484A;
+  text-decoration: none;
+}
+
 #main-header #logo {
   display: inline-block;
   margin: 31px 0 22px;
@@ -1990,6 +2017,8 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
 
 @media only screen and (max-width: 900px) {
   #main-header .site-width { width: 100%; padding: 0 2%; box-sizing: border-box; }
+
+  .top-menu { display: none; }
 
   LABEL[for="toggle-search"] { right: 2%; }
 

@@ -37,6 +37,7 @@ add_filter('upload_mimes', 'fg_mime_types');
 function register_my_menus() {
   register_nav_menus(
     array(
+      'top-menu' => __('Top Menu'),
       'main-menu' => __('Main Menu')
     )
   );
