@@ -123,14 +123,13 @@ A:hover, A:active {
 .top-menu LI:first-of-type { margin-left: 0; }
 
 .top-menu LI A:link, .top-menu LI A:visited {
-  color: #1C3056;
-  text-decoration: none;
+  color: #E9484A;
+  text-decoration: underline;
 }
 
-.top-menu LI A:hover, .top-menu LI A:active,
-.top-menu LI.current_page_item A:link, .top-menu LI.current_page_item A:visited {
-  color: #E9484A;
-  text-decoration: none;
+.top-menu LI A:hover, .top-menu LI A:active {
+  color: #818285;
+  text-decoration: underline;
 }
 
 #main-header #logo {
