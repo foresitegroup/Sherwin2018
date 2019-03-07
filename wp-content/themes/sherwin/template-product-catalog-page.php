@@ -3,10 +3,10 @@
 
 get_header();
 
-function CatLoop ($CatSlug) {
+function CatLoop ($CatSlug, $ob = 'menu_order') {
   $count = 1;
 
-  $catloop = new WP_Query(array('product_cat' => $CatSlug, 'orderby' =>'menu_order', 'order' => 'ASC', 'showposts' => -1));
+  $catloop = new WP_Query(array('product_cat' => $CatSlug, 'orderby' => $ob, 'order' => 'ASC', 'showposts' => -1));
 
   while ($catloop->have_posts()) : $catloop->the_post(); global $product;
     echo '<a href="'.get_permalink($catloop->post->ID).'">';
@@ -60,7 +60,7 @@ foreach ($cats1 as $cat1) {
               $h3count++;
             }
           } else {
-            CatLoop($cat2->slug);
+            CatLoop($cat2->slug, "title");
           }
         }
       } else {
