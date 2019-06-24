@@ -79,19 +79,19 @@ function email($address, $name="") {
     <h3>Illinois</h3>
   
   <div>
-    <strong>Paul Sloane</strong><br>
-    <?php email("psloane@sherwinindustries.com"); ?><br>
-    Lombard, IL<br>
-    <strong>Office:</strong> <a href="tel:630-613-9728">630-532-8968</a><br>
-    <strong>Fax:</strong> <a href="tel:630-613-9896">630-613-9896</a>
+    <strong>Mike Baier</strong><br>
+    <?php email("mbaier@sherwinindustries.com"); ?><br>
+    North East Illinois<br>
+    <strong>Office:</strong> <a href="tel:414-405-6511">414-405-6511</a><br>
+    <strong>Fax:</strong> <a href="tel:414-281-6404">414-281-6404</a>
   </div>
   
   <div>
-    <strong>Jack Kosinski</strong><br>
-    <?php email("jkosinski@sherwinindustries.com"); ?><br>
-    Carol Stream, IL<br>
-    <strong>Office:</strong> <a href="tel:630-776-3946">630-776-3946</a><br>
-    <strong>Fax:</strong> <a href="tel:630-613-9896">630-613-9896</a>
+    <strong>Mike West</strong><br>
+    <?php email("mwest@sherwinindustries.com"); ?><br>
+    Peoria, IL<br>
+    <strong>Office:</strong> <a href="tel:309-509-0061">309-509-0061</a><!-- <br>
+    <strong>Fax:</strong> <a href="tel:630-613-9896">630-613-9896</a> -->
   </div>
 <?php } ?>
 
