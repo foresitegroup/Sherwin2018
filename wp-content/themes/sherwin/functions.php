@@ -1,4 +1,70 @@
 <?php
+// Remove emojis (and other crud)
+add_action('init', 'disable_wp_emojicons');
+function disable_wp_emojicons() {
+  remove_action('admin_print_styles', 'print_emoji_styles');
+  remove_action('wp_head', 'print_emoji_detection_script', 7);
+  remove_action('admin_print_scripts', 'print_emoji_detection_script');
+  remove_action('wp_print_styles', 'print_emoji_styles');
+  remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+  remove_filter('the_content_feed', 'wp_staticize_emoji');
+  remove_filter('comment_text_rss', 'wp_staticize_emoji');
+  add_filter('emoji_svg_url', '__return_false');
+  add_filter('tiny_mce_plugins', 'disable_emojicons_tinymce');
+
+  remove_action('wp_head', 'rsd_link');
+  remove_action('wp_head', 'wlwmanifest_link');
+  remove_action('wp_head', 'wp_generator');
+  remove_action('wp_head', 'start_post_rel_link');
+  remove_action('wp_head', 'index_rel_link');
+  remove_action('wp_head', 'adjacent_posts_rel_link');
+}
+
+function disable_emojicons_tinymce($plugins) {
+  if (is_array($plugins)) {
+    return array_diff($plugins, array('wpemoji'));
+  } else {
+    return array();
+  }
+}
+
+
+// Add to header
+add_action('wp_head', 'meta_og', 5);
+function meta_og() {
+  global $post;
+
+  if(has_post_thumbnail($post->ID))
+    $img_src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'thumbnail');
+
+  $excerpt = strip_tags($post->post_content);
+  $excerpt_more = '';
+  if (strlen($excerpt ) > 155) {
+    $excerpt = substr($excerpt,0,155);
+    $excerpt_more = ' ...';
+  }
+  $excerpt = str_replace('"', '', $excerpt);
+  $excerpt = str_replace("'", '', $excerpt);
+  $excerptwords = preg_split('/[\n\r\t ]+/', $excerpt, -1, PREG_SPLIT_NO_EMPTY);
+  array_pop($excerptwords);
+  $excerpt = implode(' ', $excerptwords) . $excerpt_more;
+
+  $ogdesc = ($post->seo_description != "") ? $post->seo_description : $excerpt;
+
+  if ($post->seo_keywords != "") echo '<meta name="keywords" content="'.$post->seo_keywords.'">'."\n";
+  ?>
+  <meta name="description" content="<?php echo $ogdesc; ?>">
+  <meta name="author" content="<?php bloginfo('name'); ?>">
+  <meta property="og:title" content="<?php echo the_title(); ?>">
+  <meta property="og:description" content="<?php echo $ogdesc; ?>">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="<?php echo the_permalink(); ?>">
+  <meta property="og:site_name" content="<?php bloginfo('name'); ?>">
+  <meta property="og:image" content="<?php echo $img_src[0]; ?>">
+  <?php
+}
+
+
 // We want Featured Images on Pages and Posts
 add_theme_support( 'post-thumbnails' );
 
@@ -50,6 +116,48 @@ function themename_setup() {
   add_editor_style();
 }
 add_action( 'after_setup_theme', 'themename_setup' );
+
+
+// Add meta description and keywords to pages
+add_action('add_meta_boxes', 'seo_metabox');
+function seo_metabox() {
+  global $post;
+  add_meta_box('seo_mb', 'SEO', 'seo_mb_content', $post->post_type, 'side', 'low');
+}
+
+function seo_mb_content($post) {
+  ?>
+  <strong>Meta Description</strong><br>
+  <textarea name="seo_description"><?php if ($post->seo_description != "") echo $post->seo_description; ?></textarea><br>
+  <br>
+
+  <strong>Meta Keywords</strong><br>
+  <textarea name="seo_keywords"><?php if ($post->seo_keywords != "") echo $post->seo_keywords; ?></textarea>
+  <?php
+}
+
+add_action('admin_head', 'seo_css');
+function seo_css() {
+  echo '<style>
+    #seo_mb TEXTAREA { width: 100%; height: 3.2em; }
+    #seo_mb TEXTAREA[name="seo_keywords"] { height: 7.2em; }
+  </style>';
+}
+
+add_action('save_post', 'seo_save');
+function seo_save($post_id) {
+  if (!empty($_POST['seo_description'])) {
+    update_post_meta($post_id, 'seo_description', $_POST['seo_description']);
+  } else {
+    delete_post_meta($post_id, 'seo_description');
+  }
+
+  if (!empty($_POST['seo_keywords'])) {
+    update_post_meta($post_id, 'seo_keywords', $_POST['seo_keywords']);
+  } else {
+    delete_post_meta($post_id, 'seo_keywords');
+  }
+}
 
 
 // Second featured image for About page
