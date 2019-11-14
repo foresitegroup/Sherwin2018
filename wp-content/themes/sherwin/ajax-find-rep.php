@@ -53,9 +53,28 @@ function email($address, $name="") {
   <div>
     <strong>Gill Meek</strong><br>
     <?php email("gmeek@sherwinindustries.com"); ?><br>
-    Reidsville, NC<br>
+    Leland, NC<br>
     <strong>Office:</strong> <a href="tel:336-210-1046">336-210-1046</a><br>
     <strong>Fax:</strong> <a href="tel:910-399-1114">910-399-1114</a><br>
+    <br>
+  </div>
+
+  <div>
+    <h4>Western Office</h4>
+    <strong>Eric Reinhardt</strong><br>
+    <?php email("ereinhardt@sherwinindustries.com"); ?><br>
+    State Road, NC<br>
+    <strong>Office:</strong> <a href="tel:336-467-2928">336-467-2928</a><br>
+    <strong>Fax:</strong> <a href="tel:910-399-1114">910-399-1114</a><br>
+    <br>
+  </div>
+
+  <div>
+    <h4>Eastern Office</h4>
+    <strong>Michael Cornette</strong><br>
+    <?php email("mcornette@sherwinindustries.com"); ?><br>
+    Greensboro, NC<br>
+    <strong>Office:</strong> <a href="tel:336-312-0656">336-312-0656</a><br>
     <br>
   </div>
   
