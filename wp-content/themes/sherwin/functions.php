@@ -233,6 +233,12 @@ function fg_wc_custom_fields() {
     'display_fg_wc_custom_fields_side_video',
     'product', 'side', 'low'
   );
+
+  add_meta_box('fg_wc_custom_fields_box_side_featured',
+    'Featured Items',
+    'display_fg_wc_custom_fields_side_featured',
+    'product', 'side', 'low'
+  );
 }
 
 // Place the meta box before the description
@@ -278,6 +284,16 @@ function display_fg_wc_custom_fields_side_video($post) {
   <?php
 }
 
+function display_fg_wc_custom_fields_side_featured($post) {
+  $fg_wc_featured_img = ($post->fg_wc_featured_img == "") ? "contain" : $post->fg_wc_featured_img;
+  ?>
+  <input type="text" name="fg_wc_featured_sort" value="<?php if ($post->fg_wc_featured_sort != "") echo $post->fg_wc_featured_sort; ?>" placeholder="Sort"><br>
+  <br>
+  <label><input type="radio" name="fg_wc_featured_img" value="contain"<?php if ($fg_wc_featured_img == "contain") echo " checked"; ?>> Contain</label><br>
+  <label><input type="radio" name="fg_wc_featured_img" value="cover"<?php if ($fg_wc_featured_img == "cover") echo " checked"; ?>> Cover</label>
+  <?php
+}
+
 // Save the data from our fields
 add_action('save_post', 'save_fg_wc_custom_fields', 10, 2);
 function save_fg_wc_custom_fields($post_id){
@@ -285,6 +301,13 @@ function save_fg_wc_custom_fields($post_id){
   update_post_meta($post_id, 'fg_wc_subtitle', $_POST['fg_wc_subtitle']);
   update_post_meta($post_id, 'fg_wc_gallery_type', $_POST['fg_wc_gallery_type']);
   update_post_meta($post_id, 'fg_wc_videos', $_POST['fg_wc_videos']);
+
+  if (!empty($_POST['fg_wc_featured_sort'])) {
+    update_post_meta($post_id, 'fg_wc_featured_sort', $_POST['fg_wc_featured_sort']);
+  } else {
+    delete_post_meta($post_id, 'fg_wc_featured_sort');
+  }
+  update_post_meta($post_id, 'fg_wc_featured_img', $_POST['fg_wc_featured_img']);
 }
 
 // Remove WooCommerce fileds that we don't need
