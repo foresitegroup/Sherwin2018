@@ -144,7 +144,6 @@ function email($address, $name="") {
     <?php email("trushing@sherwinindustries.com"); ?><br>
     Midlothian, VA<br>
     <strong>Office:</strong> <a href="tel:804-512-2206">804-512-2206</a><br>
-    <strong>Fax:</strong> <a href="tel:804-275-6999">804-275-6999</a><br>
     <br>
   </div>
   
@@ -153,7 +152,6 @@ function email($address, $name="") {
     <?php email("kdoss@sherwinindustries.com"); ?><br>
     Midlothian, VA<br>
     <strong>Office:</strong> <a href="tel:804-564-1668">804-564-1668</a><br>
-    <strong>Fax:</strong> <a href="tel:804-275-6999">804-275-6999</a><br>
     <br>
   </div>
   
@@ -218,14 +216,12 @@ function email($address, $name="") {
     <?php email("trushing@sherwinindustries.com"); ?><br>
     Midlothian, VA<br>
     <strong>Office:</strong> <a href="tel:804-512-2206">804-512-2206</a><br>
-    <strong>Fax:</strong> <a href="tel:804-275-6999">804-275-6999</a><br>
     <br>
 
     <strong>Kevin Doss</strong><br>
     <?php email("kdoss@sherwinindustries.com"); ?><br>
     Midlothian, VA<br>
     <strong>Office:</strong> <a href="tel:804-564-1668">804-564-1668</a><br>
-    <strong>Fax:</strong> <a href="tel:804-275-6999">804-275-6999</a><br>
     <br>
   </div>
   
