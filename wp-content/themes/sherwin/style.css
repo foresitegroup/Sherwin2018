@@ -2110,6 +2110,12 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   #events .events .event:nth-of-type(5n+1),
   #events .events .event { margin-left: 3%; width: 22.75%; }
   #events .events .event:nth-of-type(4n+1) { margin-left: 0; }
+
+  #contact-results #find-rep-results {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -2208,12 +2214,6 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
     margin: 1em 5%;
   }
 
-  #contact-results #find-rep-results {
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
-  }
-  
   .about #image1 { right: 0; }
   .about #image2 { top: 45vw; right: 0; }
 }
