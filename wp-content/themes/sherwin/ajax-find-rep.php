@@ -69,14 +69,14 @@ function email($address, $name="") {
     <br>
   </div>
 
-  <div>
+<!--   <div>
     <h4>Eastern Office</h4>
     <strong>Michael Cornette</strong><br>
-    <?php email("mcornette@sherwinindustries.com"); ?><br>
+    <?php //email("mcornette@sherwinindustries.com"); ?><br>
     Greensboro, NC<br>
     <strong>Office:</strong> <a href="tel:336-312-0656">336-312-0656</a><br>
     <br>
-  </div>
+  </div> -->
   
   <div>
     <h3>North Carolina Warehouse</h3>
