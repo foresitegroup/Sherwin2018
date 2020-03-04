@@ -109,8 +109,9 @@
       wp_enqueue_script('foresite-cycle-jquery');
       $featuredargs = array('post_type' => 'product', 'posts_per_page' => 3, 'tax_query' => array(array('taxonomy' => 'product_visibility', 'field'  => 'name', 'terms' => 'featured')), 'orderby' => array('meta_value_num' => 'ASC'), 'meta_key' => 'fg_wc_featured_sort');
       $featured = new WP_Query($featuredargs);
-
-      $featuredcontent = "";
+      
+      // $featuredcontent = '';
+      $featuredcontent = '<div style="background-image: url(https://sherwinindustriesinc.com/sherwin/wp-content/uploads/2019/02/Graco-GrindLazer-HP-DC1013-G.jpg); background-size: contain;"><div>Rental Equipment<br><a href="https://sherwinindustriesinc.com/sherwin/rental-equipment/">See Equipment</a></div></div>';
 
       while ($featured->have_posts()) : $featured->the_post();
         global $product;
