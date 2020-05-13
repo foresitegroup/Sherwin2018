@@ -104,53 +104,53 @@
 	</header>
 
 	<?php if (is_front_page()) { ?>
-    <div class="tongue">
+    <div class="tongue home-video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/pqEF42jlIaE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	    <?php
       wp_enqueue_script('foresite-cycle-jquery');
-      $featuredargs = array('post_type' => 'product', 'posts_per_page' => 3, 'tax_query' => array(array('taxonomy' => 'product_visibility', 'field'  => 'name', 'terms' => 'featured')), 'orderby' => array('meta_value_num' => 'ASC'), 'meta_key' => 'fg_wc_featured_sort');
-      $featured = new WP_Query($featuredargs);
-      
-      // $featuredcontent = '';
-      $featuredcontent = '<div style="background-image: url(https://sherwinindustriesinc.com/sherwin/wp-content/uploads/2019/02/Graco-GrindLazer-HP-DC1013-G.jpg); background-size: contain;"><div>Rental Equipment<br><a href="https://sherwinindustriesinc.com/sherwin/rental-equipment/">See Equipment</a></div></div>';
+      // $featuredargs = array('post_type' => 'product', 'posts_per_page' => 3, 'tax_query' => array(array('taxonomy' => 'product_visibility', 'field'  => 'name', 'terms' => 'featured')), 'orderby' => array('meta_value_num' => 'ASC'), 'meta_key' => 'fg_wc_featured_sort');
+      // $featured = new WP_Query($featuredargs);
 
-      while ($featured->have_posts()) : $featured->the_post();
-        global $product;
-        $image_id = $product->get_gallery_attachment_ids();
-        $image = wp_get_attachment_url($image_id[0]);
-        $image = $image ? ' style="background-image: url('.$image.'); background-size: '.$post->fg_wc_featured_img.';"' : "";
+      // $featuredcontent = '<div style="background-image: url(https://sherwinindustriesinc.com/sherwin/wp-content/uploads/2019/02/Graco-GrindLazer-HP-DC1013-G.jpg); background-size: contain;"><div>Rental Equipment<br><a href="https://sherwinindustriesinc.com/sherwin/rental-equipment/">See Equipment</a></div></div>';
 
-        $featuredcontent .= "<div".$image.">\n<div>";
-        if ($post->fg_wc_manufacturer) $featuredcontent .= $post->fg_wc_manufacturer." ";
-        $featuredcontent .= get_the_title();
-        $featuredcontent .= '<br><a href="'.get_permalink($post->ID).'">See Product</a>';
-        $featuredcontent .= "</div>\n</div>\n";
-      endwhile;
+      // while ($featured->have_posts()) : $featured->the_post();
+      //   global $product;
+      //   $image_id = $product->get_gallery_attachment_ids();
+      //   $image = wp_get_attachment_url($image_id[0]);
+      //   $image = $image ? ' style="background-image: url('.$image.'); background-size: '.$post->fg_wc_featured_img.';"' : "";
 
-      wp_reset_postdata();
+      //   $featuredcontent .= "<div".$image.">\n<div>";
+      //   if ($post->fg_wc_manufacturer) $featuredcontent .= $post->fg_wc_manufacturer." ";
+      //   $featuredcontent .= get_the_title();
+      //   $featuredcontent .= '<br><a href="'.get_permalink($post->ID).'">See Product</a>';
+      //   $featuredcontent .= "</div>\n</div>\n";
+      // endwhile;
+
+      // wp_reset_postdata();
       ?>
-      <div class="cycle-slideshow slideshow-1" data-cycle-slides="> div" data-cycle-auto-height="false" data-cycle-timeout="5000" data-cycle-speed="2000" data-cycle-pause-on-hover="true">
+<!--       <div class="cycle-slideshow slideshow-1" data-cycle-slides="> div" data-cycle-auto-height="false" data-cycle-timeout="5000" data-cycle-speed="2000" data-cycle-pause-on-hover="true">
         <div id="featured">
           <h2><div>Sherwin's</div> Featured Products</h2>
           <div class="site-width">
-            <?php echo $featuredcontent; ?>
+            <?php //echo $featuredcontent; ?>
           </div>
         </div>
 
         <?php
-        $sliderargs = array('post_type' => 'foresite_slider', 'orderby' => 'title', 'order' => 'ASC', 'posts_per_page' => -1, 'tax_query' => array(array('taxonomy' => 'foresite_slider-category', 'field' => 'id', 'terms' => 3)));
-        $slider = new WP_Query($sliderargs);
+        // $sliderargs = array('post_type' => 'foresite_slider', 'orderby' => 'title', 'order' => 'ASC', 'posts_per_page' => -1, 'tax_query' => array(array('taxonomy' => 'foresite_slider-category', 'field' => 'id', 'terms' => 3)));
+        // $slider = new WP_Query($sliderargs);
 
-        while ($slider->have_posts() ) : $slider->the_post();
-          $slider_img = foresite_get_post_featured_image($post->ID);
+        // while ($slider->have_posts() ) : $slider->the_post();
+        //   $slider_img = foresite_get_post_featured_image($post->ID);
           ?>
-          <div style="background-image: url(<?php echo $slider_img; ?>);">
+          <div style="background-image: url(<?php //echo $slider_img; ?>);">
             <div class="foresite-content site-width">
-              <?php the_content(); ?>
+              <?php //the_content(); ?>
             </div>
           </div>
-        <?php endwhile; wp_reset_query(); ?>
-      </div>
-    </div>
+        <?php //endwhile; wp_reset_query(); ?>
+      </div> -->
+    </div> <!-- /.tongue -->
   <?php } elseif (is_product()) { ?>
     <div id="banner" class="banner-product">
       <div id="breadcrumb-spacer"></div>

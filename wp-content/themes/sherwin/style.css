@@ -70,15 +70,17 @@ A:hover, A:active {
   clear: both;
 }
 
-.video {
+.video, .home-video {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
   max-width: 100%;
 }
- 
-.video iframe,
+
+.home-video { overflow: visible; }
+
+.video iframe, .home-video iframe,
 .video object,
 .video embed {
   position: absolute;
@@ -743,6 +745,8 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   align-items: center;
   line-height: 2em;
 }
+
+.home-content .site-width P { width: 54.81%; }
 
 .home-content .site-width IMG {
   position: relative;
@@ -1848,7 +1852,7 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   background-size: cover;
   box-sizing: border-box;
   margin: 5px 10px;
-  box-shadow: 0 0 22px 0 rgba(0,0,0,0.6);
+  box-shadow: 0 0 12px 0 rgba(0,0,0,0.6);
   position: relative;
   cursor: pointer;
 }
@@ -2234,6 +2238,7 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   #banner .quick-jump { padding-right: 4%; }
 
   .home-content .site-width { display: block; }
+  .home-content .site-width P { width: 100%; }
   .home-content .site-width IMG { display: block; margin: 0 auto; }
 
   .cycle-slideshow.featured-products .site-width > DIV { font-size: 3.7vw; }
