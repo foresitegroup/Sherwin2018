@@ -105,7 +105,7 @@
 
 	<?php if (is_front_page()) { ?>
     <div class="tongue home-video">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/pqEF42jlIaE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/pqEF42jlIaE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	    <?php
       wp_enqueue_script('foresite-cycle-jquery');
       // $featuredargs = array('post_type' => 'product', 'posts_per_page' => 3, 'tax_query' => array(array('taxonomy' => 'product_visibility', 'field'  => 'name', 'terms' => 'featured')), 'orderby' => array('meta_value_num' => 'ASC'), 'meta_key' => 'fg_wc_featured_sort');
