@@ -592,7 +592,7 @@ A.search-result { color: #828282; }
   left: calc(50% - 635px);
 }
 
-#footer-contact {
+.footer-contact {
   padding: 3.2em 0;
   background: url(images/footer-building.png) no-repeat 22% bottom;
   background-size: auto 85%;
@@ -606,7 +606,13 @@ A.search-result { color: #828282; }
   position: relative;
 }
 
-#footer-contact:before {
+.footer-contact.waterford {
+  border-top: 10px solid #E9484A;
+  background-image: url(images/footer-building-waterford.png);
+  background-size: auto 80%;
+}
+
+.footer-contact:before {
   content: "";
   position: absolute;
   top: 0;
@@ -616,9 +622,9 @@ A.search-result { color: #828282; }
   background: rgba(134,166,217,0.7);
 }
 
-#footer-contact .site-width { position: relative; z-index: 3; }
+.footer-contact .site-width { position: relative; z-index: 3; }
 
-#footer-contact A {
+.footer-contact A {
   color: #E9484A;
   text-decoration: none;
   font-size: 150%;

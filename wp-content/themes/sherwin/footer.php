@@ -13,12 +13,20 @@
   <?php } ?>
   
   <?php if ($post->post_name != "about") { ?>
-  <div id="footer-contact">
+  <div class="footer-contact">
     <div class="site-width">
-      Sherwin Industries, Inc.<br>
+      Corporate Office<br>
       2129 W. Morgan Ave<br>
       Milwaukee, WI 53221<br>
       <a href="tel:1-800-525-8876"><span style="color: #FFFFFF;">1-800-</span>525-8876</a>
+    </div>
+  </div>
+  <div class="footer-contact waterford">
+    <div class="site-width">
+      Waterford Office<br>
+      28020 Kramer Road<br>
+      Waterford, WI 53185<br>
+      <a href="tel:1-262-332-6014"><span style="color: #FFFFFF;">1-262-</span>332-6014</a>
     </div>
   </div>
   <?php } ?>
