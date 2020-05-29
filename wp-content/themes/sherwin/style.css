@@ -592,27 +592,34 @@ A.search-result { color: #828282; }
   left: calc(50% - 635px);
 }
 
-.footer-contact {
-  padding: 3.2em 0;
-  background: url(images/footer-building.png) no-repeat 22% bottom;
-  background-size: auto 85%;
+#footer-contact {
+  display: flex;
+  justify-content: space-between;
+  background: #1D3056;
+}
+
+#footer-contact > DIV {
+  width: calc(50% - 3px);
+  box-sizing: border-box;
+  padding: 1em 2% 5.2em;
+  background: #FFFFFF url(images/footer-building.png) no-repeat center bottom;
+  background-size: 90% auto;
   color: #1D3056;
   font-family: 'Teko', sans-serif;
   font-weight: 600;
   font-size: 24px;
   line-height: 1.2em;
   letter-spacing: 0.02em;
-  text-align: right;
   position: relative;
 }
 
-.footer-contact.waterford {
-  border-top: 10px solid #E9484A;
-  background-image: url(images/footer-building-waterford.png);
-  background-size: auto 80%;
+#footer-contact > DIV.waterford {
+  margin-left: auto;
+  background-image: url(images/footer-building-waterford-office.png);
+  text-align: right;
 }
 
-.footer-contact:before {
+#footer-contact > DIV:before {
   content: "";
   position: absolute;
   top: 0;
@@ -622,15 +629,15 @@ A.search-result { color: #828282; }
   background: rgba(134,166,217,0.7);
 }
 
-.footer-contact .site-width { position: relative; z-index: 3; }
+#footer-contact > DIV > DIV { position: relative; z-index: 2; }
 
-.footer-contact A {
+#footer-contact A {
   color: #E9484A;
   text-decoration: none;
   font-size: 150%;
   line-height: 1em;
   display: inline-block;
-  margin-top: 0.3em;
+  margin-top: 0.2em;
 }
 
 #mc_embed_signup {
@@ -2061,10 +2068,9 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   .main-cat H1 { font-size: 9.9vw; }
   .main-cat H1 .arrow .fas { font-size: 8.7vw; }
 
-  #footer-contact {
-    padding: 6.7vw 0;
-    background-size: 80vw auto;
-    background-position: -22% bottom;
+  #footer-contact > DIV {
+    padding: 1em 2% 4em;
+    background-size: 95% auto;
   }
 
   #events .seeus:before {
@@ -2360,6 +2366,10 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
 
 @media only screen and (max-width: 600px) {
   /* Small tablet */
+  #footer-contact { flex-direction: column; }
+  #footer-contact > DIV { width: 100%; padding: 1em 2% 16vw; }
+  #footer-contact > DIV.waterford { margin-top: 6px; }
+
   .search-result { font-size: 18px; width: 100% !important; padding-bottom: 1.5em; }
 
   .cycle-slideshow.slideshow-1 > DIV#featured .site-width > DIV > DIV { font-size: 4vw; }
@@ -2448,14 +2458,9 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
     color: #1C3056;
   }
 
-  #footer-contact {
-    padding: 0;
-    background: transparent;
-    text-align: center;
-  }
-
-  #footer-contact:before { background: transparent; }
-
+  #footer-contact { background: transparent; }
+  #footer-contact > DIV, #footer-contact > DIV.waterford { text-align: center; }
+  #footer-contact > DIV:before { background: transparent; }
   #footer-contact A SPAN { color: #353535 !important; }
 
   #main-footer {
