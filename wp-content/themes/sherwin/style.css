@@ -70,7 +70,7 @@ A:hover, A:active {
   clear: both;
 }
 
-.video, .home-video {
+.video {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
@@ -78,7 +78,28 @@ A:hover, A:active {
   max-width: 100%;
 }
 
-.home-video { overflow: visible; }
+.home-video-header {
+  padding: 0.6em 2% 0.4em;
+  background: #E9484A;
+  color: #FFFFFF;
+  font-family: 'Teko', sans-serif;
+  font-size: 200%;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.home-video {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.home-video:before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
 
 .video iframe, .home-video iframe,
 .video object,
@@ -2107,6 +2128,10 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
     -moz-column-count: 3;
     column-count: 3;
   }
+}
+
+@media only screen and (max-width: 1015px) {
+  .home-video { width: 100%; }
 }
 
 @media only screen and (max-width: 1000px) {
