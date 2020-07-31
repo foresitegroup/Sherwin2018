@@ -50,14 +50,14 @@ function email($address, $name="") {
 <?php if ($_POST['state'] == "South") { ?>
   <h3>Southeast Offices</h3>
   
-  <div>
+  <!-- <div>
     <strong>Gill Meek</strong><br>
     <?php email("gmeek@sherwinindustries.com"); ?><br>
     Leland, NC<br>
     <strong>Office:</strong> <a href="tel:336-210-1046">336-210-1046</a><br>
     <strong>Fax:</strong> <a href="tel:910-399-1114">910-399-1114</a><br>
     <br>
-  </div>
+  </div> -->
 
   <div>
     <h4>Western Office</h4>
