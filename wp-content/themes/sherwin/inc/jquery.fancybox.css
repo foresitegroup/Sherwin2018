@@ -246,7 +246,26 @@ body.fancybox-iosfix {
   max-width: calc(100% - 100px);
   max-height: calc(100% - 88px);
   overflow: visible;
-  background: #fff; }
+  background: #fff;
+}
+
+.fancybox-slide--video .fancybox-content {
+  position: relative;
+  padding-bottom: 54%;
+  width: 96%;
+  height: 0;
+  max-width: 100%;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.fancybox-slide--video .fancybox-content IFRAME {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .fancybox-iframe {
   display: block;

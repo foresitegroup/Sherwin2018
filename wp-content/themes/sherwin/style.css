@@ -78,30 +78,7 @@ A:hover, A:active {
   max-width: 100%;
 }
 
-.home-video-header {
-  padding: 0.6em 2% 0.4em;
-  background: #E9484A;
-  color: #FFFFFF;
-  font-family: 'Teko', sans-serif;
-  font-size: 200%;
-  line-height: 1;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.home-video {
-  position: relative;
-  width: 1000px;
-  margin: 0 auto;
-}
-
-.home-video:before {
-  content: "";
-  display: block;
-  padding-top: 56.25%;
-}
-
-.video iframe, .home-video iframe,
+.video iframe,
 .video object,
 .video embed {
   position: absolute;
@@ -429,6 +406,93 @@ A.search-result { color: #828282; }
   top: calc(100% - 55px);
   left: calc(50% - 680px);
   z-index: 300;
+}
+
+#home-video {
+  padding: 151px 0 185px;
+  background: #1C3056 url(images/home-video-grid.png) center;
+  color: #FFFFFF;
+}
+
+#home-video .site-width { display: flex; justify-content: space-between; align-items: flex-start; }
+
+#home-video .home-text {
+  width: 43%;
+  line-height: 2em;
+}
+
+#home-video .home-text H1,
+#home-video .home-text H2 {
+  margin: 0;
+  font-family: 'Teko', sans-serif;
+  font-size: 68px;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+#home-video .home-text H2 {
+  font-size: 55px;
+  color: #E9484A;
+}
+
+#home-video .home-text .button {
+  display: inline-block;
+  margin-top: 1em;
+  box-shadow: 0 0 22px 0 rgba(0,0,0,0.6);
+  padding: 0.4em 0.75em 0.3em;
+  background: #E9484A;
+  color: #FFFFFF;
+  font-family: 'Teko', sans-serif;
+  font-size: 25px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+#home-video .home-text .button:after {
+  content: "\f0da";
+  font-family: "Font Awesome 5 Free";
+  margin-left: 0.3em;
+  position: relative;
+  top: 2px;
+  letter-spacing: 0;
+}
+
+#home-video .home-text .button:hover {
+  background: #FFFFFF;
+  color: #E9484A;
+}
+
+#home-video .home-video {
+  width: 51.81%;
+  position: relative;
+  box-shadow: 0 0 22px 0 rgba(0,0,0,0.6);
+}
+
+#home-video .home-video:before {
+  content: "";
+  display: block;
+  padding-top: 59.64%;
+  background: url(images/home-video-thumbnail.jpg) no-repeat center;
+  background-size: cover;
+}
+
+#home-video .home-video:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Cpolygon style='fill: %23FFFFFF;' points='22.69 54.26 54.31 36 22.69 17.75 22.69 54.26'/%3E%3Cpath style='fill: %23FFFFFF;' d='M36,0A36,36,0,1,0,72,36,36,36,0,0,0,36,0Zm0,69A33,33,0,1,1,69,36,33,33,0,0,1,36,69Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 45%;
+}
+
+#home-video .home-video:hover:after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Cpolygon style='fill: %23E9484A;' points='22.69 54.26 54.31 36 22.69 17.75 22.69 54.26'/%3E%3Cpath style='fill: %23E9484A;' d='M36,0A36,36,0,1,0,72,36,36,36,0,0,0,36,0Zm0,69A33,33,0,1,1,69,36,33,33,0,0,1,36,69Z'/%3E%3C/svg%3E");
 }
 
 .cycle-slideshow.slideshow-1:before {
@@ -2130,8 +2194,9 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   }
 }
 
-@media only screen and (max-width: 1015px) {
-  .home-video { width: 100%; }
+@media only screen and (max-width: 1050px) {
+  #home-video .home-text H1 { font-size: 6.476vw; }
+  #home-video .home-text H2 { font-size: 5.238vw; }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -2273,6 +2338,13 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
 
   #banner { font-size: 12.5vw; }
   #banner .quick-jump { padding-right: 4%; }
+  
+  #home-video { padding: 12.5vw 0; }
+  #home-video .site-width { flex-direction: column-reverse; }
+  #home-video .home-video { width: 100%; }
+  #home-video .home-text { width: 100%; margin-top: 2em; }
+  #home-video .home-text H1 { font-size: 68px; }
+  #home-video .home-text H2 { font-size: 55px; }
 
   .home-content .site-width { display: block; }
   .home-content .site-width P { width: 100%; }
@@ -2423,6 +2495,9 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
 }
 
 @media only screen and (max-width: 550px) {
+  #home-video .home-text H1 { font-size: 12.364vw; }
+  #home-video .home-text H2 { font-size: 10vw; }
+
   .cycle-slideshow.featured-products .site-width > DIV { font-size: 4vw; }
 
   .main-cat + DIV .site-width {

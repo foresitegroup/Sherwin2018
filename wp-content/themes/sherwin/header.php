@@ -104,55 +104,23 @@
 	</header>
 
 	<?php if (is_front_page()) { ?>
-    <div class="tongue">
-      <div class="home-video-header">Sherwin Product Highlights</div>
-      <div class="home-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/pqEF42jlIaE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-	    <?php
-      wp_enqueue_script('foresite-cycle-jquery');
-      // $featuredargs = array('post_type' => 'product', 'posts_per_page' => 3, 'tax_query' => array(array('taxonomy' => 'product_visibility', 'field'  => 'name', 'terms' => 'featured')), 'orderby' => array('meta_value_num' => 'ASC'), 'meta_key' => 'fg_wc_featured_sort');
-      // $featured = new WP_Query($featuredargs);
+    <?php wp_enqueue_script('foresite-cycle-jquery'); ?>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.css?<?php echo filemtime(get_template_directory() . "/inc/jquery.fancybox.css"); ?>">
 
-      // $featuredcontent = '<div style="background-image: url(https://sherwinindustriesinc.com/sherwin/wp-content/uploads/2019/02/Graco-GrindLazer-HP-DC1013-G.jpg); background-size: contain;"><div>Rental Equipment<br><a href="https://sherwinindustriesinc.com/sherwin/rental-equipment/">See Equipment</a></div></div>';
+    <div id="home-video" class="tongue">
+      <div class="site-width">
+        <div class="home-text">
+          <h2>Sherwin</h2>
+          <h1>Product Highlights</h1>
 
-      // while ($featured->have_posts()) : $featured->the_post();
-      //   global $product;
-      //   $image_id = $product->get_gallery_attachment_ids();
-      //   $image = wp_get_attachment_url($image_id[0]);
-      //   $image = $image ? ' style="background-image: url('.$image.'); background-size: '.$post->fg_wc_featured_img.';"' : "";
+          Check the video for an overview of some of Sherwin's wide variety of pavement solution products.<br>
 
-      //   $featuredcontent .= "<div".$image.">\n<div>";
-      //   if ($post->fg_wc_manufacturer) $featuredcontent .= $post->fg_wc_manufacturer." ";
-      //   $featuredcontent .= get_the_title();
-      //   $featuredcontent .= '<br><a href="'.get_permalink($post->ID).'">See Product</a>';
-      //   $featuredcontent .= "</div>\n</div>\n";
-      // endwhile;
-
-      // wp_reset_postdata();
-      ?>
-<!--       <div class="cycle-slideshow slideshow-1" data-cycle-slides="> div" data-cycle-auto-height="false" data-cycle-timeout="5000" data-cycle-speed="2000" data-cycle-pause-on-hover="true">
-        <div id="featured">
-          <h2><div>Sherwin's</div> Featured Products</h2>
-          <div class="site-width">
-            <?php //echo $featuredcontent; ?>
-          </div>
+          <a href="<?php echo home_url(); ?>/product-catalog/" class="button">See All Products</a>
         </div>
 
-        <?php
-        // $sliderargs = array('post_type' => 'foresite_slider', 'orderby' => 'title', 'order' => 'ASC', 'posts_per_page' => -1, 'tax_query' => array(array('taxonomy' => 'foresite_slider-category', 'field' => 'id', 'terms' => 3)));
-        // $slider = new WP_Query($sliderargs);
-
-        // while ($slider->have_posts() ) : $slider->the_post();
-        //   $slider_img = foresite_get_post_featured_image($post->ID);
-          ?>
-          <div style="background-image: url(<?php //echo $slider_img; ?>);">
-            <div class="foresite-content site-width">
-              <?php //the_content(); ?>
-            </div>
-          </div>
-        <?php //endwhile; wp_reset_query(); ?>
-      </div> -->
+        <a href="https://www.youtube.com/watch?v=pqEF42jlIaE" data-fancybox class="home-video"></a>
+      </div>
     </div> <!-- /.tongue -->
   <?php } elseif (is_product()) { ?>
     <div id="banner" class="banner-product">
