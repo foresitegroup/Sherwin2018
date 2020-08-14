@@ -48,7 +48,7 @@ function email($address, $name="") {
 <?php } ?>
 
 <?php if ($_POST['state'] == "South") { ?>
-  <h3>Southeast Offices</h3>
+  <!-- <h3>Southeast Offices</h3> -->
   
   <!-- <div>
     <strong>Gill Meek</strong><br>
@@ -79,18 +79,17 @@ function email($address, $name="") {
   </div>
   
   <div>
-    <h3>North Carolina Warehouse</h3>
+    <h3>North Carolina Warehouses</h3>
     <strong>Furniture City Warehouse</strong><br>
     2325 E. Kivett Drive<br>
-    High Point, NC<br>
+    High Point, NC 27260<br>
     <strong>Office:</strong> <a href="tel:336-869-8376">336-869-8376</a><br>
     <strong>Fax:</strong> <a href="tel:336-869-8389">336-869-8389</a><br>
     <br>
 
     <strong>Sherwin Industries, Inc.</strong><br>
-    325-101 Habersham<br>
-    High Point, NC 27260<br>
-    <strong>Office:</strong> <a href="tel:336-210-1046">336-210-1046</a>
+    1911 Baker Road<br>
+    High Point, NC 27263
   </div>
 <?php } ?>
 
@@ -102,7 +101,8 @@ function email($address, $name="") {
     <?php email("mbaier@sherwinindustries.com"); ?><br>
     North East Illinois<br>
     <strong>Office:</strong> <a href="tel:414-405-6511">414-405-6511</a><br>
-    <strong>Fax:</strong> <a href="tel:414-281-6404">414-281-6404</a>
+    <strong>Fax:</strong> <a href="tel:414-281-6404">414-281-6404</a><br>
+    <br>
   </div>
   
   <div>
