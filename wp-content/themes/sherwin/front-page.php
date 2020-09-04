@@ -127,4 +127,11 @@ if ($events->have_posts()) {
 wp_reset_postdata();
 ?>
 
+<div id="catalog">
+  <div class="site-width">
+    Download the new Sherwin Industries Catalog<br>
+    <a href="<?php echo get_template_directory_uri(); ?>/pdf/Sherwin-Industries-Catalog.pdf?<?php echo filemtime(get_template_directory() . "/pdf/Sherwin-Industries-Catalog.pdf"); ?>" class="button" target="catalog">Download Catalog</a>
+  </div>
+</div>
+
 <?php get_footer(); ?>

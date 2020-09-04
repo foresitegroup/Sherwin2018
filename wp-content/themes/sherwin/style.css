@@ -1045,7 +1045,8 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   letter-spacing: 0;
 }
 
-#events .seeus A.button:link, #events .seeus A.button:visited {
+#events .seeus A.button:link, #events .seeus A.button:visited,
+#catalog .button {
   display: inline-block;
   margin-top: 0.4em;
   outline: 0;
@@ -1064,7 +1065,8 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   letter-spacing: 0.03em;
 }
 
-#events .seeus A.button:hover, #events .seeus A.button:active { background: #FFFFFF; color: #E9484A; }
+#events .seeus A.button:hover, #events .seeus A.button:active,
+#catalog .button:hover { background: #FFFFFF; color: #E9484A; }
 
 #events .seeus A.button:after {
   content: "\f0da";
@@ -1108,6 +1110,32 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   line-height: 1em;
   letter-spacing: 0.02em;
   color: #86A6D9;
+}
+
+#catalog {
+  border-top: 5px solid #FFFFFF;
+  padding: 0.35em 0;
+  background: #1D3056;
+  color: #FFFFFF;
+  font-family: 'Teko', sans-serif;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+#catalog .site-width {
+  box-sizing: border-box;
+  padding: 0.75em 25% 0.75em 0;
+  background: url(https://sherwinindustriesinc.com/sherwin/wp-content/uploads/2020/09/catalog-cover.png) no-repeat right 10% center;
+  background-size: contain;
+}
+
+#catalog .button { padding: 0.6em 1em 0.5em; }
+
+#catalog .button:after {
+  content: "\2913";
+  margin-left: 0.3em;
 }
 
 .page-template-template-rental-equipment-page #banner {
@@ -2320,6 +2348,8 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
     margin: 1em 5%;
   }
 
+  #catalog .site-width { background-position: right center; }
+
   .about #image1 { right: 0; }
   .about #image2 { top: 45vw; right: 0; }
 }
@@ -2375,6 +2405,9 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
     width: 23%;
     margin-left: 5%;
   }
+
+  #catalog { font-size: 6.875vw; }
+  #catalog .button { font-size: 3vw; }
 
   .about { padding: 4em 0 50vw 120px; }
 
@@ -2499,6 +2532,10 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   #home-video .home-text H2 { font-size: 10vw; }
 
   .cycle-slideshow.featured-products .site-width > DIV { font-size: 4vw; }
+
+  #catalog { font-size: 10vw; }
+  #catalog .site-width { padding-right: 0; background-image: none; }
+  #catalog .button { font-size: 4vw; }
 
   .main-cat + DIV .site-width {
     -webkit-column-count: 1;
