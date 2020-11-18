@@ -94,12 +94,20 @@ function email($address, $name="") {
 <?php } ?>
 
 <?php if ($_POST['state'] == "Illinois") { ?>
-    <h3>Illinois</h3>
+  <h3>Illinois</h3>
   
+  <div>
+    <strong>Jeff Gilmour</strong><br>
+    <?php email("jgilmour@sherwinindustries.com"); ?><br>
+    Northwest Illinois<br>
+    <strong>Office:</strong> <a href="tel: 608-400-1393"> 608-400-1393</a><br>
+    <br>
+  </div>
+
   <div>
     <strong>Mike Baier</strong><br>
     <?php email("mbaier@sherwinindustries.com"); ?><br>
-    North East Illinois<br>
+    Northeast Illinois<br>
     <strong>Office:</strong> <a href="tel:414-405-6511">414-405-6511</a><br>
     <strong>Fax:</strong> <a href="tel:414-281-6404">414-281-6404</a><br>
     <br>
@@ -267,6 +275,23 @@ function email($address, $name="") {
     <br>
   </div>
   
+  <div>
+    <strong>Jeff Gilmour</strong><br>
+    <?php email("jgilmour@sherwinindustries.com"); ?><br>
+    Southwestern Wisconsin<br>
+    <strong>Office:</strong> <a href="tel: 608-400-1393"> 608-400-1393</a><br>
+    <br>
+  </div>
+
+  <div>
+    <strong>Mike Baier</strong><br>
+    <?php email("mbaier@sherwinindustries.com"); ?><br>
+    Southeastern Wisconsin<br>
+    <strong>Office:</strong> <a href="tel:414-405-6511">414-405-6511</a><br>
+    <strong>Fax:</strong> <a href="tel:414-281-6404">414-281-6404</a><br>
+    <br>
+  </div>
+
   <div>
     <h3>Wisconsin Warehouses</h3>
 
