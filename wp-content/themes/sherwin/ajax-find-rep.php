@@ -48,24 +48,12 @@ function email($address, $name="") {
 <?php } ?>
 
 <?php if ($_POST['state'] == "South") { ?>
-  <!-- <h3>Southeast Offices</h3> -->
-  
-  <!-- <div>
-    <strong>Gill Meek</strong><br>
-    <?php email("gmeek@sherwinindustries.com"); ?><br>
-    Leland, NC<br>
-    <strong>Office:</strong> <a href="tel:336-210-1046">336-210-1046</a><br>
-    <strong>Fax:</strong> <a href="tel:910-399-1114">910-399-1114</a><br>
-    <br>
-  </div> -->
-
   <div>
     <h4>Western Office</h4>
     <strong>Eric Reinhardt</strong><br>
     <?php email("ereinhardt@sherwinindustries.com"); ?><br>
     State Road, NC<br>
     <strong>Office:</strong> <a href="tel:336-467-2928">336-467-2928</a><br>
-    <strong>Fax:</strong> <a href="tel:910-399-1114">910-399-1114</a><br>
     <br>
   </div>
 
@@ -84,7 +72,6 @@ function email($address, $name="") {
     2325 E. Kivett Drive<br>
     High Point, NC 27260<br>
     <strong>Office:</strong> <a href="tel:336-869-8376">336-869-8376</a><br>
-    <strong>Fax:</strong> <a href="tel:336-869-8389">336-869-8389</a><br>
     <br>
 
     <strong>Sherwin Industries, Inc.</strong><br>
@@ -131,7 +118,6 @@ function email($address, $name="") {
     <?php email("swarner@sherwinindustries.com"); ?><br>
     Granger, IN<br>
     <strong>Office:</strong> <a href="tel:574-303-9093">574-303-9093</a><br>
-    <strong>Fax:</strong> <a href="tel:574-329-5314">574-329-5314</a><br>
     <br>
   </div>
   
@@ -177,42 +163,35 @@ function email($address, $name="") {
   <h3>Michigan</h3>
   
   <div>
-    <h4>Northeastern Wisconsin and Western Upper Michigan Sales Office</h4>
     <strong>Dennis Fleischman</strong><br>
     <?php email("dfleischman@sherwinindustries.com"); ?><br>
-    Wausau, WI<br>
+    Western UP<br>
     <strong>Office:</strong> <a href="tel:715-531-8119">715-531-8119</a><br>
-    <strong>Fax:</strong> <a href="tel:715-355-0014">715-355-0014</a><br>
     <br>
   </div>
   
   <div>
-    <h4>Northeastern Wisconsin and Upper Michigan Sales Office</h4>
     <strong>Keith Zepnick</strong><br>
     <?php email("kzepnick@sherwinindustries.com"); ?><br>
-    Kiel, WI<br>
+    Eastern UP<br>
     <strong>Office:</strong> <a href="tel:920-894-4184">920-894-4184</a><br>
-    <strong>Fax:</strong> <a href="tel:920-894-4101">920-894-4101</a><br>
     <br>
   </div>
-  
+
   <div>
-    <h4>Southern Wisconsin and Lower Michigan Sales Office</h4>
-    <strong>Dan Morgan</strong><br>
-    <?php email("dmorgan@sherwinindustries.com"); ?><br>
-    Milwaukee, WI<br>
-    <strong>Office:</strong> <a href="tel:414-281-6400">414-281-6400</a><br>
-    <strong>Fax:</strong> <a href="tel:414-281-6404">414-281-6404</a><br>
-    <br>
-  </div>
-  
-  <div>
-    <h4>Indiana and Lower Michigan Sales Office</h4>
     <strong>Stuart Warner</strong><br>
     <?php email("swarner@sherwinindustries.com"); ?><br>
-    Granger, IN<br>
+    Lower Michigan<br>
     <strong>Office:</strong> <a href="tel:574-303-9093">574-303-9093</a><br>
-    <strong>Fax:</strong> <a href="tel:574-329-5314">574-329-5314</a>
+    <br>
+  </div>
+
+  <div>
+    <strong>Nate Luptowski</strong><br>
+    <?php email("nluptowski@sherwinindustries.com"); ?><br>
+    Western and Upper Michigan<br>
+    Eastern UP<br>
+    <strong>Office:</strong> <a href="tel:989-326-0476">989-326-0476</a>
   </div>
 <?php } ?>
 
@@ -243,35 +222,21 @@ function email($address, $name="") {
 <?php } ?>
 
 <?php if ($_POST['state'] == "Wisconsin") { ?>
-  <h3>Wisconsin Sales Office</h3>
-  
-  <div>
-    <h4>Southern Wisconsin and Lower Michigan Sales Office</h4>
-    <strong>Dan Morgan</strong><br>
-    <?php email("dmorgan@sherwinindustries.com"); ?><br>
-    Milwaukee, WI<br>
-    <strong>Office:</strong> <a href="tel:414-281-6400">414-281-6400</a><br>
-    <strong>Fax:</strong> <a href="tel:414-281-6404">414-281-6404</a><br>
-    <br>
-  </div>
-  
-  <div>
-    <h4>Northern Wisconsin and Western Upper Michigan Sales Office</h4>
-    <strong>Dennis Fleischman</strong><br>
-    <?php email("dfleischman@sherwinindustries.com"); ?><br>
-    Wausau, WI<br>
-    <strong>Office:</strong> <a href="tel:715-531-8119">715-531-8119</a><br>
-    <strong>Fax:</strong> <a href="tel:715-355-0014">715-355-0014</a><br>
-    <br>
-  </div>
+  <h3>Wisconsin</h3>
 
   <div>
-    <h4>Northeastern Wisconsin and Eastern Upper Michigan Sales Office</h4>
+    <strong>Dennis Fleischman</strong><br>
+    <?php email("dfleischman@sherwinindustries.com"); ?><br>
+    Western UP<br>
+    <strong>Office:</strong> <a href="tel:715-531-8119">715-531-8119</a><br>
+    <br>
+  </div>
+  
+  <div>
     <strong>Keith Zepnick</strong><br>
     <?php email("kzepnick@sherwinindustries.com"); ?><br>
-    Kiel, WI<br>
+    Eastern UP<br>
     <strong>Office:</strong> <a href="tel:920-894-4184">920-894-4184</a><br>
-    <strong>Fax:</strong> <a href="tel:920-894-4101">920-894-4101</a><br>
     <br>
   </div>
   
