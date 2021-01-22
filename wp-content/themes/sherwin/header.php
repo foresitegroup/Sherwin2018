@@ -110,7 +110,7 @@
 
     <div id="home-video" class="tongue">
       <div class="site-width">
-        <div class="home-text">
+        <!-- <div class="home-text">
           <h2>Sherwin</h2>
           <h1>Product Highlights</h1>
 
@@ -119,7 +119,19 @@
           <a href="<?php echo home_url(); ?>/product-catalog/" class="button">See All Products</a>
         </div>
 
-        <a href="https://www.youtube.com/watch?v=pqEF42jlIaE" data-fancybox class="home-video"></a>
+        <a href="https://www.youtube.com/watch?v=pqEF42jlIaE" data-fancybox class="home-video"></a> -->
+
+        <div class="home-text">
+          <h2>Graco</h2>
+          <h1>SaniSpray HP</h1>
+
+          The Graco SaniSpray HP is the ultimate portable disinfectant sprayer solution that delivers maximum productivity on smaller disinfecting jobs.<br>
+
+          <a href="<?php echo home_url(); ?>/product/sanispray-hp-20-cordless-handheld-sprayer/" class="button">Learn More</a>
+        </div>
+        
+        <style>#home-video .home-video:before { background-image: url(http://i3.ytimg.com/vi/ZHHkeG8iNrs/maxresdefault.jpg); }</style>
+        <a href="https://www.youtube.com/watch?v=ZHHkeG8iNrs" data-fancybox class="home-video"></a>
       </div>
     </div> <!-- /.tongue -->
   <?php } elseif (is_product()) { ?>
