@@ -130,8 +130,8 @@
           <a href="<?php echo home_url(); ?>/product/sanispray-hp-20-cordless-handheld-sprayer/" class="button">Learn More</a>
         </div>
         
-        <style>#home-video .home-video:before { background-image: url(http://i3.ytimg.com/vi/ZHHkeG8iNrs/maxresdefault.jpg); }</style>
-        <a href="https://www.youtube.com/watch?v=ZHHkeG8iNrs" data-fancybox class="home-video"></a>
+        <style>#home-video .home-video:before { background-image: url(https://i3.ytimg.com/vi/TB_EUM6MyHo/maxresdefault.jpg); }</style>
+        <a href="https://www.youtube.com/watch?v=TB_EUM6MyHo" data-fancybox class="home-video"></a>
       </div>
     </div> <!-- /.tongue -->
   <?php } elseif (is_product()) { ?>
