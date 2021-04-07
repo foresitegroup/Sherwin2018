@@ -122,16 +122,16 @@
         <a href="https://www.youtube.com/watch?v=pqEF42jlIaE" data-fancybox class="home-video"></a> -->
 
         <div class="home-text">
-          <h2>Graco</h2>
-          <h1>SaniSpray HP</h1>
+          <h2>Crafco</h2>
+          <h1>Mastic One</h1>
 
-          The Graco SaniSpray HP is the ultimate portable disinfectant sprayer solution that delivers maximum productivity on smaller disinfecting jobs.<br>
+          Mastic One is a hot-applied, pourable, aggregate filled, black color, self-adhesive, pavement repair mastic used for preserving, maintaining and repairing asphalt, Portland Cement Concrete pavement and bridge deck surfaces.<br>
 
-          <a href="<?php echo home_url(); ?>/product/sanispray-hp-20-cordless-handheld-sprayer/" class="button">Learn More</a>
+          <a href="<?php echo home_url(); ?>/product/mastic-one-mastic-one-type-2/" class="button">Learn More</a>
         </div>
         
-        <style>#home-video .home-video:before { background-image: url(https://i3.ytimg.com/vi/TB_EUM6MyHo/maxresdefault.jpg); }</style>
-        <a href="https://www.youtube.com/watch?v=TB_EUM6MyHo" data-fancybox class="home-video"></a>
+        <style>#home-video .home-video:before { background-image: url(https://i3.ytimg.com/vi/ty2A5HuHe7Q/maxresdefault.jpg); }</style>
+        <a href="https://www.youtube.com/watch?v=ty2A5HuHe7Q" data-fancybox class="home-video"></a>
       </div>
     </div> <!-- /.tongue -->
   <?php } elseif (is_product()) { ?>
