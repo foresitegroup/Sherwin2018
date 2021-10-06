@@ -1811,7 +1811,7 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   width: 80%;
 }
 
-.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary { float: none; width: 0; }
+.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary { float: none; width: 100%; }
 .woocommerce div.product div.summary { margin-bottom: 0; }
 
 .woocommerce .single-product {
