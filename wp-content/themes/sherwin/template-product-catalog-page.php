@@ -60,7 +60,7 @@ foreach ($cats1 as $cat1) {
               $h3count++;
             }
           } else {
-            CatLoop($cat2->slug);
+            CatLoop($cat2->slug, 'post_title');
           }
         }
       } else {
