@@ -67,13 +67,7 @@ function email($address, $name="") {
   </div>
   
   <div>
-    <h3>North Carolina Warehouses</h3>
-    <strong>Furniture City Warehouse</strong><br>
-    2325 E. Kivett Drive<br>
-    High Point, NC 27260<br>
-    <strong>Office:</strong> <a href="tel:336-869-8376">336-869-8376</a><br>
-    <br>
-
+    <h3>North Carolina Warehouse</h3>
     <strong>Sherwin Industries, Inc.</strong><br>
     1911 Baker Road<br>
     High Point, NC 27263
