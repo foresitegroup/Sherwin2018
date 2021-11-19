@@ -74,6 +74,7 @@
     gtag('js', new Date());
 
     gtag('config', 'UA-15309720-1');
+    gtag('config', 'AW-1044938396');
   </script>
 </head>
 
