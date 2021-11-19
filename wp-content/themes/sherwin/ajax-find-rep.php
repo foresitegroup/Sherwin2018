@@ -69,7 +69,7 @@ function email($address, $name="") {
   <div>
     <h3>North Carolina Warehouse</h3>
     <strong>Sherwin Industries, Inc.</strong><br>
-    1911 Baker Road<br>
+    1807 Baker Road<br>
     High Point, NC 27263
   </div>
 <?php } ?>
