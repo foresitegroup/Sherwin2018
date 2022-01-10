@@ -12,7 +12,7 @@ function email($address, $name="") {
 ?>
 
 <!-- Event snippet for Find My Sherwin Rep conversion page In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-<script> function gtag_report_conversion(url) { var callback = function () { if (typeof(url) != 'undefined') { window.location = url; } }; gtag('event', 'conversion', { 'send_to': 'AW-1044938396/6FYICP7xsYQDEJz9ofID', 'event_callback': callback }); return false; } </script>
+<!-- <script> function gtag_report_conversion(url) { var callback = function () { if (typeof(url) != 'undefined') { window.location = url; } }; gtag('event', 'conversion', { 'send_to': 'AW-1044938396/6FYICP7xsYQDEJz9ofID', 'event_callback': callback }); return false; } </script> -->
 
 <script type="text/javascript">
   jQuery(document).ready(function() {
@@ -27,7 +27,7 @@ function email($address, $name="") {
       .done(function(response) {
         jQuery('#contact-results').css('display', 'block');
         jQuery('#find-rep-results').html(response);
-        return gtag_report_conversion('https://sherwinindustriesinc.com/sherwin/contact/');
+        // return gtag_report_conversion('https://sherwinindustriesinc.com/sherwin/contact/');
       });
     });
   });
