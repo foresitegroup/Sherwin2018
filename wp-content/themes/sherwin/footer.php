@@ -61,7 +61,10 @@
   <!--End mc_embed_signup-->
 
   <footer id="main-footer">
-    All rights reserved. Sherwin Industries, Inc. &copy; <?php echo date("Y"); ?>
+    All rights reserved. Sherwin Industries, Inc. &copy; <?php echo date("Y"); ?><br>
+      <br>
+
+      <a href="https://foresitegrp.com" style="font-size: 0.6875rem; color: #FFFFFF;">WEBSITE BY FORESITE</a>
   </footer>
 
 </body>
