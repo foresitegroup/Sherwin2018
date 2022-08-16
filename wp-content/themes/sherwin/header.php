@@ -66,7 +66,7 @@
     });
   </script>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics - THIS WILL STOP WORKING JULY 1, 2023 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15309720-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -75,6 +75,15 @@
 
     gtag('config', 'UA-15309720-1');
     gtag('config', 'AW-1044938396');
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKYK5RM12Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BKYK5RM12Z');
   </script>
 </head>
 
