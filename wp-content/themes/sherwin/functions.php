@@ -75,6 +75,7 @@ function meta_og() {
 }
 
 
+
 // We want Featured Images on Pages and Posts
 add_theme_support( 'post-thumbnails' );
 
@@ -389,5 +390,13 @@ function fg_remove_after_single_product_summary() {
   remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
   remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
   remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+}
+
+
+/* Add Revision support to WooCommerce Products */
+add_filter('woocommerce_register_post_type_product', 'add_revision_support');
+function add_revision_support($supports) {
+  $supports['supports'][] = 'revisions';
+  return $supports;
 }
 ?>
