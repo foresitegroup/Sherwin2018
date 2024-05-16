@@ -14,7 +14,7 @@
 </div>
 
 <?php
-$args = array('post_type' => 'product', 'posts_per_page' => -1, 'tax_query' => array(
+$args = array('post_type' => 'product', 'posts_per_page' => -1, 'orderby' => 'meta_value_num','meta_key' => 'fg_wc_featured_sort', 'order' => 'ASC', 'tax_query' => array(
   array('taxonomy' => 'product_visibility', 'field'    => 'name', 'terms'    => 'featured')
 ));
 $loop = new WP_Query($args);
@@ -26,9 +26,9 @@ if ($loop->have_posts()) {
       global $product;
       $image_id = $product->get_gallery_attachment_ids();
       $image = wp_get_attachment_url($image_id[0]);
-      $image = $image ? ' style="background-image: url('.$image.');"' : "";
+      $image = $image ? 'background-image: url('.$image.');' : "";
 
-      echo "<div".$image.">";
+      echo '<div style="background-size: '.$post->fg_wc_featured_img.'; '.$image.'">'."\n";
         echo '<div class="site-width">';
           echo "<div>";
             $manufacturer = get_post_meta($loop->post->ID, 'fg_wc_manufacturer', true);

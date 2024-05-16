@@ -857,8 +857,9 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
 .cycle-slideshow.featured-products:before { padding-bottom: 0; }
 
 .cycle-slideshow.featured-products > DIV {
-  background-position: 10% center;
-  background-size: auto 150%;
+  background-position: center;
+/*  background-position: 10% center;*/
+/*  background-size: auto 150%;*/
 }
 
 .cycle-slideshow.featured-products > DIV:after { background: rgba(29,48,86,0.8); }
