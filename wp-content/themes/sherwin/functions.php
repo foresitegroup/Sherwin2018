@@ -122,6 +122,46 @@ function register_my_menus() {
 add_action( 'init', 'register_my_menus' );
 
 
+/* Customizer */
+add_action('customize_register', 'fg_customize_register', 50);
+remove_action('customize_register', 'shiftnav_register_customizers');
+function fg_customize_register($wp_customize) {
+  $wp_customize->add_section('fg_smtp', array(
+    'title'    => __('SMTP', 'fg'),
+    'description' => 'Settings for the forms to send emails. Don\'t change these unless you REALLY know what you\'re doing.',
+    'priority' => 113
+  ));
+
+  $wp_customize->add_setting('fg_smtp_user', array('sanitize_callback' => 'sanitize_text_field'));
+  $wp_customize->add_control('fg_smtp_user', array(
+    'label'   => __('Username', 'smtp'),
+    'section' => 'fg_smtp',
+    'type'    => 'text'
+  ));
+
+  $wp_customize->add_setting('fg_smtp_pass', array('sanitize_callback' => 'sanitize_text_field'));
+  $wp_customize->add_control('fg_smtp_pass', array(
+    'label'   => __('Password', 'smtp'),
+    'section' => 'fg_smtp',
+    'type'    => 'text'
+  ));
+
+  $wp_customize->add_setting('fg_smtp_host', array('sanitize_callback' => 'sanitize_text_field'));
+  $wp_customize->add_control('fg_smtp_host', array(
+    'label'   => __('Host', 'smtp'),
+    'section' => 'fg_smtp',
+    'type'    => 'text'
+  ));
+
+  $wp_customize->add_setting('fg_smtp_port', array('sanitize_callback' => 'sanitize_text_field'));
+  $wp_customize->add_control('fg_smtp_port', array(
+    'label'   => __('Port', 'smtp'),
+    'section' => 'fg_smtp',
+    'type'    => 'text'
+  ));
+}
+
+
 // Show site styles in visual editor
 function themename_setup() {
   add_editor_style();
@@ -398,5 +438,72 @@ add_filter('woocommerce_register_post_type_product', 'add_revision_support');
 function add_revision_support($supports) {
   $supports['supports'][] = 'revisions';
   return $supports;
+}
+
+
+/* Lowers the metabox priority to 'low' for Yoast SEO's metabox. */
+add_filter('wpseo_metabox_prio', 'lower_yoast_metabox_priority');
+function lower_yoast_metabox_priority($priority) {
+  return 'low';
+}
+
+
+/*
+*  Forms
+*/
+add_action('add_meta_boxes_page', 'form_metaboxes');
+function form_metaboxes() {
+  global $post;
+  $template = get_post_meta($post->ID, '_wp_page_template', true);
+
+  if ($template == "template-bowmonk.php") {
+    add_meta_box('form_metabox_settings', 'Form Settings', 'display_form_metabox_settings', 'page', 'normal', 'high');
+  }
+}
+
+function display_form_metabox_settings($post) {
+  echo "<strong>Send To</strong><br>
+  For multiple addresses, add one address per line.<br>\n";
+  wp_editor(html_entity_decode($post->form_send_to, ENT_QUOTES), "form_send_to", array('textarea_name' => 'form_send_to', 'textarea_rows' => 6, 'tinymce' => false, 'media_buttons' => false, 'quicktags' => false));
+  echo "<br>\n";
+
+  echo "<strong>From Name</strong><br>\n";
+  echo '<input type="text" name="form_from_name" value="'.$post->form_from_name.'" style="width: 100%;"><br>'."\n";
+  echo "<br>\n";
+
+  echo "<strong>Email Subject</strong><br>\n";
+  echo '<input type="text" name="form_subject" value="'.$post->form_subject.'" style="width: 100%;"><br>'."\n";
+  echo "<br>\n";
+
+  echo "<strong>Success Message</strong><br>\n";
+  wp_editor(html_entity_decode($post->form_success, ENT_QUOTES), "form_success", array('textarea_name' => 'form_success', 'textarea_rows' => 6, 'tinymce' => false, 'media_buttons' => false, 'quicktags' => false));
+  echo "<br>\n";
+}
+
+add_action('save_post', 'form_save');
+function form_save($post_id) {
+  if (!empty($_POST['form_send_to'])) {
+    update_post_meta($post_id, 'form_send_to', $_POST['form_send_to']);
+  } else {
+    delete_post_meta($post_id, 'form_send_to');
+  }
+
+  if (!empty($_POST['form_from_name'])) {
+    update_post_meta($post_id, 'form_from_name', $_POST['form_from_name']);
+  } else {
+    delete_post_meta($post_id, 'form_from_name');
+  }
+
+  if (!empty($_POST['form_subject'])) {
+    update_post_meta($post_id, 'form_subject', $_POST['form_subject']);
+  } else {
+    delete_post_meta($post_id, 'form_subject');
+  }
+
+  if (!empty($_POST['form_success'])) {
+    update_post_meta($post_id, 'form_success', $_POST['form_success']);
+  } else {
+    delete_post_meta($post_id, 'form_success');
+  }
 }
 ?>
