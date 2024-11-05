@@ -23,9 +23,9 @@ while (have_posts()) : the_post();
 
       <input type="tel" name="phone" placeholder="Daytime Contact Telephone Number *" required>
 
-      <textarea name="billing_address" placeholder="Billing Address *" required></textarea>
+      <textarea name="billing_address" placeholder="Billing Address (Full Address) *" required></textarea>
 
-      <textarea name="shipping_address" placeholder="Shipping Address *" required></textarea>
+      <textarea name="shipping_address" placeholder="Shipping Address (Full Address) *" required></textarea>
 
       <input type="text" name="serial_number" placeholder="Serial Number of Unit *" required>
       
@@ -47,17 +47,18 @@ while (have_posts()) : the_post();
 
       <input type="checkbox" name="service[]" value="Battery Replacement (6v and 3v )" id="s6">
       <label for="s6">Battery Replacement (6v and 3v )</label>
+      <em style="font-size: 80%;">Batteries are automatically replaced every two years.</em><br>
 
       <br>
 
-      <textarea name="description" placeholder="Description of Problem/Error/ Malfunction"></textarea>
+      <textarea name="description" placeholder="Description of Problem/Error/Malfunction"></textarea>
 
       <textarea name="additional_info" placeholder="Any Additional Information/Requests for this Unit?"></textarea>
 
       <select name="payment" id="payment" required>
         <option value="">Please Enter Your Payment Option *</option>
-        <option value="po">Purchase Order Number</option>
-        <option value="cc">Credit Card (MC/Visa/AMEX)</option>
+        <option value="Purchase Order">Purchase Order Number</option>
+        <option value="Credit Card">Credit Card (MC/Visa/AMEX)</option>
       </select>
 
       <div id="payment-po">
@@ -88,12 +89,12 @@ while (have_posts()) : the_post();
       var ponum = document.getElementById('po_number');
 
       payment.addEventListener('change', (option) => {
-        if (option.target.value == 'po') {
+        if (option.target.value == 'Purchase Order') {
           po.style.display = 'block';
           cc.style.display = 'none';
         }
 
-        if (option.target.value == 'cc') {
+        if (option.target.value == 'Credit Card') {
           po.style.display = 'none';
           cc.style.display = 'block';
         }

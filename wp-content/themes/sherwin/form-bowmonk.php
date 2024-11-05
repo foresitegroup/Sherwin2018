@@ -41,7 +41,8 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
     $Message .= "Shipping Address\n".$_POST['shipping_address']."\n\n";
 
     $Message .= "Serial Number of Unit: ".$_POST['serial_number']."\n\n";
-
+    
+    $service = "";
     if (isset($_POST['service'])) {
       $service = implode(", ", $_POST['service']);
       $Message .= "Level of Service: ".$service."\n\n";
@@ -52,14 +53,33 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
     if ($_POST['additional_info'] != "") $Message .= "Additional Information/Requests for this Unit\n".$_POST['additional_info']."\n\n";
 
     $Message .= "Payment Option: ";
-    if ($_POST['payment'] == "po") $Message .= "Purchase Order\n";
-    if ($_POST['payment'] == "cc") $Message .= "Credit Card\n";
-    if ($_POST['payment'] == "po" && $_POST['po_number'] != "") $Message .= "Purchase Order Number: ".$_POST['po_number']."\n";
+    if ($_POST['payment'] != "") $Message .= $_POST['payment']."\n";
+    if ($_POST['payment'] == "Purchase Order" && $_POST['po_number'] != "") $Message .= "Purchase Order Number: ".$_POST['po_number']."\n";
 
     $Message = stripslashes($Message);
 
     $mail->Body = $Message;
     $mail->send();
+
+    // Add info to local database
+    global $wpdb;
+    $wpdb->insert('bowmonk_calibration',
+      array(
+        'email' => $_POST['email'],
+        'business_airport_name' => $_POST['business_airport_name'],
+        'contact_person' => $_POST['contact_person'],
+        'phone' => $_POST['phone'],
+        'billing_address' => $_POST['billing_address'],
+        'shipping_address' => $_POST['shipping_address'],
+        'serial_number' => $_POST['serial_number'],
+        'service' => $service,
+        'description' => $_POST['description'],
+        'additional_info' => $_POST['additional_info'],
+        'payment' => $_POST['payment'],
+        'po_number' => $_POST['po_number'],
+        'date_submitted' => time()
+      )
+    );
 
     $feedback = nl2br(get_post_meta($_POST['id'], 'form_success', true));
     if ($_POST['payment'] == "cc") $feedback .= "<br><br>Please call our corporate office for credit card processing.<br>1-800-525-8876";

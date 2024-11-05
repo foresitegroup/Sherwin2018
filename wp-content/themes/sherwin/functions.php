@@ -506,4 +506,91 @@ function form_save($post_id) {
     delete_post_meta($post_id, 'form_success');
   }
 }
+
+
+add_action('admin_menu', 'bowmonk_link');
+function bowmonk_link() {
+  add_submenu_page('tools.php', '', 'Export Bowmonk Calibration Requests', 'manage_options', 'admin-ajax.php?action=bowmonk_export', '', 99);
+}
+
+add_action('wp_ajax_bowmonk_export','export_bowmonk_form_submissions');
+function export_bowmonk_form_submissions() {
+  global $wpdb;
+
+  $results = $wpdb->get_results("SELECT * FROM bowmonk_calibration", ARRAY_A);
+
+  $headers = 'Email,Business/Airport Name,Contact Person,Daytime Contact Telephone Number,Billing Address,Serial Number of Unit,Level of Service,Description of Problem/Error/Malfunction,Additional Information/Requests,Payment Option,Purchase Order Number,Date Submitted';
+
+  if (count($results) > 0) {
+    $output = "";
+
+    foreach($results as $result) {
+      $output .= '"'.$result['email'].'",';
+      $output .= '"'.$result['business_airport_name'].'",';
+      $output .= '"'.$result['contact_person'].'",';
+      $output .= '"'.$result['phone'].'",';
+      $output .= '"'.trim(preg_replace('/\s+/', ' ', $result['billing_address'])).'",';
+      $output .= '"'.trim(preg_replace('/\s+/', ' ', $result['shipping_address'])).'",';
+      $output .= '"'.$result['serial_number'].'",';
+      $output .= '"'.$result['service'].'",';
+      $output .= '"'.trim(preg_replace('/\s+/', ' ', $result['description'])).'",';
+      $output .= '"'.trim(preg_replace('/\s+/', ' ', $result['additional_info'])).'",';
+      $output .= '"'.$result['payment'].'",';
+      $output .= '"'.$result['po_number'].'",';
+      $output .= date("Y-m-d H:i", $result['date_submitted']);
+      $output .= "\r\n";
+    }
+  }
+
+  header("Content-type: application/vnd.ms-excel");
+  header("Content-disposition: filename=bowmonk_calibration_requests_".date("Y-m-d_H-i",time()).".csv");
+  print $headers."\n".$output;
+  exit;
+}
+
+add_action('admin_menu', 'bowmonk_delete_link');
+function bowmonk_delete_link() {
+  add_submenu_page('tools.php', 'Delete Bowmonk Calibration Requests', 'Delete Bowmonk Calibration Requests', 'manage_options', 'delete-bowmonk-calibration-requests', 'delete_bowmonk_callback', 100);
+}
+
+function delete_bowmonk_callback() {
+  ?>
+  <style>
+    .button-primary.red { background: #B32D2E; border-color: #B32D2E; }
+    .button-primary.red:hover { background: #A30000; border-color: #A30000; }
+  </style>
+
+  <div class="wrap">
+    <h1>Delete Bowmonk Calibration Requests</h1>
+
+    <?php
+    $message = get_transient('bowmonk_deleted');
+    if ($message) {
+      echo '<div class="notice notice-success is-dismissible"><p>'.$message.'</p></div>';
+
+      delete_transient('bowmonk_deleted');
+    }
+    ?>
+
+    <h2>This will <strong>DELETE</strong> all of the Bowmonk calibration requests that are currently in the database. Make sure that you have <a href="admin-ajax.php?action=bowmonk_export">exported</a> them before pressing the button.</h2>
+
+    <br>
+
+    <p><button onclick="location.href='admin-ajax.php?action=bowmonk_delete';" class="button button-primary red">DELETE Requests</button></p>
+  </div>
+  <?php
+}
+
+add_action('wp_ajax_bowmonk_delete','delete_bowmonk_form_submissions');
+function delete_bowmonk_form_submissions() {
+  global $wpdb;
+
+  $wpdb->query("TRUNCATE TABLE `bowmonk_calibration`");
+
+  set_transient('bowmonk_deleted', 'All Bowmonk calibration requests have been deleted.', 5);
+
+  wp_redirect(wp_get_referer());
+
+  exit;
+}
 ?>
