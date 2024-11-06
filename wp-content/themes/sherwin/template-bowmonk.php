@@ -10,7 +10,7 @@ while (have_posts()) : the_post();
     ?>
 
     <form action="<?php echo get_template_directory_uri(); ?>/form-bowmonk.php" method="POST" id="form-bowmonk" class="form" novalidate>
-      <input type="text" name="username" tabindex="-1" aria-hidden="true" autocomplete="new-password">
+      <input type="text" name="username" tabindex="-1" aria-hidden="true" autocomplete="off">
 
       <h2>* Required</h2>
       <br>
