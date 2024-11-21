@@ -10,7 +10,7 @@ require '../../../PHPMailer/SMTP.php';
 include_once "../../../wp-load.php";
 
 if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['contact_person'] != "" && $_POST['phone'] != "" && $_POST['billing_address'] != "" && $_POST['shipping_address'] != "" && $_POST['serial_number'] != "" && isset($_POST['service']) && $_POST['payment'] != "") {
-  if ($_POST['username'] == "") {
+  // if ($_POST['username'] == "") {
     $mail = new PHPMailer();
 
     $mail->SMTPAuth = true;
@@ -61,6 +61,19 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
     $mail->Body = $Message;
     $mail->send();
 
+    // User confirmation mail
+    $mail->clearAllRecipients();
+    $mail->addAddress($_POST['email']);
+
+    $ToUser = "** THIS IS AN AUTOMAITED MESSAGE. PLEASE DO NOT REPLY. **\n\n";
+    $ToUser .= strip_tags(get_post_meta($_POST['id'], 'form_success', true));
+    if ($_POST['payment'] == "Credit Card") $ToUser .= "\n\nPlease call our corporate office for credit card processing.\n1-800-525-8876";
+    $ToUser .= "\n\nINFORMATION SUBMITTED\n";
+    $ToUser .= $Message;
+
+    $mail->Body = $ToUser;
+    $mail->send();
+
     // Add info to local database
     global $wpdb;
     $wpdb->insert('bowmonk_calibration',
@@ -82,10 +95,10 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
     );
 
     $feedback = nl2br(get_post_meta($_POST['id'], 'form_success', true));
-    if ($_POST['payment'] == "cc") $feedback .= "<br><br>Please call our corporate office for credit card processing.<br>1-800-525-8876";
-  } else {
-    $feedback = "Your message has trigged the spam filter and was not sent. If this an error, please contact us at 1-800-525-8876.";
-  } // Honeypot
+    if ($_POST['payment'] == "Credit Card") $feedback .= "<br><br>Please call our corporate office for credit card processing.<br>1-800-525-8876";
+  //} else {
+    //$feedback = "Your message has triggered the spam filter and was not sent. If this an error, please contact us at 1-800-525-8876.";
+  //} // Honeypot
 } else {
   $feedback = "Some required information is missing! Please go back and make sure all required fields are filled.";
 } // Required fields
