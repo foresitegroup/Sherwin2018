@@ -2327,6 +2327,26 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   font-size: 70%;
 }
 
+.sherwin-button:link, .sherwin-button:visited {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  width: auto;
+  box-sizing: border-box;
+  padding: 0.66em 1em 0.52em;
+  background: #E9484A;
+  color: #FFFFFF;
+  font-family: 'Teko', sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s;
+}
+
+.sherwin-button:hover { background: #1D3056; }
+
 
 
 
