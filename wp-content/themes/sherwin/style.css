@@ -2162,7 +2162,8 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   line-height: 1;
 }
 
-#form-bowmonk #payment-po, #form-bowmonk #payment-cc { display: none; }
+#form-bowmonk #payment-po, #form-bowmonk #payment-cc,
+#form-bowmonk #rs-customer, #form-bowmonk #rs-ups { display: none; }
 
 .form INPUT[name="username"] { position: absolute; left: -999999999px; }
 
@@ -2230,6 +2231,7 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
 .form .alert { border-color: #E9484A; }
 .form INPUT[type="checkbox"] + LABEL.alert { color: #E9484A; }
 .form INPUT[type="checkbox"] + LABEL.alert:before { border-color: #E9484A; }
+.form SELECT.alert { color: #E9484A; }
 
 .form BUTTON {
   display: block;

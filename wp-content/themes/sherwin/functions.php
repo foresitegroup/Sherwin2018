@@ -519,7 +519,7 @@ function export_bowmonk_form_submissions() {
 
   $results = $wpdb->get_results("SELECT * FROM bowmonk_calibration", ARRAY_A);
 
-  $headers = 'Email,Business/Airport Name,Contact Person,Daytime Contact Telephone Number,Billing Address,Shipping Address,Serial Number of Unit,Level of Service,Description of Problem/Error/Malfunction,Additional Information/Requests,Payment Option,Purchase Order Number,Date Submitted';
+  $headers = 'Email,Business/Airport Name,Contact Person,Daytime Contact Telephone Number,Billing Address,Shipping Address,Serial Number of Unit,Level of Service,Description of Problem/Error/Malfunction,Additional Information/Requests,Payment Option,Purchase Order Number,Return Shipping,Customer UPS Account Number,Date Submitted';
 
   if (count($results) > 0) {
     $output = "";
@@ -537,6 +537,8 @@ function export_bowmonk_form_submissions() {
       $output .= '"'.trim(preg_replace('/\s+/', ' ', $result['additional_info'])).'",';
       $output .= '"'.$result['payment'].'",';
       $output .= '"'.$result['po_number'].'",';
+      $output .= '"'.$result['returnshipping'].'",';
+      $output .= '"'.$result['rs_customer_ups'].'",';
       $output .= date("Y-m-d H:i", $result['date_submitted']);
       $output .= "\r\n";
     }

@@ -9,7 +9,7 @@ require '../../../PHPMailer/SMTP.php';
 
 include_once "../../../wp-load.php";
 
-if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['contact_person'] != "" && $_POST['phone'] != "" && $_POST['billing_address'] != "" && $_POST['shipping_address'] != "" && $_POST['serial_number'] != "" && isset($_POST['service']) && $_POST['payment'] != "") {
+if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['contact_person'] != "" && $_POST['phone'] != "" && $_POST['billing_address'] != "" && $_POST['shipping_address'] != "" && $_POST['serial_number'] != "" && isset($_POST['service']) && $_POST['payment'] != "" && $_POST['returnshipping'] != "") {
   // if ($_POST['username'] == "") {
     $mail = new PHPMailer();
 
@@ -56,6 +56,10 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
     if ($_POST['payment'] != "") $Message .= $_POST['payment']."\n";
     if ($_POST['payment'] == "Purchase Order" && $_POST['po_number'] != "") $Message .= "Purchase Order Number: ".$_POST['po_number']."\n";
 
+    $Message .= "Return Shipping of the Unit: ";
+    if ($_POST['returnshipping'] != "") $Message .= $_POST['returnshipping']."\n";
+    if ($_POST['returnshipping'] == "Customer UPS Account Number" && $_POST['rs_customer_ups'] != "") $Message .= "Customer UPS Account Number: ".$_POST['rs_customer_ups']."\n";
+
     $Message = stripslashes($Message);
 
     $mail->Body = $Message;
@@ -90,6 +94,8 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
         'additional_info' => $_POST['additional_info'],
         'payment' => $_POST['payment'],
         'po_number' => $_POST['po_number'],
+        'returnshipping' => $_POST['returnshipping'],
+        'rs_customer_ups' => $_POST['rs_customer_ups'],
         'date_submitted' => time()
       )
     );

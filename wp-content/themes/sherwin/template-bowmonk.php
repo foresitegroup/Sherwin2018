@@ -70,6 +70,22 @@ while (have_posts()) : the_post();
         1-800-525-8876
       </div>
 
+      <select name="returnshipping" id="returnshipping" required>
+        <option value="">Return Shipping of the Unit *</option>
+        <option value="Sherwin Industries to Ship and Bill">Sherwin Industries to Ship and Bill</option>
+        <option value="Customer UPS Account Number">Customer UPS Account Number</option>
+        <option value="UPS Prepaid Return Label Included">UPS Prepaid Return Label Included</option>
+        <option value="Local Pick-Up">Local Pick-Up</option>
+      </select>
+
+      <div id="rs-customer">
+        <input type="text" name="rs_customer_ups" placeholder="Please Enter Your UPS Account Number *" id="rs_customer_ups">
+      </div>
+
+      <div id="rs-ups">
+        Note: we only accept UPS, not FEDEX, DHL, USPS or other carriers.
+      </div>
+
       <input type="hidden" name="id" value="<?php echo $post->ID; ?>">
 
       <button type="submit" id="submit">Submit</button>
@@ -102,6 +118,28 @@ while (have_posts()) : the_post();
         if (option.target.value == '') {
           po.style.display = 'none';
           cc.style.display = 'none';
+        }
+      });
+
+      var returnshipping = document.getElementById('returnshipping');
+      var rscustomer = document.getElementById('rs-customer');
+      var rsups = document.getElementById('rs-ups');
+      var rscustomerups = document.getElementById('rs_customer_ups');
+
+      returnshipping.addEventListener('change', (option) => {
+        if (option.target.value == 'Customer UPS Account Number') {
+          rscustomer.style.display = 'block';
+          rsups.style.display = 'none';
+        }
+
+        if (option.target.value == 'UPS Prepaid Return Label Included') {
+          rscustomer.style.display = 'none';
+          rsups.style.display = 'block';
+        }
+
+        if (option.target.value != 'Customer UPS Account Number' && option.target.value != 'UPS Prepaid Return Label Included') {
+          rscustomer.style.display = 'none';
+          rsups.style.display = 'none';
         }
       });
 
@@ -154,6 +192,13 @@ while (have_posts()) : the_post();
           valid = 'no';
         }
 
+        // Validate customer UPS number
+        if (returnshipping.value == 'Customer UPS Account Number' && rscustomerups.value == "") {
+          rscustomerups.classList.add('alert');
+          rscustomerups.placeholder = rscustomerups.placeholder+' REQUIRED';
+          valid = 'no';
+        }
+
         // If fields are valid, send the data
         if (valid == 'yes') {
           document.getElementById('submit').classList.add('loader');
@@ -180,6 +225,8 @@ while (have_posts()) : the_post();
 
             po.style.display = 'none';
             cc.style.display = 'none';
+            rscustomer.style.display = 'none';
+            rsups.style.display = 'none';
 
             document.getElementById('submit').classList.remove('loader');
           });
