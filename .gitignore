@@ -1,4 +1,7 @@
-
-wp-content/themes/.DS_Store
-wp-content/.DS_Store
 .DS_Store
+/*
+!wp-content/
+wp-content/*
+!wp-content/themes/
+wp-content/themes/*
+!wp-content/themes/sherwin
