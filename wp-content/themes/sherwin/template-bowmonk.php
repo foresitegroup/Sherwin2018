@@ -27,34 +27,6 @@ while (have_posts()) : the_post();
 
       <textarea name="shipping_address" placeholder="Shipping Address (Full Address) *" required></textarea>
 
-      <input type="text" name="serial_number" placeholder="Serial Number of Unit *" required>
-      
-      <h2>Please Indicate Level of Service *</h2>
-      <input type="checkbox" name="service[]" value="Calibration Only" id="s1">
-      <label for="s1">Calibration Only</label>
-
-      <input type="checkbox" name="service[]" value="Repair Only" id="s2">
-      <label for="s2">Repair Only</label>
-
-      <input type="checkbox" name="service[]" value="Calibration and Repair as Needed" id="s3">
-      <label for="s3">Calibration and Repair as Needed</label>
-
-      <input type="checkbox" name="service[]" value="Calibration and Repair under $250" id="s4">
-      <label for="s4">Calibration and Repair under $250</label>
-
-      <input type="checkbox" name="service[]" value="Calibration and Repair Must Call Before Any Repairs Made" id="s5">
-      <label for="s5">Calibration and Repair Must Call Before Any Repairs Made</label>
-
-      <input type="checkbox" name="service[]" value="Battery Replacement (6v and 3v )" id="s6">
-      <label for="s6">Battery Replacement (6v and 3v )</label>
-      <em style="font-size: 80%;">Batteries are automatically replaced every two years.</em><br>
-
-      <br>
-
-      <textarea name="description" placeholder="Description of Problem/Error/Malfunction"></textarea>
-
-      <textarea name="additional_info" placeholder="Any Additional Information/Requests for this Unit?"></textarea>
-
       <select name="payment" id="payment" required>
         <option value="">Please Enter Your Payment Option *</option>
         <option value="Purchase Order">Purchase Order Number</option>
@@ -86,6 +58,42 @@ while (have_posts()) : the_post();
         Note: we only accept UPS, not FEDEX, DHL, USPS or other carriers.
       </div>
 
+      <div id="units" data-rows="1">
+        <div class="unit">
+          <input type="text" name="serial_number0" placeholder="Serial Number of Unit *" required>
+          
+          <h2>Please Indicate Level of Service *</h2>
+          <input type="checkbox" name="service0[]" value="Calibration Only" id="s1">
+          <label for="s1">Calibration Only</label>
+
+          <input type="checkbox" name="service0[]" value="Repair Only" id="s2">
+          <label for="s2">Repair Only</label>
+
+          <input type="checkbox" name="service0[]" value="Calibration and Repair as Needed" id="s3">
+          <label for="s3">Calibration and Repair as Needed</label>
+
+          <input type="checkbox" name="service0[]" value="Calibration and Repair under $250" id="s4">
+          <label for="s4">Calibration and Repair under $250</label>
+
+          <input type="checkbox" name="service0[]" value="Calibration and Repair Must Call Before Any Repairs Made" id="s5">
+          <label for="s5">Calibration and Repair Must Call Before Any Repairs Made</label>
+
+          <input type="checkbox" name="service0[]" value="Battery Replacement (6v and 3v )" id="s6">
+          <label for="s6">Battery Replacement (6v and 3v )</label>
+          <em style="font-size: 80%;">Batteries are automatically replaced every two years.</em><br>
+
+          <br>
+
+          <textarea name="description0" placeholder="Description of Problem/Error/Malfunction"></textarea>
+
+          <textarea name="additional_info0" placeholder="Any Additional Information/Requests for this Unit?"></textarea>
+        </div>
+      </div> <!-- /#units -->
+
+      <div onclick="add_row('units')" class="row-button">Add Unit</div>
+
+      <input type="hidden" name="units" value="1" id="number_of_units">
+      
       <input type="hidden" name="id" value="<?php echo $post->ID; ?>">
 
       <button type="submit" id="submit">Submit</button>
@@ -143,6 +151,78 @@ while (have_posts()) : the_post();
         }
       });
 
+      function add_row(value) {
+        var div = document.getElementById(value);
+        var rowcount = div.dataset.rows;
+
+        var row = '<div class="buttonrow">'+
+          '<input type="text" name="serial_number'+rowcount+'" placeholder="Serial Number of Unit">'+
+          '<div onclick="remove_row(this)" class="row-button">Remove</div>'+
+        '</div>'+
+        '<h2>Please Indicate Level of Service</h2>'+
+        '<input type="checkbox" name="service'+rowcount+'[]" value="Calibration Only" id="s1'+rowcount+'">'+
+        '<label for="s1'+rowcount+'">Calibration Only</label>'+
+        '<input type="checkbox" name="service'+rowcount+'[]" value="Repair Only" id="s2'+rowcount+'">'+
+        '<label for="s2'+rowcount+'">Repair Only</label>'+
+        '<input type="checkbox" name="service'+rowcount+'[]" value="Calibration and Repair as Needed" id="s3'+rowcount+'">'+
+        '<label for="s3'+rowcount+'">Calibration and Repair as Needed</label>'+
+        '<input type="checkbox" name="service'+rowcount+'[]" value="Calibration and Repair under $250" id="s4'+rowcount+'">'+
+        '<label for="s4'+rowcount+'">Calibration and Repair under $250</label>'+
+        '<input type="checkbox" name="service'+rowcount+'[]" value="Calibration and Repair Must Call Before Any Repairs Made" id="s5'+rowcount+'">'+
+        '<label for="s5'+rowcount+'">Calibration and Repair Must Call Before Any Repairs Made</label>'+
+        '<input type="checkbox" name="service'+rowcount+'[]" value="Battery Replacement (6v and 3v )" id="s6'+rowcount+'">'+
+        '<label for="s6'+rowcount+'">Battery Replacement (6v and 3v )</label>'+
+        '<em style="font-size: 80%;">Batteries are automatically replaced every two years.</em><br><br>'+
+        '<textarea name="description'+rowcount+'" placeholder="Description of Problem/Error/Malfunction"></textarea>'+
+        '<textarea name="additional_info'+rowcount+'" placeholder="Any Additional Information/Requests for this Unit?"></textarea>';
+
+        var unit = document.createElement('div');
+        unit.setAttribute("id", "unit"+rowcount);
+        unit.classList.add("unit", "added-dynamically");
+        unit.innerHTML = row;
+        div.append(unit);
+
+        rowcount++;
+
+        div.setAttribute("data-rows", rowcount);
+        document.getElementById("number_of_units").value = rowcount;
+      }
+
+      function remove_row(value) {
+        document.getElementById(value.parentNode.parentNode.id).remove();
+
+        var units = document.querySelectorAll('.unit');
+
+        for (let i = 0; i < units.length; i++) {
+          units[i].setAttribute("id", "unit"+i);
+
+          var sn = document.querySelectorAll('#unit'+i+' input[name^="serial_number"]');
+          sn.forEach((snName) => { snName.name = "serial_number"+i; });
+
+          var service = document.querySelectorAll('#unit'+i+' input[name^="service"]');
+          service.forEach((serviceCheck) => {
+            serviceCheck.name = "service"+i+"[]";
+            var sid = serviceCheck.id.substring(0,2);
+            serviceCheck.setAttribute("id", sid+i);
+          });
+
+          var serviceL = document.querySelectorAll('#unit'+i+' input[name^="service"] + label');
+          serviceL.forEach((serviceLabel) => {
+            var slfor = serviceLabel.htmlFor.substring(0,2);
+            serviceLabel.htmlFor = slfor+i;
+          });
+
+          var desc = document.querySelectorAll('#unit'+i+' textarea[name^="description"]');
+          desc.forEach((descName) => { descName.name = "description"+i; });
+
+          var info = document.querySelectorAll('#unit'+i+' textarea[name^="additional_info"]');
+          info.forEach((infoName) => { infoName.name = "additional_info"+i; });
+        }
+
+        document.getElementById("units").setAttribute("data-rows", units.length);
+        document.getElementById("number_of_units").value = units.length;
+      }
+
       // BEGIN form submit
       const form = document.getElementById('form-bowmonk');
       form.addEventListener('submit', submitForm);
@@ -165,7 +245,7 @@ while (have_posts()) : the_post();
         }
         
         // Validate checkboxes
-        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="service[]"]');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name^="service"]');
         let isChecked = false;
 
         for (let i = 0; i < checkboxes.length; i++) {
@@ -176,7 +256,7 @@ while (have_posts()) : the_post();
         }
 
         if (!isChecked) {
-          const labels = document.querySelectorAll('input[type="checkbox"][name="service[]"] + LABEL');
+          const labels = document.querySelectorAll('input[type="checkbox"][name^="service"] + LABEL');
 
           labels.forEach(label => {
             label.classList.add('alert');
@@ -227,6 +307,12 @@ while (have_posts()) : the_post();
             cc.style.display = 'none';
             rscustomer.style.display = 'none';
             rsups.style.display = 'none';
+
+            document.querySelectorAll('.added-dynamically').forEach(function (elem) {
+              elem.remove();
+            });
+            document.getElementById("units").setAttribute("data-rows", 1);
+            document.getElementById("number_of_units").value = 1;
 
             document.getElementById('submit').classList.remove('loader');
           });
