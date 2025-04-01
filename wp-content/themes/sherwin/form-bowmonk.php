@@ -9,7 +9,7 @@ require '../../../PHPMailer/SMTP.php';
 
 include_once "../../../wp-load.php";
 
-if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['contact_person'] != "" && $_POST['phone'] != "" && $_POST['billing_address'] != "" && $_POST['shipping_address'] != "" && $_POST['payment'] != "" && $_POST['returnshipping'] != "") {
+if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['contact_person'] != "" && $_POST['phone'] != "" && $_POST['billing_address'] != ""&& $_POST['billing_city'] != ""&& $_POST['billing_state'] != ""&& $_POST['billing_zip'] != "" && $_POST['shipping_address'] != "" && $_POST['payment'] != "" && $_POST['returnshipping'] != "") {
   // if ($_POST['username'] == "") {
     $mail = new PHPMailer();
 
@@ -35,48 +35,52 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
     $mail->addBCC('foresitegroupllc@gmail.com');
 
     $Message = "Email: ".$_POST['email']."\n";
-    $Message .= "Business/Airport Name: ".$_POST['business_airport_name']."\n";
-    $Message .= "Contact Person: ".$_POST['contact_person']."\n";
-    $Message .= "Daytime Contact Telephone Number: ".$_POST['phone']."\n\n";
+    $Message .= "Name: ".$_POST['business_airport_name']."\n";
+    $Message .= "Contact: ".$_POST['contact_person']."\n";
+    $Message .= "Telephone: ".$_POST['phone']."\n";
 
-    $Message .= "Billing Address\n".$_POST['billing_address']."\n\n";
+    $Message .= "Street: ".$_POST['billing_address']."\n";
+    $Message .= "City: ".$_POST['billing_city']."\n";
+    $Message .= "State: ".$_POST['billing_state']."\n";
+    $Message .= "Zip: ".$_POST['billing_zip']."\n";
 
-    $Message .= "Shipping Address\n".$_POST['shipping_address']."\n\n";
-
-    $Message .= "Payment Option: ";
+    $Message .= "Payment: ";
     if ($_POST['payment'] != "") $Message .= $_POST['payment']."\n";
-    if ($_POST['payment'] == "Purchase Order" && $_POST['po_number'] != "") $Message .= "Purchase Order Number: ".$_POST['po_number']."\n";
+    if ($_POST['payment'] == "Purchase Order" && $_POST['po_number'] != "") $Message .= "PO: ".$_POST['po_number']."\n";
 
-    $Message .= "Return Shipping of the Unit: ";
+    $Message .= "Shipping: ";
     if ($_POST['returnshipping'] != "") $Message .= $_POST['returnshipping']."\n";
     if ($_POST['returnshipping'] == "Customer UPS Account Number" && $_POST['rs_customer_ups'] != "") $Message .= "Customer UPS Account Number: ".$_POST['rs_customer_ups']."\n";
 
     $Message .= "\n";
 
+    $units_additional = "\n";
+
     for($i = 0; $i < $_POST['units']; $i++) {
       $num = $i;
       $num++;
 
-      $Message .= "DETAILS OF UNIT";
-      if ($_POST['units'] > 1) $Message .= " ".$num;
-      $Message .= "\n";
-
-      if ($_POST['serial_number'.$i] != "") $Message .= "Serial Number of Unit: ".$_POST['serial_number'.$i]."\n";
+      $Message .= "Unit ".$num.": ";
+      if ($_POST['serial_number'.$i] != "") $Message .= $_POST['serial_number'.$i]." ";
 
       $service = "";
       if (isset($_POST['service'.$i])) {
         $service = implode(", ", $_POST['service'.$i]);
-        $Message .= "Level of Service: ".$service."\n";
+        $Message .= "Service: ".$service;
       }
 
-      if ($_POST['description'.$i] != "") $Message .= "Description of Problem/Error/Malfunction: ".$_POST['description'.$i]."\n";
-
-      if ($_POST['additional_info'.$i] != "") $Message .= "Additional Information/Requests for this Unit: ".$_POST['additional_info'.$i]."\n";
-
       $Message .= "\n";
+
+      if ($_POST['description'.$i] != "") $units_additional .= "Unit ".$num." Description of Problem/Error/Malfunction: ".$_POST['description'.$i]."\n";
+      if ($_POST['additional_info'.$i] != "") $units_additional .= "Unit ".$num." Additional Information/Requests: ".$_POST['additional_info'.$i]."\n";
     }
 
+    $Message .= $units_additional;
+
+    $Message .= "\nShipping Address\n".$_POST['shipping_address']."\n\n";
+
     $Message = stripslashes($Message);
+    // echo "<pre>".$Message."</pre>";
 
     $mail->Body = $Message;
     $mail->send();
@@ -108,6 +112,9 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
           'contact_person' => $_POST['contact_person'],
           'phone' => $_POST['phone'],
           'billing_address' => $_POST['billing_address'],
+          'billing_city' => $_POST['billing_city'],
+          'billing_state' => $_POST['billing_state'],
+          'billing_zip' => $_POST['billing_zip'],
           'shipping_address' => $_POST['shipping_address'],
           'serial_number' => $_POST['serial_number'.$i],
           'service' => $dbservice,

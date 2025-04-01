@@ -519,7 +519,7 @@ function export_bowmonk_form_submissions() {
 
   $results = $wpdb->get_results("SELECT * FROM bowmonk_calibration", ARRAY_A);
 
-  $headers = 'Email,Business/Airport Name,Contact Person,Daytime Contact Telephone Number,Billing Address,Shipping Address,Serial Number of Unit,Level of Service,Description of Problem/Error/Malfunction,Additional Information/Requests,Payment Option,Purchase Order Number,Return Shipping,Customer UPS Account Number,Date Submitted';
+  $headers = 'Email,Business/Airport Name,Contact Person,Daytime Contact Telephone Number,Billing Address,Billing City,Billing State,Billing Zip,Shipping Address,Serial Number of Unit,Level of Service,Description of Problem/Error/Malfunction,Additional Information/Requests,Payment Option,Purchase Order Number,Return Shipping,Customer UPS Account Number,Date Submitted';
 
   if (count($results) > 0) {
     $output = "";
@@ -530,6 +530,9 @@ function export_bowmonk_form_submissions() {
       $output .= '"'.$result['contact_person'].'",';
       $output .= '"'.$result['phone'].'",';
       $output .= '"'.trim(preg_replace('/\s+/', ' ', $result['billing_address'])).'",';
+      $output .= '"'.$result['billing_city'].'",';
+      $output .= '"'.$result['billing_state'].'",';
+      $output .= '"'.$result['billing_zip'].'",';
       $output .= '"'.trim(preg_replace('/\s+/', ' ', $result['shipping_address'])).'",';
       $output .= '"'.$result['serial_number'].'",';
       $output .= '"'.$result['service'].'",';

@@ -23,7 +23,13 @@ while (have_posts()) : the_post();
 
       <input type="tel" name="phone" placeholder="Daytime Contact Telephone Number *" required>
 
-      <textarea name="billing_address" placeholder="Billing Address (Full Address) *" required></textarea>
+      <input type="text" name="billing_address" placeholder="Address *" required>
+
+      <input type="text" name="billing_city" placeholder="City *" required>
+
+      <input type="text" name="billing_state" placeholder="State *" required>
+
+      <input type="text" name="billing_zip" placeholder="Zip Code *" required>
 
       <textarea name="shipping_address" placeholder="Shipping Address (Full Address) *" required></textarea>
 
