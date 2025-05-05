@@ -37,6 +37,7 @@ while (have_posts()) : the_post();
         <option value="">Please Enter Your Payment Option *</option>
         <option value="Purchase Order">Purchase Order Number</option>
         <option value="Credit Card">Credit Card (MC/Visa/AMEX)</option>
+        <option value="Contact Name">Contact Name: First and Last</option>
       </select>
 
       <div id="payment-po">
@@ -46,6 +47,10 @@ while (have_posts()) : the_post();
       <div id="payment-cc">
         Please call our corporate office for credit card processing.<br>
         1-800-525-8876
+      </div>
+
+      <div id="payment-cn">
+        <input type="text" name="po_name" placeholder="Please Enter Contact Name: First and Last *" id="po_name">
       </div>
 
       <select name="returnshipping" id="returnshipping" required>
@@ -116,22 +121,32 @@ while (have_posts()) : the_post();
       var payment = document.getElementById('payment');
       var po = document.getElementById('payment-po');
       var cc = document.getElementById('payment-cc');
+      var cn = document.getElementById('payment-cn');
       var ponum = document.getElementById('po_number');
 
       payment.addEventListener('change', (option) => {
         if (option.target.value == 'Purchase Order') {
           po.style.display = 'block';
           cc.style.display = 'none';
+          cn.style.display = 'none';
         }
 
         if (option.target.value == 'Credit Card') {
           po.style.display = 'none';
           cc.style.display = 'block';
+          cn.style.display = 'none';
+        }
+
+        if (option.target.value == 'Contact Name') {
+          po.style.display = 'none';
+          cc.style.display = 'none';
+          cn.style.display = 'block';
         }
 
         if (option.target.value == '') {
           po.style.display = 'none';
           cc.style.display = 'none';
+          cn.style.display = 'none';
         }
       });
 
@@ -311,6 +326,7 @@ while (have_posts()) : the_post();
 
             po.style.display = 'none';
             cc.style.display = 'none';
+            cn.style.display = 'none';
             rscustomer.style.display = 'none';
             rsups.style.display = 'none';
 

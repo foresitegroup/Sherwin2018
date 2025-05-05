@@ -43,10 +43,18 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
     $Message .= "City: ".$_POST['billing_city']."\n";
     $Message .= "State: ".$_POST['billing_state']."\n";
     $Message .= "Zip: ".$_POST['billing_zip']."\n";
-
+    
+    $po_number = "";
     $Message .= "Payment: ";
     if ($_POST['payment'] != "") $Message .= $_POST['payment']."\n";
-    if ($_POST['payment'] == "Purchase Order" && $_POST['po_number'] != "") $Message .= "PO: ".$_POST['po_number']."\n";
+    if ($_POST['payment'] == "Purchase Order" && $_POST['po_number'] != "") {
+      $Message .= "PO: ".$_POST['po_number']."\n";
+      $po_number = $_POST['po_number'];
+    }
+    if ($_POST['payment'] == "Contact Name" && $_POST['po_name'] != "") {
+      $Message .= "Payment Contact Name: ".$_POST['po_name']."\n";
+      $po_number = $_POST['po_name'];
+    }
 
     $Message .= "Shipping: ";
     if ($_POST['returnshipping'] != "") $Message .= $_POST['returnshipping']."\n";
@@ -121,7 +129,7 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
           'description' => $_POST['description'.$i],
           'additional_info' => $_POST['additional_info'.$i],
           'payment' => $_POST['payment'],
-          'po_number' => $_POST['po_number'],
+          'po_number' => $po_number,
           'returnshipping' => $_POST['returnshipping'],
           'rs_customer_ups' => $_POST['rs_customer_ups'],
           'date_submitted' => time()
