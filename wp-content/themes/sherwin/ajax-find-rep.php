@@ -181,13 +181,13 @@ function email($address, $name="") {
     <br>
   </div>
 
-  <div>
+  <!-- <div>
     <strong>Nate Luptowski</strong><br>
-    <?php email("nluptowski@sherwinindustries.com"); ?><br>
+    <?php //email("nluptowski@sherwinindustries.com"); ?><br>
     Western and Upper Michigan<br>
     Eastern UP<br>
     <strong>Office:</strong> <a href="tel:989-326-0476">989-326-0476</a>
-  </div>
+  </div> -->
 <?php } ?>
 
 <?php if ($_POST['state'] == "Virginia") { ?>
