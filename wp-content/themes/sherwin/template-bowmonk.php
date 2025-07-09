@@ -30,7 +30,9 @@ while (have_posts()) : the_post();
       <input type="text" name="billing_state" placeholder="State *" required>
 
       <input type="text" name="billing_zip" placeholder="Zip Code *" required>
-
+      
+      <strong>No P.O. Boxes / Physical Addresses Only</strong>
+      
       <textarea name="shipping_address" placeholder="Shipping Address (Full Address) *" required></textarea>
 
       <select name="payment" id="payment" required>
@@ -72,7 +74,7 @@ while (have_posts()) : the_post();
       <div id="units" data-rows="1">
         <div class="unit">
           <input type="text" name="serial_number0" placeholder="Serial Number of Unit *" required>
-          
+
           <h2>Please Indicate Level of Service *</h2>
           <input type="checkbox" name="service0[]" value="Calibration Only" id="s1">
           <label for="s1">Calibration Only</label>
@@ -104,7 +106,7 @@ while (have_posts()) : the_post();
       <div onclick="add_row('units')" class="row-button">Add Unit</div>
 
       <input type="hidden" name="units" value="1" id="number_of_units">
-      
+
       <input type="hidden" name="id" value="<?php echo $post->ID; ?>">
 
       <button type="submit" id="submit">Submit</button>
@@ -264,7 +266,7 @@ while (have_posts()) : the_post();
             valid = 'no';
           }
         }
-        
+
         // Validate checkboxes
         const checkboxes = document.querySelectorAll('input[type="checkbox"][name^="service"]');
         let isChecked = false;
@@ -285,7 +287,7 @@ while (have_posts()) : the_post();
 
           valid = 'no';
         }
-        
+
         // Validate purchase order number
         if (payment.value == 'po' && ponum.value == "") {
           ponum.classList.add('alert');
@@ -317,7 +319,7 @@ while (have_posts()) : the_post();
             document.getElementById('modal-content').innerHTML = result;
             modal.style.display = "block";
             form.reset();
-            
+
             // Clear alerts
             document.querySelectorAll('.alert').forEach(function (alert) {
               alert.classList.remove('alert');
