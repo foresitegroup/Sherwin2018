@@ -37,12 +37,12 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
     $Message = "Email: ".$_POST['email']."\n";
     $Message .= "Name: ".$_POST['business_airport_name']."\n";
     $Message .= "Contact: ".$_POST['contact_person']."\n";
-    $Message .= "Telephone: ".$_POST['phone']."\n";
+    $Message .= "Telephone: ".$_POST['phone']."\n\n";
 
-    $Message .= "Street: ".$_POST['billing_address']."\n";
-    $Message .= "City: ".$_POST['billing_city']."\n";
-    $Message .= "State: ".$_POST['billing_state']."\n";
-    $Message .= "Zip: ".$_POST['billing_zip']."\n";
+    $Message .= "Billing Address: ".$_POST['billing_address']."\n";
+    $Message .= "Billing City: ".$_POST['billing_city']."\n";
+    $Message .= "Billing State: ".$_POST['billing_state']."\n";
+    $Message .= "Billing Zip: ".$_POST['billing_zip']."\n\n";
     
     $po_number = "";
     $Message .= "Payment: ";
@@ -55,8 +55,15 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
       $Message .= "Payment Contact Name: ".$_POST['po_name']."\n";
       $po_number = $_POST['po_name'];
     }
+    $Message .= "\n";
 
-    $Message .= "Shipping: ";
+    $Message .= "Shipping Address: ".$_POST['shipping_address']."\n";
+    if ($_POST['shipping_address_2'] != "") $Message .= "Shipping Address 2: ".$_POST['shipping_address_2']."\n";
+    $Message .= "Shipping City: ".$_POST['shipping_city']."\n";
+    $Message .= "Shipping State: ".$_POST['shipping_state']."\n";
+    $Message .= "Shipping Zip: ".$_POST['shipping_zip']."\n\n";
+
+    $Message .= "Shipping Method: ";
     if ($_POST['returnshipping'] != "") $Message .= $_POST['returnshipping']."\n";
     if ($_POST['returnshipping'] == "Customer UPS Account Number" && $_POST['rs_customer_ups'] != "") $Message .= "Customer UPS Account Number: ".$_POST['rs_customer_ups']."\n";
 
@@ -83,21 +90,76 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
       if ($_POST['additional_info'.$i] != "") $units_additional .= "Unit ".$num." Additional Information/Requests: ".$_POST['additional_info'.$i]."\n";
     }
 
-    $Message .= $units_additional;
-
-    $Message .= "\nShipping Address\n".$_POST['shipping_address']."\n\n";
+    $Message .= $units_additional."\n\n";
 
     $Message = stripslashes($Message);
     // echo "<pre>".$Message."</pre>";
 
     $mail->Body = $Message;
+    
+    // Create CSV attachment
+    ob_start();
+    $fp = fopen('php://output', 'w');
+
+    fputcsv($fp, array(
+      "Date Submitted",
+      "Serial Number",
+      "Business/Airport Name",
+      "Contact Person",
+      "Telephone",
+      "Email",
+      "Address Line 1",
+      "Address Line 2",
+      "City",
+      "State",
+      "Zip",
+      "Requested Service",
+      "Description of Problem/Error/Malfunction",
+      "Additional Information/Requests",
+      "Return Shipping",
+      "Customer Account Number"
+    ));
+
+    $csvdate = date('n/j/y H:i', time());
+
+    for($i = 0; $i < $_POST['units']; $i++) {
+      $csvservice = "";
+      if (isset($_POST['service'.$i])) $csvservice = implode(", ", $_POST['service'.$i]);
+
+      fputcsv($fp, array(
+        $csvdate,
+        $_POST['serial_number'.$i],
+        $_POST['business_airport_name'],
+        $_POST['contact_person'],
+        $_POST['phone'],
+        $_POST['email'],
+        $_POST['shipping_address'],
+        $_POST['shipping_address_2'],
+        $_POST['shipping_city'],
+        $_POST['shipping_state'],
+        $_POST['shipping_zip'],
+        $csvservice,
+        $_POST['description'.$i],
+        $_POST['additional_info'.$i],
+        $_POST['returnshipping'],
+        $_POST['rs_customer_ups']
+      ));
+    }
+
+    fclose($fp);
+    $csv_string = ob_get_contents();
+    ob_end_clean();
+
+    $mail->addStringAttachment($csv_string,"bowmonk_calibration_".date("Y-m-d_H-i",time()).".csv");
+    
     $mail->send();
 
     // User confirmation mail
+    $mail->clearAttachments();
     $mail->clearAllRecipients();
     $mail->addAddress($_POST['email']);
 
-    $ToUser = "** THIS IS AN AUTOMAITED MESSAGE. PLEASE DO NOT REPLY. **\n\n";
+    $ToUser = "** THIS IS AN AUTOMATED MESSAGE. PLEASE DO NOT REPLY. **\n\n";
     $ToUser .= strip_tags(get_post_meta($_POST['id'], 'form_success', true));
     if ($_POST['payment'] == "Credit Card") $ToUser .= "\n\nPlease call our corporate office for credit card processing.\n1-800-525-8876";
     $ToUser .= "\n\nINFORMATION SUBMITTED\n";
@@ -124,6 +186,10 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
           'billing_state' => $_POST['billing_state'],
           'billing_zip' => $_POST['billing_zip'],
           'shipping_address' => $_POST['shipping_address'],
+          'shipping_address_2' => $_POST['shipping_address_2'],
+          'shipping_city' => $_POST['shipping_city'],
+          'shipping_state' => $_POST['shipping_state'],
+          'shipping_zip' => $_POST['shipping_zip'],
           'serial_number' => $_POST['serial_number'.$i],
           'service' => $dbservice,
           'description' => $_POST['description'.$i],

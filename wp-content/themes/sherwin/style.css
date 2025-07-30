@@ -2162,7 +2162,7 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   line-height: 1;
 }
 
-#form-bowmonk #payment-po, #form-bowmonk #payment-cc,
+#form-bowmonk #payment-po, #form-bowmonk #payment-cc, #form-bowmonk #payment-cn,
 #form-bowmonk #rs-customer, #form-bowmonk #rs-ups { display: none; }
 
 #form-bowmonk #payment-cc, #form-bowmonk #rs-ups { transform: translateY(-1.5rem); }

@@ -4,6 +4,8 @@
  */
 get_header();
 
+$states = array('AL' => 'Alabama', 'AK' => 'Alaska', 'AZ' => 'Arizona', 'AR' => 'Arkansas', 'CA' => 'California', 'CO' => 'Colorado', 'CT' => 'Connecticut', 'DE' => 'Delaware', 'DC' => 'District of Columbia', 'FL' => 'Florida', 'GA' => 'Georgia', 'HI' => 'Hawaii', 'ID' => 'Idaho', 'IL' => 'Illinois', 'IN' => 'Indiana', 'IA' => 'Iowa', 'KS' => 'Kansas', 'KY' => 'Kentucky', 'LA' => 'Louisiana', 'ME' => 'Maine', 'MD' => 'Maryland', 'MA' => 'Massachusetts', 'MI' => 'Michigan', 'MN' => 'Minnesota', 'MS' => 'Mississippi', 'MO' => 'Missouri', 'MT' => 'Montana', 'NE' => 'Nebraska', 'NV' => 'Nevada', 'NH' => 'New Hampshire', 'NJ' => 'New Jersey', 'NM' => 'New Mexico', 'NY' => 'New York', 'NC' => 'North Carolina', 'ND' => 'North Dakota', 'OH' => 'Ohio', 'OK' => 'Oklahoma', 'OR' => 'Oregon', 'PA' => 'Pennsylvania', 'RI' => 'Rhode Island', 'SC' => 'South Carolina', 'SD' => 'South Dakota', 'TN' => 'Tennessee', 'TX' => 'Texas', 'UT' => 'Utah', 'VT' => 'Vermont', 'VA' => 'Virginia', 'WA' => 'Washington', 'WV' => 'West Virginia', 'WI' => 'Wisconsin', 'WY' => 'Wyoming');
+
 while (have_posts()) : the_post();
   echo '<div class="site-width">'."\n";
     the_content();
@@ -23,17 +25,16 @@ while (have_posts()) : the_post();
 
       <input type="tel" name="phone" placeholder="Daytime Contact Telephone Number *" required>
 
-      <input type="text" name="billing_address" placeholder="Address *" required>
+      <input type="text" name="billing_address" placeholder="Billing Address *" required>
 
-      <input type="text" name="billing_city" placeholder="City *" required>
+      <input type="text" name="billing_city" placeholder="Billing City *" required>
 
-      <input type="text" name="billing_state" placeholder="State *" required>
+      <select name="billing_state" required>
+        <option value="">Billing State *</option>
+        <?php foreach($states as $code => $state) echo '<option value="'.$code.'">'.$state."</option>\n"; ?>
+      </select>
 
-      <input type="text" name="billing_zip" placeholder="Zip Code *" required>
-      
-      <strong>No P.O. Boxes / Physical Addresses Only</strong>
-      
-      <textarea name="shipping_address" placeholder="Shipping Address (Full Address) *" required></textarea>
+      <input type="text" name="billing_zip" placeholder="Billing Zip Code *" required>
 
       <select name="payment" id="payment" required>
         <option value="">Please Enter Your Payment Option *</option>
@@ -52,9 +53,24 @@ while (have_posts()) : the_post();
       </div>
 
       <div id="payment-cn">
-        <input type="text" name="po_name" placeholder="Please Enter Contact Name: First and Last *" id="po_name">
+        <input type="text" name="po_name" placeholder="Please Enter Payment Contact Name: First and Last *" id="po_name">
       </div>
+      
+      <strong>For Shipping, No P.O. Boxes / Physical Addresses Only</strong>
 
+      <input type="text" name="shipping_address" placeholder="Shipping Address Line 1 *" required>
+
+      <input type="text" name="shipping_address_2" placeholder="Shipping Address Line 2">
+
+      <input type="text" name="shipping_city" placeholder="Shipping City *" required>
+
+      <select name="shipping_state" required>
+        <option value="">Shipping State *</option>
+        <?php foreach($states as $code => $state) echo '<option value="'.$code.'">'.$state."</option>\n"; ?>
+      </select>
+
+      <input type="text" name="shipping_zip" placeholder="Shipping Zip Code *" required>
+      
       <select name="returnshipping" id="returnshipping" required>
         <option value="">Return Shipping of the Unit *</option>
         <option value="Sherwin Industries to Ship and Bill">Sherwin Industries to Ship and Bill</option>
