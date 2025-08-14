@@ -97,32 +97,32 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
 
     $mail->Body = $Message;
     
-    // Create CSV attachment
-    ob_start();
-    $fp = fopen('php://output', 'w');
-
-    fputcsv($fp, array(
-      "Date Submitted",
-      "Serial Number",
-      "Business/Airport Name",
-      "Contact Person",
-      "Telephone",
-      "Email",
-      "Address Line 1",
-      "Address Line 2",
-      "City",
-      "State",
-      "Zip",
-      "Requested Service",
-      "Description of Problem/Error/Malfunction",
-      "Additional Information/Requests",
-      "Return Shipping",
-      "Customer Account Number"
-    ));
-
+    // Create CSV attachment(s)
     $csvdate = date('n/j/y H:i', time());
-
+    
     for($i = 0; $i < $_POST['units']; $i++) {
+      ob_start();
+      $fp = fopen('php://output', 'w');
+
+      fputcsv($fp, array(
+        "Date Submitted",
+        "Serial Number",
+        "Business/Airport Name",
+        "Contact Person",
+        "Telephone",
+        "Email",
+        "Address Line 1",
+        "Address Line 2",
+        "City",
+        "State",
+        "Zip",
+        "Requested Service",
+        "Description of Problem/Error/Malfunction",
+        "Additional Information/Requests",
+        "Return Shipping",
+        "Customer Account Number"
+      ));
+
       $csvservice = "";
       if (isset($_POST['service'.$i])) $csvservice = implode(", ", $_POST['service'.$i]);
 
@@ -144,13 +144,13 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
         $_POST['returnshipping'],
         $_POST['rs_customer_ups']
       ));
+
+      fclose($fp);
+      $csv_string = ob_get_contents();
+      ob_end_clean();
+
+      $mail->addStringAttachment($csv_string,$_POST['serial_number'.$i].".csv");
     }
-
-    fclose($fp);
-    $csv_string = ob_get_contents();
-    ob_end_clean();
-
-    $mail->addStringAttachment($csv_string,"bowmonk_calibration_".date("Y-m-d_H-i",time()).".csv");
     
     $mail->send();
 
