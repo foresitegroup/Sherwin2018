@@ -17,6 +17,9 @@ while (have_posts()) : the_post();
       <h2>* Required</h2>
       <br>
 
+      <strong>MUST READ - If you have multiple units for service, please click ADD UNIT and fill in the appropriate information.</strong><br>
+      <br>
+
       <input type="email" name="email" placeholder="Email *" required>
 
       <input type="text" name="business_airport_name" placeholder="Business/Airport Name *" required>
@@ -89,7 +92,8 @@ while (have_posts()) : the_post();
 
       <div id="units" data-rows="1">
         <div class="unit">
-          <input type="text" name="serial_number0" placeholder="Serial Number of Unit *" required>
+          <strong>Please include <u>one</u> serial number</strong><br>
+          <input type="text" name="serial_number0" maxlength="9" placeholder="Serial Number of Unit *" required>
 
           <h2>Please Indicate Level of Service *</h2>
           <input type="checkbox" name="service0[]" value="Calibration Only" id="s1">
@@ -194,8 +198,9 @@ while (have_posts()) : the_post();
         var div = document.getElementById(value);
         var rowcount = div.dataset.rows;
 
-        var row = '<div class="buttonrow">'+
-          '<input type="text" name="serial_number'+rowcount+'" placeholder="Serial Number of Unit">'+
+        var row = '<strong>Please include <u>one</u> serial number</strong><br>'+
+        '<div class="buttonrow">'+
+          '<input type="text" name="serial_number'+rowcount+'" maxlength="9" placeholder="Serial Number of Unit">'+
           '<div onclick="remove_row(this)" class="row-button">Remove</div>'+
         '</div>'+
         '<h2>Please Indicate Level of Service</h2>'+
