@@ -828,9 +828,36 @@ INPUT[type="submit"]:hover { background: #FFFFFF; color: #E9484A; }
   letter-spacing: 0.05em;
   text-transform: uppercase;
   text-align: center;
-  padding: 3.8em 2% 3.7em;
+  padding: 3em 2%;
   box-sizing: border-box;
 }
+
+#main-footer .sourcewell { display: inline-block; }
+
+#main-footer .sourcewell IMG { width: 122px; height: auto; }
+
+#sourcewell {
+  padding: 1rem 0; background: #353535; color: #FFFFFF;
+  font-family: 'Teko', sans-serif; font-weight: 500; font-size: 24px;
+  line-height: 1; text-transform: uppercase; text-align: center;
+}
+
+#sourcewell .flex {
+  display: flex; justify-content: space-between; align-items: center; gap: 1em;
+  width: 706px; margin: 0 auto;
+
+  @media (max-width: 750px) { & { width: 96%; } }
+}
+
+#sourcewell .flex .sourcewell { font-size: 0; line-height: 1; }
+
+#sourcewell .flex IMG { width: 122px; height: auto; }
+
+#sourcewell .flex > DIV P { margin: 0; }
+#sourcewell .flex > DIV P:first-of-type { margin-bottom: 0.25em; }
+
+#sourcewell .flex > DIV P A { color: #C7EAFD; }
+#sourcewell .flex > DIV P A:hover { color: #E9484A; }
 
 .home-content {
   padding: 35px 0;

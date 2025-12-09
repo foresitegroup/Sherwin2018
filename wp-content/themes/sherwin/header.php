@@ -90,7 +90,7 @@
 <body <?php body_class(); ?>>
 	<div id="header-spacer"></div>
 
-	<header id="main-header"<?php if(is_front_page()) echo ' class="home-header home-header-border'; ?>">
+	<header id="main-header"<?php if(is_front_page()) echo ' class="home-header home-header-border"'; ?>>
 		<div class="site-width">
       <?php wp_nav_menu(array('theme_location' => 'top-menu', 'container_class' => 'top-menu')); ?>
 
@@ -114,6 +114,17 @@
 	</header>
 
 	<?php if (is_front_page()) { ?>
+    <div id="sourcewell">
+      <div class="flex">
+        <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN" class="sourcewell"><img src="<?php echo get_template_directory_uri(); ?>/images/sourcewell.webp" width="220" height="138" alt="Sourcewell Awarded Contract # 110122-SWN"></a>
+
+        <div>
+          <p>Looking for more product/service details about this contract?</p>
+          <p>Visit <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN">Buy Sourcewell</a></p>
+        </div>
+      </div>
+    </div>
+
     <?php wp_enqueue_script('foresite-cycle-jquery'); ?>
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.min.js"></script>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/inc/jquery.fancybox.css?<?php echo filemtime(get_template_directory() . "/inc/jquery.fancybox.css"); ?>">

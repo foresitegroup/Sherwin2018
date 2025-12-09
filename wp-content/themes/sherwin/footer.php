@@ -61,6 +61,9 @@
   <!--End mc_embed_signup-->
 
   <footer id="main-footer">
+    <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN" class="sourcewell"><img src="<?php echo get_template_directory_uri(); ?>/images/sourcewell.webp" width="220" height="138" alt="Sourcewell Awarded Contract # 110122-SWN"></a><br>
+    <br>
+
     All rights reserved. Sherwin Industries, Inc. &copy; <?php echo date("Y"); ?><br>
       <br>
 
