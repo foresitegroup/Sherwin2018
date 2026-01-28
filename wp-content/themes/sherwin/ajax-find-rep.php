@@ -115,14 +115,6 @@ function email($address, $name="") {
     <strong>Office:</strong> <a href="tel:574-303-9093">574-303-9093</a><br>
     <br>
   </div>
-  
-  <div>
-    <h3>Indiana Warehouse</h3>
-    <strong>Glenrock, Inc.</strong><br>
-    4330 Hull Street, #300<br>
-    Lawrence, IN 46226<br>
-    <strong>Office:</strong> <a href="tel:414-281-6400">414-281-6400</a>
-  </div>
 <?php } ?>
 
 <?php if ($_POST['state'] == "Kentucky") { ?>
