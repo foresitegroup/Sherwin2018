@@ -12,7 +12,7 @@
     </div>
   <?php } ?>
   
-  <?php if ($post->post_name != "about") { ?>
+  <?php if ($post->post_name != "about" && $post->post_name != "coming-home-always-matters") { ?>
     <div id="footer-contact">
       <div class="corporate">
         <div>

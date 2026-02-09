@@ -456,7 +456,7 @@ function form_metaboxes() {
   global $post;
   $template = get_post_meta($post->ID, '_wp_page_template', true);
 
-  if ($template == "template-bowmonk.php") {
+  if ($template == "template-bowmonk.php" || $template == "template-coming-home.php") {
     add_meta_box('form_metabox_settings', 'Form Settings', 'display_form_metabox_settings', 'page', 'normal', 'high');
   }
 }

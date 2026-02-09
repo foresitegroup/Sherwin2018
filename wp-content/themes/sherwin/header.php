@@ -195,6 +195,13 @@
         Catch Sherwin Industries at the following events
       </div>
     </div>
+  <?php } elseif ($post->post_name == "coming-home-always-matters") { ?>
+<!--     <div id="banner-events">
+      <div class="site-width">
+        <h1><?php //single_post_title(); ?></h1>
+        Catch Sherwin Industries at the following events
+      </div>
+    </div> -->
 	<?php } else { ?>
     <div id="banner"<?php if ($post->post_name == "about" || $post->post_name == "contact") echo ' class="tongue"'; ?>>
       <div class="site-width">
