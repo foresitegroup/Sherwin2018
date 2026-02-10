@@ -51,6 +51,17 @@ if ($_POST['email'] != "" && $_POST['name'] != "") {
     
     $mail->send();
 
+    $wpdb->insert('coming_home',
+      array(
+        'name' => $_POST['name'],
+        'company' => $_POST['company'],
+        'email' => $_POST['email'],
+        'phone' => $_POST['phone'],
+        'additional' => $_POST['additional'],
+        'date_submitted' => time()
+      )
+    );
+
     $feedback = nl2br(get_post_meta($_POST['id'], 'form_success', true));
   // } else {
   //   $feedback = "Your message has triggered the spam filter and was not sent. If this an error, please contact us at 1-800-525-8876.";
