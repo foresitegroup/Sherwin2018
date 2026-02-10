@@ -203,6 +203,19 @@
       </div>
     </div> -->
 	<?php } else { ?>
+    <?php if ($post->post_name == "product-catalog") { ?>
+    <div id="sourcewell">
+      <div class="flex">
+        <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN" class="sourcewell"><img src="<?php echo get_template_directory_uri(); ?>/images/sourcewell.webp" width="220" height="138" alt="Sourcewell Awarded Contract # 110122-SWN"></a>
+
+        <div>
+          <p>Looking for more product/service details about this contract?</p>
+          <p>Visit <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN">Buy Sourcewell</a></p>
+        </div>
+      </div>
+    </div>
+    <?php } ?>
+    
     <div id="banner"<?php if ($post->post_name == "about" || $post->post_name == "contact") echo ' class="tongue"'; ?>>
       <div class="site-width">
 	      <h1><?php single_post_title(); ?></h1>
@@ -211,7 +224,7 @@
           echo '<div class="quick-jump">';
             echo "Quick Jump To<br>";
 
-            $quick = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 1, 'parent' => 0, 'exclude' => array(17)));
+            $quick = get_categories(array('taxonomy' => 'product_cat', 'hide_empty' => 1, 'parent' => 0, 'exclude' => array(17), 'orderby' => 'name'));
             foreach ($quick as $jump) {
               echo '<a href="#'.$jump->slug.'">'.$jump->name.'</a>';
             }
