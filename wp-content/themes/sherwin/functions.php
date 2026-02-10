@@ -604,4 +604,38 @@ function delete_bowmonk_form_submissions() {
 
   exit;
 }
+
+
+add_action('admin_menu', 'coming_home_link');
+function coming_home_link() {
+  add_submenu_page('tools.php', '', 'Export Coming Home Submissions', 'manage_options', 'admin-ajax.php?action=coming_home_export', '', 99);
+}
+
+add_action('wp_ajax_coming_home_export','export_coming_home_form_submissions');
+function export_coming_home_form_submissions() {
+  global $wpdb;
+
+  $results = $wpdb->get_results("SELECT * FROM coming_home", ARRAY_A);
+
+  $headers = 'Name,Company/Organization,Email,Phone,Additional Requests,Date Submitted';
+
+  if (count($results) > 0) {
+    $output = "";
+
+    foreach($results as $result) {
+      $output .= '"'.$result['name'].'",';
+      $output .= '"'.$result['company'].'",';
+      $output .= '"'.$result['email'].'",';
+      $output .= '"'.$result['phone'].'",';
+      $output .= '"'.trim(preg_replace('/\s+/', ' ', $result['additional'])).'",';
+      $output .= date("Y-m-d H:i", $result['date_submitted']);
+      $output .= "\r\n";
+    }
+  }
+
+  header("Content-type: application/vnd.ms-excel");
+  header("Content-disposition: filename=coming_home_submissions_".date("Y-m-d_H-i",time()).".csv");
+  print $headers."\n".$output;
+  exit;
+}
 ?>
