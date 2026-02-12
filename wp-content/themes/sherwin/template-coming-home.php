@@ -42,7 +42,7 @@ get_header();
     @media (max-width: 900px) { & { gap: 2rem 4%; } }
   }
 
-  #ch-products .products > DIV {
+  #ch-products .products > A {
     width: 23.9655%; color: #1D3056; font-family: 'Teko', sans-serif;
     font-weight: 700; font-size: 24px; line-height: 1; text-transform: uppercase;
     text-align: center;
@@ -52,10 +52,12 @@ get_header();
     @media (max-width: 500px) { & { width: 100%; } }
   }
 
-  #ch-products .products > DIV .image {
+  #ch-products .products > A .image {
     margin-bottom: 0.5em; aspect-ratio: 1 / 1; background-repeat: no-repeat;
     background-position: center; background-size: cover;
   }
+
+  #ch-products .products > A:hover { transform: scale(1.1); }
 
   .center { text-align: center; }
 
@@ -165,45 +167,45 @@ get_header();
   <h1>Unmatched Quality at an <span>Affordable Price</span></h1>
 
   <div class="products">
-    <div>
+    <a href="https://sherwinindustries.com/product/lighted-runway-closure-marker/">
       <div class="image" style="background-image: url(https://sherwinindustries.com/wp-content/uploads/2026/02/ch-runway-closure.webp);"></div>
       Runway Closure
-    </div>
+    </a>
 
-    <div>
+    <a href="https://sherwinindustries.com/product/low-profile-barricade/">
       <div class="image" style="background-image: url(https://sherwinindustries.com/wp-content/uploads/2026/02/ch-barricades.webp);"></div>
       Barricades
-    </div>
+    </a>
 
-    <div>
+    <a href="https://sherwinindustries.com/product/linelazer-v-200mma-11/">
       <div class="image" style="background-image: url(https://sherwinindustries.com/wp-content/uploads/2026/02/ch-painting-equipment.webp);"></div>
       Painting Equipment
-    </div>
+    </a>
 
-    <div>
+    <a href="https://sherwinindustries.com/product/aquaphalt/">
       <div class="image" style="background-image: url(https://sherwinindustries.com/wp-content/uploads/2026/02/ch-pavement-repair.webp);"></div>
       Pavement Repair
-    </div>
+    </a>
 
-    <div>
+    <a href="https://sherwinindustries.com/product/preformed-thermoplastic/">
       <div class="image" style="background-image: url(https://sherwinindustries.com/wp-content/uploads/2026/02/ch-airfield-markings.webp);"></div>
       Airfield Markings
-    </div>
+    </a>
 
-    <div>
+    <a href="https://sherwinindustries.com/product/afm2-runway-friction-tester/">
       <div class="image" style="background-image: url(https://sherwinindustries.com/wp-content/uploads/2026/02/ch-friction-measurement.webp);"></div>
       Friction Measurement
-    </div>
+    </a>
 
-    <div>
+    <a href="https://sherwinindustries.com/product/ansi-class-3-outerwear/">
       <div class="image" style="background-image: url(https://sherwinindustries.com/wp-content/uploads/2026/02/ch-hi-viz-gear.webp);"></div>
       Hi Viz Gear
-    </div>
+    </a>
 
-    <div>
+    <a href="https://sherwinindustries.com/product/faa-approved-stencils/">
       <div class="image" style="background-image: url(https://sherwinindustries.com/wp-content/uploads/2026/02/ch-stencils.webp);"></div>
       Stencils
-    </div>
+    </a>
   </div>
 
   <div class="center">
