@@ -7,7 +7,7 @@
       <div class="site-width">
         <span>Interested or need more information?</span>
         <h1>Contact a Sherwin rep today</h1>
-        Call <a href="tel:1-800-525-8876">1-800-525-8876</a> or <a href="<?php echo home_url(); ?>/contact">e-mail us</a>
+        Call <a href="tel:1-414-281-6400">1-414-281-6400</a> or <a href="<?php echo home_url(); ?>/contact">e-mail us</a>
       </div>
     </div>
   <?php } ?>
@@ -19,7 +19,7 @@
           Corporate Office<br>
           2129 W. Morgan Ave<br>
           Milwaukee, WI 53221<br>
-          <a href="tel:1-800-525-8876"><span style="color: #FFFFFF;">1-800-</span>525-8876</a>
+          <a href="tel:1-414-281-6400"><span style="color: #FFFFFF;">1-414-</span>281-6400</a>
         </div>
       </div>
 

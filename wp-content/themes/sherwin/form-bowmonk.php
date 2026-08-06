@@ -161,7 +161,7 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
 
     $ToUser = "** THIS IS AN AUTOMATED MESSAGE. PLEASE DO NOT REPLY. **\n\n";
     $ToUser .= strip_tags(get_post_meta($_POST['id'], 'form_success', true));
-    if ($_POST['payment'] == "Credit Card") $ToUser .= "\n\nPlease call our corporate office for credit card processing.\n1-800-525-8876";
+    if ($_POST['payment'] == "Credit Card") $ToUser .= "\n\nPlease call our corporate office for credit card processing.\n1-414-281-6400";
     $ToUser .= "\n\nINFORMATION SUBMITTED\n";
     $ToUser .= $Message;
 
@@ -204,7 +204,7 @@ if ($_POST['email'] != "" && $_POST['business_airport_name'] != "" && $_POST['co
     }
 
     $feedback = nl2br(get_post_meta($_POST['id'], 'form_success', true));
-    if ($_POST['payment'] == "Credit Card") $feedback .= "<br><br>Please call our corporate office for credit card processing.<br>1-800-525-8876";
+    if ($_POST['payment'] == "Credit Card") $feedback .= "<br><br>Please call our corporate office for credit card processing.<br>1-414-281-6400";
   // } else {
   //   $feedback = "Your message has triggered the spam filter and was not sent. If this an error, please contact us at 1-800-525-8876.";
   //} // Honeypot

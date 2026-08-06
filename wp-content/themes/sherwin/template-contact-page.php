@@ -119,7 +119,6 @@ function email($address, $name="") {
       2129 W. Morgan Ave<br>
       Milwaukee, WI 53221<br>
       <strong>Office:</strong> <a href="tel:414-281-6400">414-281-6400</a><br>
-      <strong>Toll Free:</strong> <a href="tel:800-525-8876">800-525-8876</a><br>
       <br>
 
       <strong>President:</strong> Al Schultz<br>

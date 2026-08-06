@@ -52,7 +52,7 @@ while (have_posts()) : the_post();
 
       <div id="payment-cc">
         Please call our corporate office for credit card processing.<br>
-        1-800-525-8876
+        1-414-281-6400
       </div>
 
       <div id="payment-cn">

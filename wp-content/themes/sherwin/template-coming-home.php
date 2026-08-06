@@ -314,7 +314,7 @@ get_header();
   <div class="site-width">
     <div>
       <h2>Corporate Office</h2>
-      <a href="tel:8005258876">800-525-8876</a><br>
+      <a href="tel:4142816400">414-281-6400</a><br>
       <a href="mailto:corporate@sherwinindustries.com">corporate@sherwinindustries.com</a>
     </div>
 
