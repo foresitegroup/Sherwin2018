@@ -87,18 +87,9 @@ function email($address, $name="") {
   </div>
 
   <div>
-    <strong>Mike Baier</strong><br>
-    <?php email("mbaier@sherwinindustries.com"); ?><br>
-    Northeast Illinois<br>
-    <strong>Office:</strong> <a href="tel:414-405-6511">414-405-6511</a><br>
-    <strong>Fax:</strong> <a href="tel:414-281-6404">414-281-6404</a><br>
-    <br>
-  </div>
-  
-  <div>
     <strong>Mike West</strong><br>
     <?php email("mwest@sherwinindustries.com"); ?><br>
-    Peoria, IL<br>
+    Northeast Illinois and Central Illinois<br>
     <strong>Office:</strong> <a href="tel:309-509-0061">309-509-0061</a><!-- <br>
     <strong>Fax:</strong> <a href="tel:630-613-9896">630-613-9896</a> -->
   </div>
@@ -232,15 +223,6 @@ function email($address, $name="") {
     <?php email("jgilmour@sherwinindustries.com"); ?><br>
     Southwestern Wisconsin<br>
     <strong>Office:</strong> <a href="tel: 608-400-1393"> 608-400-1393</a><br>
-    <br>
-  </div>
-
-  <div>
-    <strong>Mike Baier</strong><br>
-    <?php email("mbaier@sherwinindustries.com"); ?><br>
-    Southeastern Wisconsin<br>
-    <strong>Office:</strong> <a href="tel:414-405-6511">414-405-6511</a><br>
-    <strong>Fax:</strong> <a href="tel:414-281-6404">414-281-6404</a><br>
     <br>
   </div>
 
