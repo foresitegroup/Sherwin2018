@@ -158,7 +158,7 @@ get_header();
       endif;
       ?>
 
-      <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN" target="sw" class="sw"><img src="<?php echo get_template_directory_uri(); ?>/images/sourcewell.webp"></a>
+      <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/080426-SWN" target="sw" class="sw"><img src="<?php echo get_template_directory_uri(); ?>/images/sourcewell.webp?080426-SWN"></a>
     </div>
   </div>
 </section>

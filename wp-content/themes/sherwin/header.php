@@ -116,11 +116,11 @@
 	<?php if (is_front_page()) { ?>
     <div id="sourcewell">
       <div class="flex">
-        <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN" class="sourcewell"><img src="<?php echo get_template_directory_uri(); ?>/images/sourcewell.webp" width="220" height="138" alt="Sourcewell Awarded Contract # 110122-SWN"></a>
+        <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/080426-SWN" class="sourcewell"><img src="<?php echo get_template_directory_uri(); ?>/images/sourcewell.webp?080426-SWN" width="220" height="138" alt="Sourcewell Awarded Contract # 080426-SWN"></a>
 
         <div>
           <p>Looking for more product/service details about this contract?</p>
-          <p>Visit <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN">Buy Sourcewell</a></p>
+          <p>Visit <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/080426-SWN">Buy Sourcewell</a></p>
         </div>
       </div>
     </div>
@@ -206,11 +206,11 @@
     <?php if ($post->post_name == "product-catalog") { ?>
     <div id="sourcewell">
       <div class="flex">
-        <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN" class="sourcewell"><img src="<?php echo get_template_directory_uri(); ?>/images/sourcewell.webp" width="220" height="138" alt="Sourcewell Awarded Contract # 110122-SWN"></a>
+        <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/080426-SWN" class="sourcewell"><img src="<?php echo get_template_directory_uri(); ?>/images/sourcewell.webp?080426-SWN" width="220" height="138" alt="Sourcewell Awarded Contract # 080426-SWN"></a>
 
         <div>
           <p>Looking for more product/service details about this contract?</p>
-          <p>Visit <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/110122-SWN">Buy Sourcewell</a></p>
+          <p>Visit <a href="https://www.sourcewell-mn.gov/cooperative-purchasing/080426-SWN">Buy Sourcewell</a></p>
         </div>
       </div>
     </div>
